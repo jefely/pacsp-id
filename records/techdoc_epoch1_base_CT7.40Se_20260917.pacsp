@@ -1,0 +1,305 @@
+{
+  "protocol": "PACSP-ID",
+  "version": "4.0.0-COMPACT",
+  "generated_at": "2026-09-17T02:18:40.427419",
+  "metadata": {
+    "domain": "techdoc",
+    "epoch": "epoch1",
+    "variant": "base",
+    "CT_display": "7.40Se",
+    "parameters": {
+      "embedding_model": "BAAI/bge-large-zh-v1.5",
+      "window_size": 5,
+      "n_samples": 31
+    },
+    "figure_recipe": {
+      "figure_id": "main",
+      "figsize": [
+        14,
+        8
+      ],
+      "dpi": 150,
+      "layout": "2x1",
+      "panels": [
+        {
+          "row": 0,
+          "title": "Path Increments delta_k",
+          "y_data": "compute.deltas",
+          "y_label": "delta_k",
+          "color": "#1f77b4",
+          "marker": "o",
+          "markersize": 5,
+          "vlines": {
+            "source": "results.changepoints.delta_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        },
+        {
+          "row": 1,
+          "title": "Cognitive Intensity mu_k",
+          "y_data": "compute.mus",
+          "y_label": "mu_k",
+          "color": "#2ca02c",
+          "marker": "o",
+          "markersize": 5,
+          "xlabel": "Snapshot",
+          "vlines": {
+            "source": "results.changepoints.mu_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        }
+      ],
+      "font": {
+        "family": "DejaVu Sans",
+        "size": 12
+      }
+    }
+  },
+  "dataset": {
+    "n_samples": 31,
+    "sample_hashes": [
+      "d065e975ae616f1f360975576941f78ca1b2d0f4494dacc85d5bfe374a9d4bc2",
+      "d065e975ae616f1f360975576941f78ca1b2d0f4494dacc85d5bfe374a9d4bc2",
+      "3fc97b3b4c01909fc74204a95c88fef19c742720c10757b523cd9e0b6c540068",
+      "a1d9ac5a1598c9457ed7335e321b47b4b938a54aa4c0ea19d0aa420512a953c2",
+      "c4dcf3e27c65c0bc91f97266711bc9efc2d1dff55be7be09643347cc663abe32",
+      "3d53b0be3a93c2bb8057b5bb9bdb70d5f08f0f56abdf3b020dd25b04f9fd7007",
+      "f281737ace20580e2aa5a0e15e9c1bab9d583e26e5e44bbf5476728824930dc4",
+      "395f45bf2005ac789dc616d78fae4434ee0b6c580d6d760c9b5b7c1945a102b5",
+      "008a5033377dd3a45e637826cd7208e37d796f9eeefc94e5f69a0b8efa403bc8",
+      "13a20e309c31ae10bbf87a3fd1fce78c0c8b35a9b6c8cce932afb8acec23672c",
+      "57426647156c21753571b7299c1843771478df6b8565d691fb0c2a3c19477372",
+      "739b090d06d8a2cbcd80da02f5225eed7048be0a7368ca6c4744afee33daa8db",
+      "e13d10a247b98a6020187b2a6e8909d9fdb51ccf69322ca4d4a723be6f3a33a2",
+      "a23a6131ae771407544d199f27a03a4e59c5b1b94f1c31262b0ef1b6033bc757",
+      "c6a3b7123525681f9217be9ddfddecfa73b4d6eb10b7f288db04c1b566487167",
+      "1778151d16717b172b99135690108b7a4e38f824d02f79e38e483ab27940f0cf",
+      "3f1cd9df4d32f26f3aa6db9dda731cce2085afc667f21c964761f306d4532634",
+      "9694a03c2e14f3ff4ff24a433f22948be5e4d3da1891a3f9ea2e87232fb954c6",
+      "d034fa478dbd7ceefee5a7e70177c667c68af31c0d4949e5d08a0d381d6eaee1",
+      "88a03c24c471723f5fa8d240c87d8e8594446bdd8aa23a613591dcee13e32e83",
+      "3dc7a6a207794d510ee6160b59a341474525442da40af3e5e500316fa250074e",
+      "8f0bf67485415e4922daaa204d68f12a95f685fb52fb9761ec0b446ca2945b21",
+      "2969bca7cba0869a11cf50bd72c8f1e4ac5b5ebf388f34d465969a86428630db",
+      "00381f0c8e1e48622b6ef259eec9bd3b7e049c5d7a0b974cf27c5b8ada5753fa",
+      "17e03fb145ff51e71af452fc59e7d4d2f4ad23d3ac6339accd5f18d7b618308c",
+      "75e7b1739f897843fc760c08db37e30eee651b073005ccbce81d24101f5e9be7",
+      "8328d190a992b16527903adca3670ab18a5067a6acac5dfef33ac61fcb8cb1fb",
+      "8dc030bb8b3651b0bceb937dd66770401abbc373328730390fcb5330c885ef57",
+      "0716b1447b22575878ea0a46e637f671773e2cf890c8f14a86f07c75671ddb3b",
+      "26a91be615963069b8c8fd14811f445981cef73822c080502ddaa9a0b2af06ca",
+      "9c55ce26e5a3f29d07a39b6c788a0d93baecfe5378eaf916d69bb0d199b62f18"
+    ]
+  },
+  "compute": {
+    "deltas": [
+      0.0,
+      0.856304943561554,
+      0.8140000700950623,
+      0.9831836223602295,
+      0.9888529777526855,
+      0.9383220672607422,
+      0.6370782852172852,
+      0.731856107711792,
+      0.8120363354682922,
+      0.8282159566879272,
+      0.8427318334579468,
+      0.8191308379173279,
+      0.8844633102416992,
+      0.7749298214912415,
+      0.7648889422416687,
+      0.5810174942016602,
+      0.7010347247123718,
+      0.7055020928382874,
+      0.08985299617052078,
+      0.671362042427063,
+      0.7970390915870667,
+      0.7146546840667725,
+      0.8235712051391602,
+      0.47521668672561646,
+      0.6684804558753967,
+      0.8279058337211609,
+      0.8764903545379639,
+      0.6706342101097107,
+      0.7234779596328735,
+      0.7943143844604492
+    ],
+    "mus": [
+      0.39132797718048096,
+      0.4089869260787964,
+      0.39287739992141724,
+      0.38274264335632324,
+      0.3882337212562561,
+      0.38432174921035767,
+      0.39572232961654663,
+      0.39495861530303955,
+      0.41488558053970337,
+      0.41128790378570557,
+      0.39750832319259644,
+      0.36625391244888306,
+      0.35609304904937744,
+      0.337507963180542,
+      0.31445878744125366,
+      0.3212728500366211,
+      0.3185962438583374,
+      0.31170010566711426,
+      0.3024812340736389,
+      0.27703726291656494,
+      0.24860018491744995,
+      0.27028584480285645,
+      0.28403615951538086,
+      0.26770102977752686,
+      0.29241859912872314,
+      0.30310243368148804,
+      0.2926853895187378,
+      0.2934715151786804,
+      0.28556621074676514,
+      0.2955220937728882,
+      0.28912144899368286
+    ]
+  },
+  "results": {
+    "C_T_Se": 7.398207289029752,
+    "changepoints": {
+      "mu_k": [
+        9,
+        15,
+        20,
+        25
+      ],
+      "delta_k": [
+        8,
+        16
+      ]
+    }
+  },
+  "stats": {
+    "delta_mean": 0.7265516442557176,
+    "delta_std": 0.21296424562214325,
+    "mu_mean": 0.33518598348863665,
+    "mu_std": 0.051252747571386606
+  },
+  "figure_recipe": {
+    "figure_id": "main",
+    "figsize": [
+      14,
+      8
+    ],
+    "dpi": 150,
+    "layout": "2x1",
+    "panels": [
+      {
+        "row": 0,
+        "title": "Path Increments delta_k",
+        "y_data": "compute.deltas",
+        "y_label": "delta_k",
+        "color": "#1f77b4",
+        "marker": "o",
+        "markersize": 5,
+        "vlines": {
+          "source": "results.changepoints.delta_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      },
+      {
+        "row": 1,
+        "title": "Cognitive Intensity mu_k",
+        "y_data": "compute.mus",
+        "y_label": "mu_k",
+        "color": "#2ca02c",
+        "marker": "o",
+        "markersize": 5,
+        "xlabel": "Snapshot",
+        "vlines": {
+          "source": "results.changepoints.mu_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      }
+    ],
+    "font": {
+      "family": "DejaVu Sans",
+      "size": 12
+    }
+  },
+  "integrity": {
+    "L1": {
+      "layer_id": "L1",
+      "status": "ok",
+      "computed_at": "2026-09-17T02:18:38.744563",
+      "data": {
+        "content_hash": "sha256:e29289e674e667947dad875ceb91dd97609cc66a32478c289f568334edec8884",
+        "hash_algorithm": "sha256",
+        "hash_scope": "layered",
+        "sub_hashes": {
+          "metadata": "sha256:8750a57340103e3b4c2ad5cd9073a83e36bea4709ceef28a9f2f62f7c7c58c11",
+          "dataset": "sha256:89c904cb77509d94c2532462d19af2063e252074532491504ede4ce903098208",
+          "compute": "sha256:eae9cb7308e932fefae4134abe443cbf0e92e1dfa49c63aa84fe767b77e094e7",
+          "results": "sha256:902b6d9c090c2c1c9d96622b54604547e49a47d9fb51a2bfb12ac432837abadd",
+          "figure_recipe": "sha256:9cae101c0482dcf7a7f720298ec448a9fcceb1308cf0ac9fd090284929358116",
+          "l3_reference": "sha256:a38b572a3a1d103f860957245330c249e9fe448fae13e013c9862ebba4a8f631"
+        }
+      },
+      "error": null
+    },
+    "L2": {
+      "layer_id": "L2",
+      "status": "ok",
+      "computed_at": "2026-09-17T02:18:38.745652",
+      "data": {
+        "signature": "base64:MNr6Q3neFLguNMn1lP1ovFDXVaPu/0muerJVruwnS5VuaMPYW4VfeRa9yDseULv6RIY4tJ1M6QjhGeMCO6sKAw==",
+        "signature_algorithm": "ed25519",
+        "public_key_id": "43fa799f51e51f4f",
+        "signed_content_hash": "sha256:e29289e674e667947dad875ceb91dd97609cc66a32478c289f568334edec8884"
+      },
+      "error": null
+    },
+    "L3": {
+      "sample": "sha256:c9585d92415f516596f04d1ea37d1a9d319368fdf53308b06c3f2670c5166d29",
+      "compute": "sha256:e6332602af911f93cbc96a73a092ef81f5b9c0fbe994be8b1567678df04eab4d",
+      "result": "sha256:fb773a48ffef7563a100bd226fdcc396e5d699a6b1b16a51c8ce52fc9460dde2"
+    },
+    "L4": {
+      "layer_id": "L4",
+      "status": "pending",
+      "computed_at": "2026-09-17T02:18:40.426084",
+      "data": {
+        "content_hash": "sha256:e29289e674e667947dad875ceb91dd97609cc66a32478c289f568334edec8884",
+        "timestamp_proof": "base64:AE9wZW5UaW1lc3RhbXBzAABQcm9vZgC/ieLohOiSlAEIenl7EjyNP06dYWfhfizpbH6jJkrbs5HMfG1xbPunHTjwEN8TnwzJ3XltvzoV98j+yDQI//AQCb19dAJzpgBeKRyM50tarAjwIG32lW1l1SNvfcHSvagQr+UWdOcIrCwFBED+OLG3Zi04CPEguE9WQ27EFeOwFWHIMA8Sqwfq36xSjQoCy9Uo9ExlGFwI8QRqqtGY8AgMAbO70Z/1ZwCD3+MNLvkMjikoaHR0cHM6Ly9maW5uZXkuY2FsZW5kYXIuZXRlcm5pdHl3YWxsLmNvbf/wCBZjrXtgB51UCPEgW7i3Oc38cHqN4tga5YMQRHXcCuKddX9a1G5KxRCbOj0I8CDR1VFoySAym4q/WFy4ICNNOejBE+TN5VQdSERTt8k7iwjwEBjKP5co0mL+jfs2mof5JGUI8SAaYCcyeMLo3mmGzVtM+phdoZygyBXbxUC1YzvrejSA+gjxBGqq0ZjwCBjEhcTdy2/XAIPf4w0u+QyOLCtodHRwczovL2JvYi5idGMuY2FsZW5kYXIub3BlbnRpbWVzdGFtcHMub3Jn//AQVydTJ7pK+pwk5tGLbSTXegjwIFZ6L15KcirIrhN59hxjDRje8qrp18dDpTacqkzZam6gCPEEaqrRmPAIjvkpI/t02B4Ag9/jDS75DI4jImh0dHBzOi8vYnRjLmNhbGVuZGFyLmNhdGFsbGF4eS5jb23wCIL/RV+fqfSjCPEgyRDyh3IIRJ0Nxb/JClOcPzcpdhAMvbIRSh4Z0eqO1IMI8BBULjm9ZusBGmaDDxBI3CBJCPAg/Mluw0oPzyM6AcLIAl+v8YleCnO/i44Xynx2pdCUwcEI8CC6+hdBX3bBnfZHSz9I7aIoRi97MVJkGp6tqQ8/LaNI1wjxBGqq0ZnwCLF+8yoStnacAIPf4w0u+QyOLi1odHRwczovL2FsaWNlLmJ0Yy5jYWxlbmRhci5vcGVudGltZXN0YW1wcy5vcmc=",
+        "timestamp_anchor": "local_only_pending_remote",
+        "ots_file": "D:\\my_uacp_project\\PACSP-ID\\cache\\ots\\e29289e674e66794.txt.ots",
+        "attempts": 1,
+        "note": "本地证明已生成，远程提交部分失败"
+      },
+      "error": null
+    },
+    "L5": {
+      "layer_id": "L5",
+      "status": "ok",
+      "computed_at": "2026-09-17T02:18:38.744563",
+      "data": {
+        "python_version": "3.10.10",
+        "platform": "Windows",
+        "embedding_model": "BAAI/bge-large-zh-v1.5",
+        "window_size": 5,
+        "pipeline_steps": [
+          "load_samples",
+          "compute_embeddings",
+          "compute_deltas",
+          "compute_mus",
+          "compute_C_T",
+          "detect_changepoints"
+        ],
+        "reproducible": true
+      },
+      "error": null
+    }
+  }
+}

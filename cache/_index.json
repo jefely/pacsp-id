@@ -1,0 +1,34 @@
+{
+  "protocol": "PACSP-ID",
+  "version": "4.0.0-COMPACT",
+  "generated_at": "2026-09-17T02:01:25.824565",
+  "total_records": 2,
+  "records": [
+    {
+      "ref": "lyrics_epoch1_base_CT2.13Se_20260917.pacsp",
+      "domain": "lyrics",
+      "epoch": "epoch1",
+      "variant": "base",
+      "C_T_Se": 2.126139974204378,
+      "n_samples": 31,
+      "content_hash": "sha256:b827d9b80f636941b0c8880a127a5908e5dd60c015109870f6aa1c0eea9d1758",
+      "cache": {
+        "txt": "cache/lyrics_epoch1_base.txt",
+        "png": "cache/lyrics_epoch1_base_main.png"
+      }
+    },
+    {
+      "ref": "techdoc_epoch1_base_CT7.40Se_20260917.pacsp",
+      "domain": "techdoc",
+      "epoch": "epoch1",
+      "variant": "base",
+      "C_T_Se": 7.398207289029752,
+      "n_samples": 31,
+      "content_hash": "sha256:e29289e674e667947dad875ceb91dd97609cc66a32478c289f568334edec8884",
+      "cache": {
+        "txt": "cache/techdoc_epoch1_base.txt",
+        "png": "cache/techdoc_epoch1_base_main.png"
+      }
+    }
+  ]
+}

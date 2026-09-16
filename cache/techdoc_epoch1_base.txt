@@ -1,0 +1,78 @@
+================================================================
+PACSP Cache
+================================================================
+dataset      : techdoc_epoch1_base
+generated_at : 2026-09-17T01:55:49.407334
+protocol     : PACSP-ID 4.0.0-COMPACT
+================================================================
+
+[METADATA]
+domain       = techdoc
+epoch        = epoch1
+variant      = base
+C_T          = 7.3982 Se
+n_samples    = 31
+model        = BAAI/bge-large-zh-v1.5
+window       = 5
+
+[STATS]
+delta_mean   = 0.7266
+delta_std    = 0.2130
+mu_mean      = 0.3352
+mu_std       = 0.0513
+
+[CHANGEPOINTS]
+mu_k         = [9, 15, 20, 25]
+delta_k      = [8, 16]
+
+[INTEGRITY]
+L1 content_hash   = sha256:e29289e674e667947dad875ceb91dd97609cc66a324...
+L2 public_key_id  = 43fa799f51e51f4f
+L2 status         = ok
+L3 sample_merkle  = sha256:c9585d92415f516596f04d1ea37d1a9d3...
+L3 compute_merkle = sha256:e6332602af911f93cbc96a73a092ef81f...
+L3 result_merkle  = sha256:fb773a48ffef7563a100bd226fdcc396e...
+L4 status         = failed
+L5 status         = ok
+
+[PER-SNAPSHOT]
+  #    delta_k    mu_k       tag
+ ---  ---------  ---------  ----------------
+   1     0.0000    0.3913  
+   2     0.8563    0.4090  
+   3     0.8140    0.3929  
+   4     0.9832    0.3827  
+   5     0.9889    0.3882  
+   6     0.9383    0.3843  
+   7     0.6371    0.3957  
+   8     0.7319    0.3950  <- delta changepoint
+   9     0.8120    0.4149  <- mu changepoint
+  10     0.8282    0.4113  
+  11     0.8427    0.3975  
+  12     0.8191    0.3663  
+  13     0.8845    0.3561  
+  14     0.7749    0.3375  
+  15     0.7649    0.3145  <- mu changepoint
+  16     0.5810    0.3213  <- delta changepoint
+  17     0.7010    0.3186  
+  18     0.7055    0.3117  
+  19     0.0899    0.3025  
+  20     0.6714    0.2770  <- mu changepoint
+  21     0.7970    0.2486  
+  22     0.7147    0.2703  
+  23     0.8236    0.2840  
+  24     0.4752    0.2677  
+  25     0.6685    0.2924  <- mu changepoint
+  26     0.8279    0.3031  
+  27     0.8765    0.2927  
+  28     0.6706    0.2935  
+  29     0.7235    0.2856  
+  30     0.7943    0.2955  
+  31     0.0000    0.2891  
+
+[FILES]
+pacsp  : records/techdoc_epoch1_base_CT7.40Se_20260917.pacsp
+txt    : cache/techdoc_epoch1_base.txt
+png    : cache/techdoc_epoch1_base_main.png
+
+================================================================

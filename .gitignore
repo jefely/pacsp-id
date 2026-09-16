@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+venv/
+env/
+pacsp_env/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 密钥（绝不提交）
+*.pem

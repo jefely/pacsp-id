@@ -1,0 +1,78 @@
+================================================================
+PACSP Cache
+================================================================
+dataset      : lyrics_epoch1_base
+generated_at : 2026-09-17T01:55:36.483771
+protocol     : PACSP-ID 4.0.0-COMPACT
+================================================================
+
+[METADATA]
+domain       = lyrics
+epoch        = epoch1
+variant      = base
+C_T          = 2.1261 Se
+n_samples    = 31
+model        = BAAI/bge-large-zh-v1.5
+window       = 5
+
+[STATS]
+delta_mean   = 0.4018
+delta_std    = 0.1949
+mu_mean      = 0.1677
+mu_std       = 0.0621
+
+[CHANGEPOINTS]
+mu_k         = [7, 12, 17, 22, 27]
+delta_k      = []
+
+[INTEGRITY]
+L1 content_hash   = sha256:b827d9b80f636941b0c8880a127a5908e5dd60c0151...
+L2 public_key_id  = 43fa799f51e51f4f
+L2 status         = ok
+L3 sample_merkle  = sha256:90d8e7647b976ec7c5243b12c919e0214...
+L3 compute_merkle = sha256:7ba40ad9caa8ef08a4d3b9aa585a6e372...
+L3 result_merkle  = sha256:9dc79abf81da4cfda908c934ad66a4e8b...
+L4 status         = failed
+L5 status         = ok
+
+[PER-SNAPSHOT]
+  #    delta_k    mu_k       tag
+ ---  ---------  ---------  ----------------
+   1     0.6291    0.1688  
+   2     0.3479    0.2332  
+   3     0.4353    0.2660  
+   4     0.2476    0.2779  
+   5     0.5966    0.2796  
+   6     0.7712    0.2757  
+   7     0.5564    0.2621  <- mu changepoint
+   8     0.5433    0.2538  
+   9     0.0587    0.2245  
+  10     0.3940    0.1790  
+  11     0.4586    0.1328  
+  12     0.2481    0.0923  <- mu changepoint
+  13     0.3582    0.1040  
+  14     0.3159    0.0930  
+  15     0.2443    0.0951  
+  16     0.2819    0.0925  
+  17     0.3975    0.0831  <- mu changepoint
+  18     0.3852    0.0819  
+  19     0.4155    0.1107  
+  20     0.1016    0.1179  
+  21     0.0670    0.1452  
+  22     0.2510    0.1625  <- mu changepoint
+  23     0.6444    0.1621  
+  24     0.6248    0.1572  
+  25     0.7436    0.1495  
+  26     0.4939    0.1518  
+  27     0.7022    0.1619  <- mu changepoint
+  28     0.2409    0.1730  
+  29     0.3654    0.1862  
+  30     0.1335    0.1659  
+  31     0.0000    0.1595  
+
+[FILES]
+pacsp  : records/lyrics_epoch1_base_CT2.13Se_20260917.pacsp
+txt    : cache/lyrics_epoch1_base.txt
+png    : cache/lyrics_epoch1_base_main.png
+
+================================================================
