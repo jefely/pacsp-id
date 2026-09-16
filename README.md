@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1373521342.svg)](https://doi.org/10.5281/zenodo.22801604)
+
 # PACSP-ID
 
 Pan-Agent Cognitive Sediment Protocol — Identity
@@ -79,8 +81,9 @@ L4 pending = 本地证明已生成，等待远程日历确认（非致命）。
 
     @misc{pacsp2026,
       title={PACSP-ID: Pan-Agent Cognitive Sediment Protocol for Identity},
-      author={Anonymous},
+      author={jefely},
       year={2026},
+      doi={10.5281/zenodo.22801604},
       note={v4.0.0-COMPACT}
     }
 
