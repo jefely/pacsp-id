@@ -113,6 +113,10 @@ class EmotionTree:
             "n_edges": len(self.edges),
             "n_roots": len(self.roots),
             "bias_entropy": round(self.bias_entropy, 6),
+            # 拓扑明细：供图表重建真实树形（parents 以字符串为键，便于 JSON 存取）
+            "parents": {str(k): int(v) for k, v in self.parents.items()},
+            "roots": [int(r) for r in self.roots],
+            "edges_flat": [[int(a), int(b)] for a, b in self.edges],
         }
 
     def __repr__(self):
