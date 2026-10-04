@@ -14,7 +14,15 @@ Two constraints shape this:
 Usage:
     $env:ZENODO_TOKEN = "<token with deposit:write AND deposit:actions>"
     python scripts/pacsp_zenodo.py --status
+    python scripts/pacsp_zenodo.py --verify            # read back and compare
     python scripts/pacsp_zenodo.py --add-new-version --yes
+
+WARNING, learned the hard way: an upload returning 200/201 means the request was
+accepted, NOT that the bytes are right. A publish done without reading the files
+back put PDF content into the DOCX slot of record 23138538 and dropped the
+repository zip; that record cannot be corrected in place and remains in the version
+history. Every upload must therefore be followed by a download and a hash compare.
+See docs/DOI-ARCHIVE-STATUS.md.
 
 Scope requirement, from the Zenodo API docs:
     deposit:write    write access to depositions, but cannot publish the upload
@@ -37,6 +45,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
 API = "https://zenodo.org/api"
 CONCEPT = "10.5281/zenodo.22801604"
+REC = 23138930   # the corrected version
 TIMEOUT = 600
 
 
@@ -171,10 +180,59 @@ def add_new_version(tok, files, rec_id, yes):
     return 0
 
 
+def _sha(b):
+    import hashlib
+    return hashlib.sha256(b).hexdigest()
+
+
+def verify_record(tok, rec, files):
+    """Download every published file and compare it with the local original.
+
+    This is the step whose absence allowed a corrupt publish. It is deliberately
+    strict: any size or hash difference is reported as failure.
+    """
+    code, d = call("GET", f"{API}/records/{rec}", tok)
+    if code != 200 or not isinstance(d, dict):
+        print(f"  cannot read record {rec} (HTTP {code})")
+        return 1
+    published = {f.get("key"): f.get("size", 0) for f in d.get("files", [])}
+    print(f"  record {rec}  doi={d.get('doi')}")
+    ok = True
+    for f in files:
+        if f.name not in published:
+            print(f"  {f.name}: MISSING from the record")
+            ok = False
+            continue
+        if published[f.name] != f.stat().st_size:
+            print(f"  {f.name}: size {published[f.name]:,} != local "
+                  f"{f.stat().st_size:,}")
+            ok = False
+            continue
+        url = f"{API}/records/{rec}/files/{urllib.parse.quote(f.name)}/content"
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "pacsp-zenodo",
+                                                       "Accept": "*/*"})
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+                data = r.read()
+        except Exception as e:
+            print(f"  {f.name}: download failed {type(e).__name__}: {str(e)[:80]}")
+            ok = False
+            continue
+        local = f.read_bytes()
+        same = _sha(data) == _sha(local)
+        print(f"  {f.name}")
+        print(f"      published {len(data):>10,}  {_sha(data)[:16]}")
+        print(f"      local     {len(local):>10,}  {_sha(local)[:16]}")
+        print(f"      => {'IDENTICAL' if same else 'DIFFERENT'}")
+        if not same:
+            ok = False
+    return 0 if ok else 1
+
+
 def print_manual():
     print()
     print("Manual alternative (no token needed):")
-    print("  1. open https://zenodo.org/records/23138538")
+    print("  1. open https://zenodo.org/records/23138930   (the corrected version)")
     print("  2. click 'New version'")
     print("  3. upload both files from PACSP-ID/dist/:")
     for f in assets():
@@ -189,6 +247,8 @@ def print_manual():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--status", action="store_true", help="list depositions and exit")
+    ap.add_argument("--verify", action="store_true",
+                    help="download the published files and compare hashes")
     ap.add_argument("--add-new-version", action="store_true",
                     help="create a new version of the latest published record")
     ap.add_argument("--record", type=int, default=None)
@@ -211,6 +271,9 @@ def main():
     latest = show_status(tok)
     if args.status:
         return 0
+    if args.verify:
+        rec = args.record or (latest or {}).get("id") or REC
+        return verify_record(tok, rec, files)
 
     rec = args.record or (latest or {}).get("id")
     if not rec:

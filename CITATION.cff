@@ -42,8 +42,8 @@ identifiers:
     value: "10.5281/zenodo.22801604"
     description: "Concept DOI (latest version)"
   - type: doi
-    value: "10.5281/zenodo.23138538"
-    description: "Version DOI for 7.0.0"
+    value: "10.5281/zenodo.23138930"
+    description: "Version DOI for 7.0.0 (corrected: contains the typeset PDF and DOCX)"
   - type: url
     value: "https://github.com/jefely/pacsp-id/releases/tag/v7.0.0"
     description: "Release with the typeset preprint (PDF and DOCX)"

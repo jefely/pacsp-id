@@ -23,9 +23,9 @@ for url in ("https://doi.org/10.5281/zenodo.22801604",
         print(f"  {url}: {type(e).__name__} {e}")
 
 print()
-print("=== record 23138538 metadata ===")
+print("=== record 23138930 metadata (corrected version) ===")
 try:
-    code, final, d = get("https://zenodo.org/api/records/23138538")
+    code, final, d = get("https://zenodo.org/api/records/23138930")
     md = d.get("metadata", {})
     print(f"  doi          : {d.get('doi')}")
     print(f"  concept doi  : {d.get('conceptdoi')}")
