@@ -9,7 +9,7 @@
 已移至：
 
 ```
-D:\myproject\PACSP-测量分析
+D:\myproject\PACSP-M
 ```
 
 原因：那些文档的结论**削弱**了本仓库论文的核心主张，混在同一处会让
@@ -24,7 +24,7 @@ D:\myproject\PACSP-测量分析
 **实测到最可靠的人机判别量是一个零参数、顺序无关的简单统计量：
 全部成对嵌入距离的均值（`mean_pair_dist`）**，5/5 区间排除 1，精度 1–8%。
 
-详见 `D:\myproject\PACSP-测量分析\README.md`。
+详见 `D:\myproject\PACSP-M\README.md`。
 
 ## 本仓库仍然有效的部分
 
