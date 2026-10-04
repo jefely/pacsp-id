@@ -1,0 +1,55 @@
+cff-version: 1.2.0
+message: "If you use this software or the preprint, please cite it as below."
+title: "从意义权到认知沉积：PACSP-ID 框架的理论建构、创新动力学标识与验证工程"
+abstract: >-
+  PACSP-ID (Pan-Agent Cognitive Sediment Protocol — Identity) measures cognitive
+  deposition along an agent's trajectory. The core quantity is the
+  Lebesgue-Stieltjes integral C_T = ∫ μ dΛ, in units of Se (瑟), where μ is the
+  Fisher-information cognitive curvature and Λ the total-variation path measure.
+  The framework couples a philosophy of meaning-rights, an emotion-tree extension,
+  and an innovation-dynamics layer, with six-layer cryptographic attestation.
+  This version reports measured results on three content domains (poetry, lyrics,
+  technical documents, 31 items each) and three negative results that are recorded
+  rather than tuned away.
+type: software
+authors:
+  - family-names: "jefely"
+    given-names: ""
+    orcid: "https://orcid.org/0009-0005-9487-8555"
+    email: "yuanhuanfeng@gmail.com"
+license: MIT
+repository-code: "https://github.com/jefely/pacsp-id"
+url: "https://github.com/jefely/pacsp-id"
+# Concept DOI: always resolves to the most recent version.
+doi: "10.5281/zenodo.22801604"
+version: "7.0.0"
+date-released: "2026-10-04"
+keywords:
+  - cognitive deposition
+  - information geometry
+  - Fisher information
+  - Lebesgue decomposition
+  - cognitive sediment
+  - emotion tree
+  - innovation dynamics
+  - attributable identity
+  - provenance
+  - 认知沉积
+  - 信息几何
+  - 意义权
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22801604"
+    description: "Concept DOI (latest version)"
+  - type: doi
+    value: "10.5281/zenodo.23138538"
+    description: "Version DOI for 7.0.0"
+  - type: url
+    value: "https://github.com/jefely/pacsp-id/releases/tag/v7.0.0"
+    description: "Release with the typeset preprint (PDF and DOCX)"
+references:
+  - type: software
+    title: "PACSP-ID 7.0.0 preprint (PDF and DOCX)"
+    scope: "The typeset preprint. Note that Zenodo's GitHub integration archives the
+      repository snapshot only; the PDF and DOCX are attached to the GitHub release."
+    url: "https://github.com/jefely/pacsp-id/releases/tag/v7.0.0"
