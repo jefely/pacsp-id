@@ -1,0 +1,455 @@
+{
+  "protocol": "PACSP-ID",
+  "version": "7.0.0-COMPLETE",
+  "generated_at": "2026-10-04T16:45:39.640620",
+  "metadata": {
+    "domain": "machine_poem",
+    "epoch": "epoch1",
+    "variant": "base",
+    "CT_display": "3.83Se",
+    "protocol_version": "7.0.0-COMPLETE",
+    "parameters": {
+      "embedding_model": "BAAI/bge-large-zh-v1.5",
+      "window_size": 5,
+      "n_samples": 31
+    },
+    "figure_recipe": {
+      "figure_id": "main",
+      "figsize": [
+        14,
+        8
+      ],
+      "dpi": 150,
+      "layout": "2x1",
+      "panels": [
+        {
+          "row": 0,
+          "title": "Path Increments delta_k",
+          "y_data": "compute.deltas",
+          "y_label": "delta_k",
+          "color": "#1f77b4",
+          "marker": "o",
+          "markersize": 5,
+          "vlines": {
+            "source": "results.changepoints.delta_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        },
+        {
+          "row": 1,
+          "title": "Cognitive Intensity mu_k",
+          "y_data": "compute.mus",
+          "y_label": "mu_k",
+          "color": "#2ca02c",
+          "marker": "o",
+          "markersize": 5,
+          "xlabel": "Snapshot",
+          "vlines": {
+            "source": "results.changepoints.mu_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        }
+      ],
+      "font": {
+        "family": "DejaVu Sans",
+        "size": 12
+      }
+    }
+  },
+  "dataset": {
+    "n_samples": 31,
+    "sample_hashes": [
+      "7cc9d4b6459f8f90ef6284563dfad4f7483c470f8a6b9dd98e4fcac31780dcf6",
+      "d7f8f7036ef8781bb5c287f294441c4114216fa646dedc96e67598ceca0013b0",
+      "39d4abeacb0140c80e952ce84beb15806f0f3ea8893690a858b5d71754353777",
+      "7b18760764865f80e39b79981792fe7786a61e481392e984ce338f9b552424ac",
+      "5da8a7c20774ff734f2ea5d36c77348efd6d16f7934f3a19e51e5759d4f10f9a",
+      "4fe8f91152ac6c3e91dfbc54c756bdbcf04c5ca267e84bbd6a6e1066821cf2cc",
+      "3bd2f77a033823d7ed6df05dbbf0ae45e3c417b77b6328ecf9910f7e85e5ac44",
+      "c0d2218ce4d5cf64caced72a189fa998ca12b1437e10223b3adb19455c7830e5",
+      "7d4ff65c9f42c04ab3fe43ad00f582691d46b943edbb649411b6b8c73871c25e",
+      "1ec08315b973663cf9df574ab4f94c1475129d034b42f5ec988d7d1fc23b5961",
+      "006709fb93774cbde346ff290dde522d86d8978ceccc2525bed4c76803687258",
+      "6effe1f54b99bf7713c333bc559fb74a52dd5528f2ea0a90f505bb857efa693e",
+      "533ecf4c49787dbf239a7f965dddf22b7606b165337af2810e0259c9ff137eec",
+      "18044e657132c2065023176b03cae5d762e4c9d0a0e08a5ecfc1b4d953b31bd1",
+      "d3dbaf694ce0f0fd1037a49d19d8edc6ef754484de91b768a87ebd4c9da19981",
+      "4430582d3bf4bfae52eb68a5edb79e79d23bf0aafcee8552846621966d99394b",
+      "a211173fbd2c041009f7348d01e7f712ad21c2f74419d4e071784755f7cab9ea",
+      "ccaa5ea2a999e44e9be9571a0a69643fdb4e4ff12b2063cf6f015d3d4629ab47",
+      "76d3fa91638722b7dce6ac77622641efe132266ef0c8626bab11421443325d26",
+      "17f453fd3718d126d9fae1f1c4f532221353bc4ad4db0f0f9106af4d520759df",
+      "ffe5e4dc02a04795414553271152fc44bd7388aa79b70cf51c476d8ce153cf85",
+      "ea3cb3720cbbd471dd5d66f48c634f35562c7da7fa7376f8a68702563daef3dd",
+      "6aa5f1fe1970d14c187e551278253f8571a0750964ddc20ad86eecfc93ac0e91",
+      "a02bcebc849d6ab39268a97404af3ec9726270c850776f4baab261aab5a5f7d0",
+      "beae564c311795421ebcb557e407935389fc896cf41a823cefbe7f425e9b25cc",
+      "ea234f48635853c12e73207e38e00d4a8f4989c3f9646f72e8770176a665d711",
+      "bade9dcb2176cb50e65b4567831229666bce6b7afca331a9603d5f386290e6d3",
+      "905c28a2bf85b360f8f52cc6b3539f054946cabc96a5f49125cd9cc534f5f64d",
+      "48519bec880543dad88e60683314bd546a9eec275ab7bddfabd76b747d1be057",
+      "628501b85afd980c52f0aa55b58b138a7b1bf7532c4f02e3b864c43bdb622f8f",
+      "0f1ccbda096ae4a4419434512f955ce627134c8a2cfc6fa534410b5dfc55c823"
+    ]
+  },
+  "compute": {
+    "deltas": [
+      0.47980284690856934,
+      0.5407192707061768,
+      0.5205486416816711,
+      0.5592055916786194,
+      0.6101935505867004,
+      0.7546143531799316,
+      0.6999556422233582,
+      0.6678356528282166,
+      0.6066990494728088,
+      0.6051828861236572,
+      0.5373401045799255,
+      0.7059893012046814,
+      0.6735833287239075,
+      0.5376893281936646,
+      0.5661176443099976,
+      0.6360569596290588,
+      0.5959473252296448,
+      0.5793052911758423,
+      0.6836242079734802,
+      0.7523178458213806,
+      0.5916072726249695,
+      0.48304519057273865,
+      0.6608862280845642,
+      0.6570460200309753,
+      0.5959449410438538,
+      0.671417236328125,
+      0.7349087595939636,
+      0.5593622326850891,
+      0.5990204215049744,
+      0.6825613379478455
+    ],
+    "mus": [
+      0.16180551052093506,
+      0.1853613257408142,
+      0.18908101320266724,
+      0.19267410039901733,
+      0.19406384229660034,
+      0.1922760009765625,
+      0.19574111700057983,
+      0.2116500735282898,
+      0.20796215534210205,
+      0.20388156175613403,
+      0.20754975080490112,
+      0.19742321968078613,
+      0.18893110752105713,
+      0.18066400289535522,
+      0.19439947605133057,
+      0.19396543502807617,
+      0.19932478666305542,
+      0.20171862840652466,
+      0.19382917881011963,
+      0.19829565286636353,
+      0.2087254524230957,
+      0.22023648023605347,
+      0.2254350781440735,
+      0.22951000928878784,
+      0.23880696296691895,
+      0.23402798175811768,
+      0.2371690273284912,
+      0.2365444302558899,
+      0.22859114408493042,
+      0.22412216663360596,
+      0.22950845956802368
+    ]
+  },
+  "results": {
+    "C_T_Se": 3.8271397245904186,
+    "changepoints": {
+      "mu_k": [
+        7,
+        12,
+        17,
+        22,
+        27
+      ],
+      "delta_k": []
+    }
+  },
+  "stats": {
+    "delta_mean": 0.6182842820882797,
+    "delta_std": 0.07407716282049638,
+    "mu_mean": 0.20655726232836324,
+    "mu_std": 0.018979566586436854
+  },
+  "figure_recipe": {
+    "figure_id": "main",
+    "figsize": [
+      14,
+      8
+    ],
+    "dpi": 150,
+    "layout": "2x1",
+    "panels": [
+      {
+        "row": 0,
+        "title": "Path Increments delta_k",
+        "y_data": "compute.deltas",
+        "y_label": "delta_k",
+        "color": "#1f77b4",
+        "marker": "o",
+        "markersize": 5,
+        "vlines": {
+          "source": "results.changepoints.delta_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      },
+      {
+        "row": 1,
+        "title": "Cognitive Intensity mu_k",
+        "y_data": "compute.mus",
+        "y_label": "mu_k",
+        "color": "#2ca02c",
+        "marker": "o",
+        "markersize": 5,
+        "xlabel": "Snapshot",
+        "vlines": {
+          "source": "results.changepoints.mu_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      }
+    ],
+    "font": {
+      "family": "DejaVu Sans",
+      "size": 12
+    }
+  },
+  "integrity": {
+    "L1": {
+      "layer_id": "L1",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:37.362443",
+      "data": {
+        "content_hash": "sha256:88eb71f3bfc740bba2fcc10e58ad220f5609694dcc26f44d4a0a38b19f0fc8ba",
+        "hash_algorithm": "sha256",
+        "hash_scope": "layered",
+        "sub_hashes": {
+          "metadata": "sha256:7aa03026ffe66a4ff5c3a77e988afcedc50d6a677fab6fbf1a551bb8a0f22185",
+          "dataset": "sha256:30f0c0f2ec118b20d5f2c259e33477d136f88ff81b4bf859fe9978a2743988ef",
+          "compute": "sha256:6f82af9b4b6a89721d36eeb93b78184f117d1282708027dc927935a92e5bc7b4",
+          "results": "sha256:1819dced7d34311aa7a5ac23ecef6145807d26eca2b4564823faf3e7ea00776f",
+          "figure_recipe": "sha256:9cae101c0482dcf7a7f720298ec448a9fcceb1308cf0ac9fd090284929358116",
+          "l3_reference": "sha256:c1236ac99da2cd908851e517230fad01b0e58369ce65f3fa18631de111f842a4"
+        }
+      },
+      "error": null
+    },
+    "L2": {
+      "layer_id": "L2",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:37.362962",
+      "data": {
+        "signature": "base64:apV12ZHdRmwymJmHDyQpn+TZ/ruJ/pVj26EhKI5++kLvvUczRXLfSyJq5Z1oPQFTY4Sg+2wYBOwbyNYRhjGZBg==",
+        "signature_algorithm": "ed25519",
+        "public_key_id": "43fa799f51e51f4f",
+        "signed_content_hash": "sha256:88eb71f3bfc740bba2fcc10e58ad220f5609694dcc26f44d4a0a38b19f0fc8ba"
+      },
+      "error": null
+    },
+    "L3": {
+      "sample": "sha256:baca6c114a48dda38e35c23f60ba286557d3ea6071b50f636cce1b18c4ec66ed",
+      "compute": "sha256:7a84934d05c87048a16e4b564487352c63ff70991912edb7da4d3deeaf290784",
+      "result": "sha256:d88ed679151e2f22177a00b912c6334a5d884b5469d704e98b07201a4db7ac07"
+    },
+    "L4": {
+      "layer_id": "L4",
+      "status": "pending",
+      "computed_at": "2026-10-04T16:45:39.634826",
+      "data": {
+        "content_hash": "sha256:88eb71f3bfc740bba2fcc10e58ad220f5609694dcc26f44d4a0a38b19f0fc8ba",
+        "timestamp_proof": "base64:AE9wZW5UaW1lc3RhbXBzAABQcm9vZgC/ieLohOiSlAEIgGGfr+VLT5RR8n/IUrFvbgqbm34btJmNWewzV3jfhDTwED/PgoMRNABErty+hLzPEEgI//AIfOZnBCJHII8I8CCokLc/8IudlyvIAmMLUBglbBhSGXdw6vj0s9BWRxauGAjwEPE7IMwMrSKcwvxszHdbGdgI8CAIpShQqhkf3VxuaK3mc2P/q9d7iiHvz2Mb5RNa5BX/QwjxIDWMGLvfvicpY2mJWze1M8mbn7UEId5aSGhVnOMwQo1ICPEEasIRkfAIrYRBBSSGlm8Ag9/jDS75DI4uLWh0dHBzOi8vYWxpY2UuYnRjLmNhbGVuZGFyLm9wZW50aW1lc3RhbXBzLm9yZ//wCH+dy7/xAdAnCPAQEP7BhkBYFu4DIoHKfqihOwjxIGJUR1EiZp4z0kEbpk9qXS9b4DN5AvXkGF92mO3rrSyQCPEgdX9xSg44C6X4ZkMuvSb3FNBGfn8NMFtx/OEznzZ+kdYI8CBOP0KmnPjJ1l26+ZkZ5awVkm4jAPAGrWJxynQYckeyuAjxBGrCEZHwCIkIly/si+x6AIPf4w0u+QyOLCtodHRwczovL2JvYi5idGMuY2FsZW5kYXIub3BlbnRpbWVzdGFtcHMub3Jn//AQjsHQ5tR1iPDJO6AtvZSX+AjxIJiVDx8LSsthqtfZyxbf8CRf90Yd7F9jAVflW+pVs2cUCPAgGagQk+9XYQwjv4TdXY2aweZRplqLWylbp/6PX4XvAA8I8SBq5CqFmVhyOZ6hoJmTHPnt5BtzTOmn37isAaIfV7zoawjwIAVVzUZ0VQIE2NJni7blN7n4NrdRQuZ//PUhkS8k7h5QCPEEasIRkfAIxLjPXMVrzuEAg9/jDS75DI4pKGh0dHBzOi8vZmlubmV5LmNhbGVuZGFyLmV0ZXJuaXR5d2FsbC5jb23wEKEBsh1W21/jFf4SOBvuhF8I8CByqvT95+v9ml6zGq8+Nbi1/bzk0u4uM1xM5B6TFR8E8QjwIHqHPhbzdisl9tdLRjdLIZRCc7ML9kVkto5utaj/GGK6CPEEasIRkfAIUIjyiqlZq08Ag9/jDS75DI4jImh0dHBzOi8vYnRjLmNhbGVuZGFyLmNhdGFsbGF4eS5jb20=",
+        "timestamp_anchor": "local_only_pending_remote",
+        "ots_file": "D:\\myproject\\PACSP-ID\\cache\\ots\\88eb71f3bfc740bb.txt.ots",
+        "attempts": 1,
+        "note": "本地证明已生成，远程提交部分失败"
+      },
+      "error": null
+    },
+    "L5": {
+      "layer_id": "L5",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:37.361920",
+      "data": {
+        "python_version": "3.10.10",
+        "platform": "Windows",
+        "embedding_model": "BAAI/bge-large-zh-v1.5",
+        "window_size": 5,
+        "pipeline_steps": [
+          "load_samples",
+          "compute_embeddings",
+          "compute_deltas",
+          "compute_mus",
+          "compute_C_T",
+          "detect_changepoints"
+        ],
+        "reproducible": true
+      },
+      "error": null
+    },
+    "L6": {
+      "layer_id": "L6",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:39.640620",
+      "data": {
+        "innovation_hash": "sha256:f658fc51b68f5247f52a455803116451ce6233326682ab3ef1aede74e1881779",
+        "hash_algorithm": "sha256",
+        "hash_scope": "innovation_dynamics",
+        "l1_content_hash": "sha256:88eb71f3bfc740bba2fcc10e58ad220f5609694dcc26f44d4a0a38b19f0fc8ba",
+        "sub_hashes": {
+          "innovation": "sha256:8e00c5bfd7cb2af761979c193f9fd2b2ef331ba73445f5788c765e90f27774f0",
+          "emotion_tree": "sha256:a160abe6e1839010e2fc577ee55c179fc6e5d4a08af7d64c1bcfc81a251b2a7c",
+          "ct_extended": "sha256:199c4c2356189e8bd9fb216b08c95d0919e5e1f73308693bdcf60a5e2fb458e6"
+        },
+        "verdict": "介于两者之间"
+      },
+      "error": null
+    }
+  },
+  "emotion_tree": {
+    "depth": 1,
+    "path_length": 7,
+    "n_edges": 7,
+    "n_roots": 1,
+    "bias_entropy": 0.0,
+    "parents": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3,
+      "7": 3
+    },
+    "roots": [
+      3
+    ],
+    "edges_flat": [
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        7
+      ]
+    ]
+  },
+  "innovation": {
+    "C_DMN": 3.58568,
+    "C_ECN": 0.002177,
+    "C_SN": 1.5,
+    "C_mem": 0.532817,
+    "C_sel": 0.0,
+    "C_T_innov": 5.620674,
+    "chi_innov": 0.85777,
+    "DRI": 105.922886,
+    "H_switch": 0.479832,
+    "S_int": -0.541622,
+    "E_glob": 1.617379,
+    "switch_count": 3,
+    "aha_indices": [
+      5,
+      6,
+      11,
+      19,
+      26
+    ],
+    "A_goal_defined": true,
+    "verdict": "介于两者之间"
+  },
+  "C_T_ext": {
+    "C_path": 3.82714,
+    "C_jump": 0.0,
+    "C_depth": 0.1,
+    "C_bias": 0.0,
+    "C_T_base": 3.82714,
+    "C_T_ext": 3.92714,
+    "alpha": 0.1,
+    "beta": 0.05,
+    "tree": {
+      "depth": 1,
+      "path_length": 7,
+      "n_edges": 7,
+      "n_roots": 1,
+      "bias_entropy": 0.0,
+      "parents": {
+        "0": 3,
+        "1": 3,
+        "2": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "7": 3
+      },
+      "roots": [
+        3
+      ],
+      "edges_flat": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ]
+    },
+    "changepoints_used": [],
+    "jump_magnitudes": []
+  }
+}

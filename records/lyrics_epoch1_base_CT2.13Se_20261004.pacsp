@@ -1,7 +1,7 @@
 {
   "protocol": "PACSP-ID",
   "version": "7.0.0-COMPLETE",
-  "generated_at": "2026-10-04T16:21:06.593693",
+  "generated_at": "2026-10-04T16:45:32.601572",
   "metadata": {
     "domain": "lyrics",
     "epoch": "epoch1",
@@ -232,7 +232,7 @@
     "L1": {
       "layer_id": "L1",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:04.016063",
+      "computed_at": "2026-10-04T16:45:30.563334",
       "data": {
         "content_hash": "sha256:e095ef9f43acee2f5c4d8eada956a44f234a8cf3fb074ca3851d60395181f0ae",
         "hash_algorithm": "sha256",
@@ -251,7 +251,7 @@
     "L2": {
       "layer_id": "L2",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:04.017062",
+      "computed_at": "2026-10-04T16:45:30.564336",
       "data": {
         "signature": "base64:wbTsKMlQSZ3MWjj0VgbXZkxTLqhaA7CTvmrpC25ukLv1p5jux3mJlKNZFaMC6rYWFsklq7eTgGFOUM+EjCtDDQ==",
         "signature_algorithm": "ed25519",
@@ -268,7 +268,7 @@
     "L4": {
       "layer_id": "L4",
       "status": "pending",
-      "computed_at": "2026-10-04T16:21:06.588656",
+      "computed_at": "2026-10-04T16:45:32.596184",
       "data": {
         "content_hash": "sha256:e095ef9f43acee2f5c4d8eada956a44f234a8cf3fb074ca3851d60395181f0ae",
         "timestamp_proof": "base64:AE9wZW5UaW1lc3RhbXBzAABQcm9vZgC/ieLohOiSlAEIYltmCcS5qOSLlFRd+31gDUbVoxQsBQt6SszfIEZ4n0vwEGASVVV8+MvkYmS/gl2AlJ0I//AIRZRyiBfUsl0I8SARehm/EDlZCb3LDg3WreGcej5X6wemrCmNW7w/wPWdfAjwEAtZXNHS68C2aOQZQRjUgVsI8CDufvTM52g/I/ZrZoX2ixO3TeJwW38W6ZNPZFDEw9VcvQjwIJTT4kCpw6aGmHRnp55tzLnGT6u+du4UDNm3BGqXNnAdCPEEasIKwfAIt4ptL9O7g18Ag9/jDS75DI4sK2h0dHBzOi8vYm9iLmJ0Yy5jYWxlbmRhci5vcGVudGltZXN0YW1wcy5vcmf/8BBQjtQdP43y/hwXwfSufgHUCPAgxy3eKgCh5N3Xd21e1R9LXAKaImT8vtPU7Q4RwwvP090I8CD3FmPFXOD0QtDqRt6EURITC43QHWOLFOAeDQoZAaKC6AjxBGrCCsHwCKhSTzidtOakAIPf4w0u+QyOIyJodHRwczovL2J0Yy5jYWxlbmRhci5jYXRhbGxheHkuY29t//AQoHK5JQHyg16iYbXRaL81zAjxIKhrroKpAJRh9WWK6tF7gc9svjPOyvN6rkb6n24Mw+ejCPAgt43zhbIcPgVxVYoVRbU3UhWVrPBR369WZI8T5GxbOxgI8CCVc3MxKjPn8mTM9aubgAil0TYPQCnVFREr+5HQ//3SpQjxBGrCCsLwCK6CBw8q2kIkAIPf4w0u+QyOKShodHRwczovL2Zpbm5leS5jYWxlbmRhci5ldGVybml0eXdhbGwuY29t8Aj2i3VR7NHjBgjxIHjhrSU9Zl3bB6ivUxASNnan7tzVdVb53p27Rjh1XqdcCPAQ/qbAlinW/Rs41PpPw7u6EwjwIJksTZ41H94w9kgLBbRlCX0+Yguak13UIHGY5w5jGb51CPEgvIqs6YqjXzpLJOjHfeH6dbqrFCdD5Qo5Dx8RzX5sFu4I8QRqwgrB8Ag80jQrsSkgQwCD3+MNLvkMji4taHR0cHM6Ly9hbGljZS5idGMuY2FsZW5kYXIub3BlbnRpbWVzdGFtcHMub3Jn",
@@ -282,7 +282,7 @@
     "L5": {
       "layer_id": "L5",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:04.014995",
+      "computed_at": "2026-10-04T16:45:30.563334",
       "data": {
         "python_version": "3.10.10",
         "platform": "Windows",
@@ -303,18 +303,18 @@
     "L6": {
       "layer_id": "L6",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:06.593693",
+      "computed_at": "2026-10-04T16:45:32.601572",
       "data": {
-        "innovation_hash": "sha256:b13af030d3eebbc4042e9d127794a28a725524c374c912d95355529e34e01710",
+        "innovation_hash": "sha256:c44511d4ab3282b88d19a71d41e37057fa7f3d19e7e49cf4c76c541d65cfacea",
         "hash_algorithm": "sha256",
         "hash_scope": "innovation_dynamics",
         "l1_content_hash": "sha256:e095ef9f43acee2f5c4d8eada956a44f234a8cf3fb074ca3851d60395181f0ae",
         "sub_hashes": {
-          "innovation": "sha256:8524715742b1736db47a2a3ac8fe1219758775cb6e7dc09ceeb644f0e3e0c30e",
-          "emotion_tree": "sha256:1d9a0a88d7cccc249682e9660d2942492da18ca695252e7cc5be7851a2fbb4f0",
-          "ct_extended": "sha256:e2238cdb3ac3631e2aba5cb4d986264d5d3085da5181dd874830773d349551c8"
+          "innovation": "sha256:d03e73920e00b34ec655e5b59b2bdd058bfc765e4db40e2de951102d18c1227d",
+          "emotion_tree": "sha256:42b1a25c98d631bb136dddc9ca20982cd1ada79a76f3043d461407aca4b0eb79",
+          "ct_extended": "sha256:33ce6c4d23cd88882b2463fff2d7d84ad43c9a1c6bb59e78bffaf65333675789"
         },
-        "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+        "verdict": "LLM+响应余量（外部连续性增强）"
       },
       "error": null
     }
@@ -324,19 +324,61 @@
     "path_length": 7,
     "n_edges": 7,
     "n_roots": 1,
-    "bias_entropy": 0.0
+    "bias_entropy": 0.0,
+    "parents": {
+      "0": 2,
+      "1": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "7": 2
+    },
+    "roots": [
+      2
+    ],
+    "edges_flat": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ]
+    ]
   },
   "innovation": {
     "C_DMN": 1.311615,
-    "C_ECN": 0.0,
+    "C_ECN": 0.188154,
     "C_SN": 3.5,
     "C_mem": 0.42371,
     "C_sel": 0.0,
-    "C_T_innov": 5.235326,
-    "chi_innov": 0.320151,
-    "DRI": null,
+    "C_T_innov": 5.42348,
+    "chi_innov": 0.875953,
+    "DRI": 0.0,
     "H_switch": 0.797327,
-    "S_int": null,
+    "S_int": -0.15207,
     "E_glob": 2.488857,
     "switch_count": 7,
     "aha_indices": [
@@ -347,8 +389,8 @@
       24,
       26
     ],
-    "A_goal_defined": false,
-    "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+    "A_goal_defined": true,
+    "verdict": "LLM+响应余量（外部连续性增强）"
   },
   "C_T_ext": {
     "C_path": 2.12614,
@@ -364,7 +406,49 @@
       "path_length": 7,
       "n_edges": 7,
       "n_roots": 1,
-      "bias_entropy": 0.0
+      "bias_entropy": 0.0,
+      "parents": {
+        "0": 2,
+        "1": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2
+      },
+      "roots": [
+        2
+      ],
+      "edges_flat": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ]
+      ]
     },
     "changepoints_used": [],
     "jump_magnitudes": []
