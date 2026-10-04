@@ -35,3 +35,6 @@ records_centroid/
 # 提取会话用的临时 Chrome 配置（含调试端口产物，可重建）
 _cdp_profile/
 _hf_home/
+
+# 工作区内的 pip --target 安装（accelerate/bitsandbytes，可重建）
+_pylibs/

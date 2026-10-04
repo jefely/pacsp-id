@@ -66,13 +66,47 @@ EMOTIONS = list(dict.fromkeys(EMOTIONS))
 PROBE = "这段素材的核心情绪是"
 
 
-def load_model(name, device="cpu"):
+def load_model(name, device=None, four_bit=True):
+    """Load the model on the GPU, 4-bit by default.
+
+    bfloat16 weights need about 14 GB against roughly 10.9 GB of free VRAM, so the
+    model cannot be placed whole. nf4 4-bit quantisation brings it to about 5.2 GB,
+    which fits with room for activations and runs a forward pass in roughly 56 ms
+    against 5523 ms on the CPU, a factor of about 100.
+    """
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    if device is None:
+        device = "cuda" if torch.cuda.is_available() else "cpu"
     tok = AutoTokenizer.from_pretrained(name, trust_remote_code=True)
-    mdl = AutoModelForCausalLM.from_pretrained(
-        name, torch_dtype=torch.float32, trust_remote_code=True).to(device)
+
+    kwargs = {"trust_remote_code": True, "low_cpu_mem_usage": True}
+    if device == "cuda" and four_bit:
+        from transformers import BitsAndBytesConfig
+        kwargs["quantization_config"] = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_use_double_quant=True,
+        )
+        kwargs["device_map"] = {"": 0}
+        kwargs["dtype"] = torch.float16
+    else:
+        kwargs["dtype"] = torch.bfloat16 if device == "cuda" else torch.float32
+        if device == "cuda":
+            kwargs["device_map"] = "auto"
+
+    try:
+        mdl = AutoModelForCausalLM.from_pretrained(name, **kwargs)
+    except TypeError:
+        kwargs.pop("dtype", None)
+        kwargs["torch_dtype"] = torch.float16
+        mdl = AutoModelForCausalLM.from_pretrained(name, **kwargs)
     mdl.eval()
+    if device == "cuda":
+        print(f"  cuda: {torch.cuda.get_device_name(0)}  "
+              f"VRAM {torch.cuda.memory_allocated()/2**30:.2f} GB")
     return tok, mdl, torch
 
 
@@ -88,14 +122,17 @@ def emotion_token_ids(tok, words):
     return ids
 
 
-def probe_matrix(texts, tok, mdl, torch, ids, max_len=256):
+def probe_matrix(texts, tok, mdl, torch, ids, max_len=256, device=None):
     """Y[i, j] = probability the model puts on emotion j after item i + probe."""
+    if device is None:
+        device = "cuda" if torch.cuda.is_available() else "cpu"
     words = list(ids.keys())
     cols = np.zeros((len(texts), len(words)), dtype=np.float64)
     ids_list = [ids[w] for w in words]
     for i, t in enumerate(texts):
         prompt = (t.strip().replace("\n", " ")[:400] + "\n" + PROBE)
         enc = tok(prompt, return_tensors="pt", truncation=True, max_length=max_len)
+        enc = {k: v.to(device) for k, v in enc.items()}
         with torch.no_grad():
             out = mdl(**enc)
         logits = out.logits[0, -1, :].float()
