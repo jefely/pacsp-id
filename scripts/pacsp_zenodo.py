@@ -265,8 +265,12 @@ def print_manual():
     print("       PACSP-ID-7.0.0-preprint.docx")
     print("  4. Save (the DOI stays the same)")
     print()
-    print("To automate this instead, create a token with deposit:write at")
-    print("  https://zenodo.org/account/settings/applications/")
+    print("To automate this instead, create a token with BOTH scopes at")
+    print("  https://zenodo.org/account/settings/applications/tokens/new/")
+    print("  scopes: deposit:write  AND  deposit:actions")
+    print("  both are required -- deposit:write alone cannot publish the draft, so")
+    print("  the upload would succeed but the record would not update")
+    print()
     print("then run:  $env:ZENODO_TOKEN = '<token>'; python scripts/pacsp_zenodo.py")
 
 
