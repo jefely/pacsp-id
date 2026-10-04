@@ -1,0 +1,377 @@
+{
+  "protocol": "PACSP-ID",
+  "version": "7.0.0-COMPLETE",
+  "generated_at": "2026-10-04T16:21:13.471589",
+  "metadata": {
+    "domain": "poem",
+    "epoch": "epoch1",
+    "variant": "base",
+    "CT_display": "1.90Se",
+    "protocol_version": "7.0.0-COMPLETE",
+    "parameters": {
+      "embedding_model": "BAAI/bge-large-zh-v1.5",
+      "window_size": 5,
+      "n_samples": 31
+    },
+    "figure_recipe": {
+      "figure_id": "main",
+      "figsize": [
+        14,
+        8
+      ],
+      "dpi": 150,
+      "layout": "2x1",
+      "panels": [
+        {
+          "row": 0,
+          "title": "Path Increments delta_k",
+          "y_data": "compute.deltas",
+          "y_label": "delta_k",
+          "color": "#1f77b4",
+          "marker": "o",
+          "markersize": 5,
+          "vlines": {
+            "source": "results.changepoints.delta_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        },
+        {
+          "row": 1,
+          "title": "Cognitive Intensity mu_k",
+          "y_data": "compute.mus",
+          "y_label": "mu_k",
+          "color": "#2ca02c",
+          "marker": "o",
+          "markersize": 5,
+          "xlabel": "Snapshot",
+          "vlines": {
+            "source": "results.changepoints.mu_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        }
+      ],
+      "font": {
+        "family": "DejaVu Sans",
+        "size": 12
+      }
+    }
+  },
+  "dataset": {
+    "n_samples": 31,
+    "sample_hashes": [
+      "5ca213474caffddd5c12aaf69b7b7872a15d64ac3552fbc10f756a1970048941",
+      "f3ba3288711afd26813e30e3e747798229d081a18c6f3ef2d7db0687cfaa61aa",
+      "01f81e04761f3651412bd5d6668853d5c272757bda6d40268cafe10ed918ffd6",
+      "e5584a91079bfec243eca42d8b8624603f773d2c96095302e8ac38110ff381a8",
+      "1fd78837f51366403a5507bd9284bf8ab3269b7dd8d87f9c314eb924cc17dc08",
+      "9b010977ff4c6a7897460283be43e0a5612d0fab66dbad83d86e75d7e84068c8",
+      "c318bcf773427ebf8730121f77e1c50352070964c6cc0a4638fd10f6ce7409a8",
+      "8bca45ba9f7c6ad7c97e94c5107a7d2a37cf7dcf31a99a6d5ec35515e2227a81",
+      "b25a1d18e0f2a7e562e04ea0522976216acfae08042c57dd56ebde83a2b645b1",
+      "158345ca99b28e66df30ed78c0915edf3ee911bb0b85fc8c7a618648f42e7b63",
+      "bf07ee4732bae299995d0982050e6f197df6141c6859a24e15673934e24ed080",
+      "4ef856bbc971cc5883dec26a8559b70c1af3364063f8bf501c4ab61f91c1db54",
+      "3eef9b59492a793f578919a9799a1cfb1e6dd0b7452434b69f2e7c6fd8acfeb1",
+      "62e2e924fd9849df4174839fd813ae39366ada07b77e6e8d96b209e70733a7e1",
+      "f505ce5ebedb2752a08c5ec6efd924d3b9677b0b224d83b5cf2a963f74228073",
+      "b5089b6fdc2c31451b636efc6aefa1e6692dee69012c3d1958553fa838c0a017",
+      "7b6b0b87df15c0f1bc77324bcfba4040234c3746c1bcdb9836a3f35db89f3b9b",
+      "571703330162596e12c35d62f79cbaea3771ca7377624341c15da207cc39f7cf",
+      "6a507593ee61bfdd7212a2e5e9855dd3c582cf54142746148ff2b34701e658bb",
+      "187b015851ffbcbb37e5a286921a1a83c697f418ea1178bf6d095ce8c0920631",
+      "cab60094725bb93721c0692094f1f11087c6ef5d5d72b662088356aa4c2706b3",
+      "c68da650d68a67120fb2e38bfbf529613c4424ad19c4065f311cf2b39ea7286d",
+      "7d2850910173e7aef74433c301fb2dcef6a75b0fafe67b20b25aa7ab701932af",
+      "7d2850910173e7aef74433c301fb2dcef6a75b0fafe67b20b25aa7ab701932af",
+      "952b5c8f7bbdd5b9b483d1da9229c7fc6ddd8eeb91456eef54abe4e7a7863fd3",
+      "6d898e2eb310264d74815cd21ca0b731859054b3a9aa1282202f08e23ec923ca",
+      "a60f02fffe0d91c2adfb357d51de817c1029ea86d810d7e1d1e53fc7ef08d73c",
+      "b032ae7ca70d3e248dd2ce695a08424c08d1d8ec610f619d1b48578d66e3ca42",
+      "95e880c63105e342f50a633cbb75bdd6cceb277a49f1b193ebf146de7fbe0139",
+      "b032ae7ca70d3e248dd2ce695a08424c08d1d8ec610f619d1b48578d66e3ca42",
+      "4b32b324bd029f98db96795e10d9771353726eb9dd5406b3574c39c77ae42bd9"
+    ]
+  },
+  "compute": {
+    "deltas": [
+      0.5443857908248901,
+      0.5557475686073303,
+      0.5630198121070862,
+      0.5276139378547668,
+      0.4747457504272461,
+      0.5123667120933533,
+      0.4794938862323761,
+      0.2980261445045471,
+      0.5489985346794128,
+      0.5598148703575134,
+      0.5316156148910522,
+      0.27185747027397156,
+      0.7313989400863647,
+      0.8019419312477112,
+      0.8391163349151611,
+      0.797781229019165,
+      0.53385329246521,
+      0.07495612651109695,
+      0.29525983333587646,
+      0.214225172996521,
+      0.1643843948841095,
+      0.14319023489952087,
+      0.0,
+      0.12449441105127335,
+      0.15302659571170807,
+      0.2780238091945648,
+      0.24780972301959991,
+      0.2425818294286728,
+      0.2425818294286728,
+      0.1672203242778778
+    ],
+    "mus": [
+      0.13048148155212402,
+      0.12719756364822388,
+      0.12911468744277954,
+      0.1300203800201416,
+      0.13540124893188477,
+      0.13132858276367188,
+      0.12929165363311768,
+      0.13514381647109985,
+      0.1739082932472229,
+      0.2046840786933899,
+      0.24053919315338135,
+      0.2471265196800232,
+      0.2384871244430542,
+      0.23083281517028809,
+      0.21942299604415894,
+      0.2027938961982727,
+      0.18522608280181885,
+      0.18197870254516602,
+      0.17932546138763428,
+      0.14483386278152466,
+      0.10663515329360962,
+      0.05553877353668213,
+      0.032699525356292725,
+      0.03074890375137329,
+      0.029117703437805176,
+      0.030087530612945557,
+      0.031173527240753174,
+      0.03197437524795532,
+      0.03287303447723389,
+      0.03284817934036255,
+      0.03171741962432861
+    ]
+  },
+  "results": {
+    "C_T_Se": 1.8950037933875934,
+    "changepoints": {
+      "mu_k": [
+        9,
+        18,
+        23
+      ],
+      "delta_k": [
+        8,
+        18
+      ]
+    }
+  },
+  "stats": {
+    "delta_mean": 0.3973177368442217,
+    "delta_std": 0.22772837656587275,
+    "mu_mean": 0.12717911504930066,
+    "mu_std": 0.07413495481776651
+  },
+  "figure_recipe": {
+    "figure_id": "main",
+    "figsize": [
+      14,
+      8
+    ],
+    "dpi": 150,
+    "layout": "2x1",
+    "panels": [
+      {
+        "row": 0,
+        "title": "Path Increments delta_k",
+        "y_data": "compute.deltas",
+        "y_label": "delta_k",
+        "color": "#1f77b4",
+        "marker": "o",
+        "markersize": 5,
+        "vlines": {
+          "source": "results.changepoints.delta_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      },
+      {
+        "row": 1,
+        "title": "Cognitive Intensity mu_k",
+        "y_data": "compute.mus",
+        "y_label": "mu_k",
+        "color": "#2ca02c",
+        "marker": "o",
+        "markersize": 5,
+        "xlabel": "Snapshot",
+        "vlines": {
+          "source": "results.changepoints.mu_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      }
+    ],
+    "font": {
+      "family": "DejaVu Sans",
+      "size": 12
+    }
+  },
+  "integrity": {
+    "L1": {
+      "layer_id": "L1",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:21:11.322475",
+      "data": {
+        "content_hash": "sha256:5101183cb44adaa4a0cf337e7b924f8950fda74158c816a47d2808ca6c123b5a",
+        "hash_algorithm": "sha256",
+        "hash_scope": "layered",
+        "sub_hashes": {
+          "metadata": "sha256:820f7919f33a8a5787ac52cede80c0c9fa7d59d17c91c507378c4c3d0e9b59a5",
+          "dataset": "sha256:6ce33d96c664e1b60461ddc254f8f76629a2b50dedc6b218bbf326576bac337c",
+          "compute": "sha256:26d1155bfe580453cca536dd2c2970044a27023635b5069c796a67b6f7ecdc54",
+          "results": "sha256:8ec2a26beb71d426a328d0032672e44ec9010c528b2227cf206a584f1804becb",
+          "figure_recipe": "sha256:9cae101c0482dcf7a7f720298ec448a9fcceb1308cf0ac9fd090284929358116",
+          "l3_reference": "sha256:e9e58a7cb4ab55595c3f929fcf2360a9a714ebe7c8d9a98216a51bcc7695a4f0"
+        }
+      },
+      "error": null
+    },
+    "L2": {
+      "layer_id": "L2",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:21:11.322475",
+      "data": {
+        "signature": "base64:Ip59OIQHkYP0jboWEn+LmHrVyPDsNrq2ix6qqk4pmfq4ldz4rM0CHt1b+J/nzK5A6G/BdI4Dbc8NDjR1hAPRBw==",
+        "signature_algorithm": "ed25519",
+        "public_key_id": "43fa799f51e51f4f",
+        "signed_content_hash": "sha256:5101183cb44adaa4a0cf337e7b924f8950fda74158c816a47d2808ca6c123b5a"
+      },
+      "error": null
+    },
+    "L3": {
+      "sample": "sha256:3b1d11ddbc85a293c5c9943bfec356bb2f11b02eed15cfe19083551401107f59",
+      "compute": "sha256:cdfa004b6f7645ed26a40831a4c56df7e2cb351d93097c5e275d79435456373c",
+      "result": "sha256:e70bc7b884508eacdc7b7cb1eb8caa3579cc18c0f52f6c95b14d730b584b3ad9"
+    },
+    "L4": {
+      "layer_id": "L4",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:21:13.466182",
+      "data": {
+        "content_hash": "sha256:5101183cb44adaa4a0cf337e7b924f8950fda74158c816a47d2808ca6c123b5a",
+        "timestamp_proof": "base64:AE9wZW5UaW1lc3RhbXBzAABQcm9vZgC/ieLohOiSlAEI6myyW0BVT31w3aqelnSZL/Lbssifq25DrW/Mz6+bk1nwELvlaZrBYRO9uRrXcyNzvb4I//AIGK5qFIdSMxMI8BAybLCFZhjaSVrG1Ij2H3goCPAgbCn9p47ji6jifCiW5ivCfhH7Dw6eFWdn3mj0J6olhRoI8CBs00Xv99R0hF2ofxqHzCEED+faYsOpuO6VVpvRZl73IwjxBGrCDIXwCAg7JcdlRYzdAIPf4w0u+QyOLi1odHRwczovL2FsaWNlLmJ0Yy5jYWxlbmRhci5vcGVudGltZXN0YW1wcy5vcmf/8BA7Eq/0shTARXu77alW9nzfCPEgxJ1ORo41bRKnkl56ugaT2xYr4sHMfBbeJzMXgkI+8j0I8CAxVh1Xmn/faA1PLYPXC4WkjxrBThG1AUojW5HvAjOQlAjxBGrCDIXwCLaAvGK3Im0KAIPf4w0u+QyOIyJodHRwczovL2J0Yy5jYWxlbmRhci5jYXRhbGxheHkuY29t//AQvyFf8lAcixRtxIIy/mJWvwjxIJ+HtyR7mpPUDq9aO57jB5WUiexINfGMqVycr0cqAn8vCPAgQStevnnAa+SiEGQ6aVxFEzQA0Bq/Qjg/k9MlGteOGBEI8SDfyAvO7GPPTKwhQ8fa/m8YA9MWzLi8dHz4/XAJKEaIdQjxBGrCDITwCIaCzYGrUvU3AIPf4w0u+QyOKShodHRwczovL2Zpbm5leS5jYWxlbmRhci5ldGVybml0eXdhbGwuY29t8AjNmXoftMpqwgjwEOUGmC5pasByLK0hyIkau3cI8SABkZ1Wi8tVLNG5M1RFKSW7X2ZUcBNHwLQzplMMXeuxNgjxBGrCDITwCPlVm2upKVszAIPf4w0u+QyOLCtodHRwczovL2JvYi5idGMuY2FsZW5kYXIub3BlbnRpbWVzdGFtcHMub3Jn",
+        "timestamp_anchor": "pending_bitcoin_confirmation",
+        "ots_file": "D:\\myproject\\PACSP-ID\\cache\\ots\\5101183cb44adaa4.txt.ots",
+        "attempts": 1,
+        "note": "等待 Bitcoin 区块确认（通常 1-6 小时）"
+      },
+      "error": null
+    },
+    "L5": {
+      "layer_id": "L5",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:21:11.322475",
+      "data": {
+        "python_version": "3.10.10",
+        "platform": "Windows",
+        "embedding_model": "BAAI/bge-large-zh-v1.5",
+        "window_size": 5,
+        "pipeline_steps": [
+          "load_samples",
+          "compute_embeddings",
+          "compute_deltas",
+          "compute_mus",
+          "compute_C_T",
+          "detect_changepoints"
+        ],
+        "reproducible": true
+      },
+      "error": null
+    },
+    "L6": {
+      "layer_id": "L6",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:21:13.471589",
+      "data": {
+        "innovation_hash": "sha256:473460bb6a5cc8234786766fb6dc2fa1361bbc0980bc60c582f00ff1a042cc78",
+        "hash_algorithm": "sha256",
+        "hash_scope": "innovation_dynamics",
+        "l1_content_hash": "sha256:5101183cb44adaa4a0cf337e7b924f8950fda74158c816a47d2808ca6c123b5a",
+        "sub_hashes": {
+          "innovation": "sha256:557abbdfeee5471b43754107d7cd4478fe9714524ba8dfec22e493894bcd1cfe",
+          "emotion_tree": "sha256:7950a4b5a4e2af99cf9d6356b0a244adb3b89013e0c751363d6e8aab731d79e3",
+          "ct_extended": "sha256:ff963645a538dd363e684c4b9071c076eed0051cee5319a5e5d39f2c64be2928"
+        },
+        "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+      },
+      "error": null
+    }
+  },
+  "emotion_tree": {
+    "depth": 2,
+    "path_length": 7,
+    "n_edges": 7,
+    "n_roots": 1,
+    "bias_entropy": 0.0
+  },
+  "innovation": {
+    "C_DMN": 1.547655,
+    "C_ECN": 0.0,
+    "C_SN": 2.5,
+    "C_mem": 0.381045,
+    "C_sel": 0.0,
+    "C_T_innov": 4.428699,
+    "chi_innov": 0.304849,
+    "DRI": null,
+    "H_switch": 0.663197,
+    "S_int": null,
+    "E_glob": 2.516877,
+    "switch_count": 5,
+    "aha_indices": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "A_goal_defined": false,
+    "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+  },
+  "C_T_ext": {
+    "C_path": 1.841087,
+    "C_jump": 0.053917,
+    "C_depth": 0.2,
+    "C_bias": 0.0,
+    "C_T_base": 1.895004,
+    "C_T_ext": 2.095004,
+    "alpha": 0.1,
+    "beta": 0.05,
+    "tree": {
+      "depth": 2,
+      "path_length": 7,
+      "n_edges": 7,
+      "n_roots": 1,
+      "bias_entropy": 0.0
+    },
+    "changepoints_used": [
+      8,
+      18
+    ],
+    "jump_magnitudes": [
+      0.298026,
+      0.074956
+    ]
+  }
+}
