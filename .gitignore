@@ -11,5 +11,9 @@ pacsp_env/
 .DS_Store
 Thumbs.db
 
+# 临时产物（可重新生成）
+cache/tamper_test/
+
 # 密钥（绝不提交）
 *.pem
+*.key
