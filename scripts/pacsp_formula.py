@@ -20,8 +20,9 @@ import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 from matplotlib import mathtext
 
-DOC = Path(r"D:\myproject\PACSP-ID\docs\PACSP-ID-7.0.0-COMPLETE.md")
-OUT = Path(r"D:\myproject\PACSP-ID\cache\formulas")
+ROOT = Path(__file__).resolve().parent.parent   # repository root, wherever cloned
+DOC = ROOT / "docs" / "PACSP-ID-7.0.0-COMPLETE.md"
+OUT = ROOT / "cache" / "formulas"
 OUT.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams["figure.max_open_warning"] = 0

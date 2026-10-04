@@ -11,7 +11,7 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
-ROOT = Path(r"D:\myproject\PACSP-ID")
+ROOT = Path(__file__).resolve().parent.parent   # repository root, wherever cloned
 DOC = ROOT / "docs" / "PACSP-ID-7.0.0-COMPLETE.md"
 FORMULA_DIR = ROOT / "cache" / "formulas"
 MANIFEST = FORMULA_DIR / "formula_manifest.json"

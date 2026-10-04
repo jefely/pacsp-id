@@ -18,7 +18,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
-ROOT = Path(r"D:\myproject\PACSP-ID")
+ROOT = Path(__file__).resolve().parent.parent   # repository root, wherever cloned
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from pacsp_parse import (  # noqa: E402
