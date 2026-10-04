@@ -43,12 +43,16 @@ C_T = ∫ μ(t) dΛ(t)
 
 ## 数据集
 
-| 域 | 目录 | 篇数 | C_T | 认知模式 |
-|----|------|------|-----|---------|
-| 诗歌 | `data/poem` | 31 | 1.90 Se | 短句凝缩 |
-| 歌词 | `data/lyrics` | 31 | 2.13 Se | 振荡型 |
-| 技术文档 | `data/techdoc` | 31 | 7.40 Se | 建构型 |
+| 域 | 目录 | 篇数 | 来源 | C_T |
+|----|------|------|------|-----|
+| 诗歌 | `data/poem` | 31 | 人机交互 | 1.90 Se |
+| 歌词 | `data/lyrics` | 31 | 人机交互 | 2.13 Se |
+| 技术文档 | `data/techdoc` | 31 | 人机交互 | 7.40 Se |
 
+**语料来源更正**：`data/poem|lyrics|techdoc` 三域**全部是人机交互产物**（有人的引导与筛选），
+并非纯人类书写，不能充当「人脑」对照组。`data/machine_*` 为单次独立生成、无人工筛选的 LLM 输出。
+可观测的差异轴是**每篇是否经人筛选**。详见
+[`docs/CORRECTION-CORPUS-PROVENANCE.md`](docs/CORRECTION-CORPUS-PROVENANCE.md)。
 `μ_k` 均值随认知负荷严格递增（0.1272 → 0.1677 → 0.3352），与论文 §5.3 预测一致。
 素材附带的第三方基线（`uacp_results.npz` / `uacp_result.png`）归档于 `materials/<域>/`。
 
@@ -150,9 +154,9 @@ ICML 2026 情绪树扩展与 IDL 创新动力学层的完整实测指标、以�
 **人/机对照组缺失**这一关键限制，见
 [`docs/CONSISTENCY-REPORT.md`](docs/CONSISTENCY-REPORT.md)。
 
-## 机器对照语料
+## 自主生成对照语料
 
-为检验论文 §8.5 的判定表，`data/machine_*/` 提供机器书写的平行语料：
+为检验论文 §8.5 的判定表，`data/machine_*/` 提供**单次独立生成、无人工筛选**的平行语料：
 
 | 域 | 目录 | 总字数 | 生成方式 |
 |----|------|--------|---------|
@@ -162,8 +166,8 @@ ICML 2026 情绪树扩展与 IDL 创新动力学层的完整实测指标、以�
 
 逐篇提示词、种子与哈希见 `data/machine_corpus_manifest.json`。
 
-**实测结论（详见 [`docs/HUMAN-VS-MACHINE-REPORT.md`](docs/HUMAN-VS-MACHINE-REPORT.md)）**：
-9 个 IDL 指标中**没有任何一个**在人机之间保持方向一致，域间差异大于人机差异。
+**实测结论（详见 [`docs/AXIS-COMPARISON-REPORT.md`](docs/AXIS-COMPARISON-REPORT.md)）**：
+9 个 IDL 指标中**没有任何一个**在两条轴之间保持方向一致；域间差异大于轴间差异。
 三组配对中仅机器歌词落入 §8.5 预期类别。
 
 ## 图表
@@ -187,7 +191,7 @@ ICML 2026 情绪树扩展与 IDL 创新动力学层的完整实测指标、以�
 |------|------|
 | [`docs/PACSP-ID-7.0.0-COMPLETE.md`](docs/PACSP-ID-7.0.0-COMPLETE.md) | 完整论文 |
 | [`docs/CONSISTENCY-REPORT.md`](docs/CONSISTENCY-REPORT.md) | 三域一致性核查 |
-| [`docs/HUMAN-VS-MACHINE-REPORT.md`](docs/HUMAN-VS-MACHINE-REPORT.md) | 人机对照与嵌入敏感性 |
+| [`docs/AXIS-COMPARISON-REPORT.md`](docs/AXIS-COMPARISON-REPORT.md) | 两条对照轴与嵌入敏感性 |
 | [`docs/SECTION-10-RESULTS.md`](docs/SECTION-10-RESULTS.md) | 论文 §10 结果章节 |
 ## 作者
 
