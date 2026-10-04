@@ -147,3 +147,35 @@ node <libreoffice-kit cli> convert --input build/...docx --output dist/...pdf
 5. **未确定目标平台**：作者为个人研究者，暂不投期刊；按公开预印本（GitHub Release
    ＋ Zenodo DOI）推进。
 6. **尚未建立版本化发布**：tag / GitHub Release / Zenodo DOI 准备尚未完成。
+
+---
+
+## 6. 正文图交叉引用（纯追加）
+
+在 scripts/pacsp_refs.py 中登记 5 处交叉引用，**在装配阶段追加**，
+不改动任何原句，也不触碰原始存档：
+
+| 位置 | 追加的引用 |
+|---|---|
+| §10.2 结尾 | 见图 F.1、F.5、F.9（人机交互三域主图） |
+| §10.3 结尾 | 见图 F.4、F.8、F.12（瑟-树耦合分解） |
+| §10.4 表格后 | 见图 F.3、F.7、F.11（五元分解与判定系数） |
+| §10.5 结尾 | 附录F 全图指引（F.1–F.12 / F.13–F.24 / F.25–F.26） |
+| §10.6 结尾 | 指向 docs/CONSISTENCY-REPORT.md |
+
+**图号已程序化核对**（erify_fig_numbers.py）：诗歌 F.1–F.4、歌词 F.5–F.8、
+技术文档 F.9–F.12、自主生成 F.13–F.24、跨域 F.25–F.26，与附录实际生成顺序一致，
+并与渲染后的页面吻合（第 24 页显示图 F.5 为歌词主图）。
+
+〔整理者按〕这 5 处是**本次整理新增的文字**，不是原文。原文一字未改；
+若需纯原文版本，直接取 docs/PACSP-ID-7.0.0-COMPLETE.md。
+
+---
+
+## 7. 发布过程中踩到的一个坑（供复用者参考）
+
+GitHub Release 的附件上传端点返回的是 **uploads.github.com**，
+而非 API 所在的 pi.github.com。把两者拼接会得到不存在的主机，
+上传静默失败（urlopen error [Errno 2]）——**而删除旧附件的请求已经成功**，
+于是 Release 一度处于**无附件状态**。必须使用 upload_url 的绝对值。
+chrome-debug/update_release_assets.py 已修正并注释。

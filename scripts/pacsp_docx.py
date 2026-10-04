@@ -223,6 +223,12 @@ def build(doc):
     disp, inl = load_manifest()
     blocks = parse(DOC.read_text(encoding="utf-8"), inl)
 
+    import pacsp_refs
+    refs = pacsp_refs.apply_refs(blocks)
+    print(f"  figure cross-references inserted: {refs.insertions}")
+    for u in refs.unmatched:
+        print(f"  [!] anchor unmatched: {u}")
+
     # title page
     add_heading(doc, "从意义权到认知沉积", 1)
     add_para(doc, "PACSP-ID 框架的理论建构、创新动力学标识与验证工程",
