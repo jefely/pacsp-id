@@ -225,3 +225,49 @@ pacsp_keci_adapter.py 另改用环境变量 PACSP_KECI_ROOT 作为可覆盖前�
 
 〔整理者按〕这个缺陷**只有真正在别处克隆并重建才能发现**——
 在主仓库内运行一切正常。这正是"可复现"必须实测而非声称的理由。
+
+---
+
+## 9. 发布脚本自包含化（2026-10-04）
+
+在验证可复现性时发现第二类缺陷：**发布流程依赖仓库外的文件**。
+
+| 问题 | 修正 |
+|---|---|
+| pacsp_release.ps1 引用 ..\chrome-debug\make_release.py（仓库外） | 移入 scripts/pacsp_github_release.py |
+| 附件更新与校验脚本同样在仓库外 | 移入 scripts/pacsp_github_assets.py、scripts/pacsp_check_release.py |
+| 这些脚本内硬编码 D:\myproject\PACSP-ID | 改为 Path(__file__).resolve().parent.parent |
+| Zenodo 步骤未纳入发布流程 | 新增 **stage 8**，由 scripts/pacsp_zenodo.py 执行 |
+| stage 8 错误地与 -NoRelease 耦合 | 解耦为独立开关 -SkipZenodo |
+
+**克隆者现在无需仓库外的任何文件即可完整发版。**
+
+### 第三个缺陷：校验脚本对 DOCX 过于严格
+
+pacsp_check_release.py 原先只做字节比对，于是**健康的发布被报告为损坏**：
+
+`
+PACSP-ID-7.0.0-preprint.docx: HASH MISMATCH
+RESULT: MISMATCH FOUND
+`
+
+原因是 **DOCX 是 ZIP 容器、其条目携带生成时间戳**，同内容重建必然哈希不同。
+已改为分层判定：
+
+| 文件类型 | 判定方式 |
+|---|---|
+| **DOCX** | 先比字节；不同则比**正文文本 + 全部嵌入媒体条目** |
+| **PDF** | 比字节（并报告大小以供对照） |
+| 其他 | 比字节 |
+
+修正后结果：
+
+`
+PACSP-ID-7.0.0-preprint.docx: IDENTICAL (content: 19,642 chars, 50 media entries; ZIP timestamps differ)
+PACSP-ID-7.0.0-preprint.pdf : IDENTICAL (bytes)
+RESULT: all assets match
+`
+
+〔整理者按〕此处三次缺陷有共同模式——**"看起来通过"与"真的正确"之间的差距**：
+主仓库内重建正常（实为路径写死）、字节比对失败（实为容器格式）、
+stage 8 未触发（实为我传错开关）。三次都靠**换一个角度实测**才发现。
