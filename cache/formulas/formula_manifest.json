@@ -1,0 +1,765 @@
+{
+  "display": [
+    {
+      "index": 1,
+      "file": "eq_display_01.png",
+      "source": "C_T = \\int_{[0,T]} \\mu_\\omega^{ac}(t) \\, d\\Lambda_\\omega^{ac}(t) + \\sum_{\\tau_i \\le T} \\mu_\\omega(\\tau_i^-) \\cdot \\Delta M_{\\tau_i}",
+      "rendered": "C_T = \\int_{[0,T]} \\mu_\\omega^{ac}(t) \\, d\\Lambda_\\omega^{ac}(t) + \\sum_{\\tau_i \\leq T} \\mu_\\omega(\\tau_i^-) \\cdot \\Delta M_{\\tau_i}",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 2,
+      "file": "eq_display_02.png",
+      "source": "\\Lambda_\\omega(t) = \\int_0^t \\|\\dot{\\gamma}_\\omega(s)\\| \\, ds + \\sum_{\\tau_i \\le t} \\Delta \\gamma_\\omega(\\tau_i)",
+      "rendered": "\\Lambda_\\omega(t) = \\int_0^t \\|\\dot{\\gamma}_\\omega(s)\\| \\, ds + \\sum_{\\tau_i \\leq t} \\Delta \\gamma_\\omega(\\tau_i)",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 3,
+      "file": "eq_display_03.png",
+      "source": "C_T = \\int_{[0,T]} \\mu_\\omega^{ac}(t) \\, d\\Lambda_\\omega^{ac}(t) + \\sum_{\\tau_i \\le T} \\mu_\\omega(\\tau_i^-) \\cdot \\Delta M_{\\tau_i}",
+      "rendered": "C_T = \\int_{[0,T]} \\mu_\\omega^{ac}(t) \\, d\\Lambda_\\omega^{ac}(t) + \\sum_{\\tau_i \\leq T} \\mu_\\omega(\\tau_i^-) \\cdot \\Delta M_{\\tau_i}",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 4,
+      "file": "eq_display_04.png",
+      "source": "\\Pi(T) = \\int_0^T \\left[ \\mu_{\\text{本能}}(t) - \\mu_{\\text{技术}}(t) \\right]^+ dt",
+      "rendered": "\\Pi(T) = \\int_0^T \\left[ \\mu_{\\mathrm{instinct}}(t) - \\mu_{\\mathrm{technique}}(t) \\right]^+ dt",
+      "notation": [
+        [
+          "本能",
+          "instinct"
+        ],
+        [
+          "技术",
+          "technique"
+        ]
+      ],
+      "legend": "legend_display_04.png"
+    },
+    {
+      "index": 5,
+      "file": "eq_display_05.png",
+      "source": "\\Delta M_{\\tau_i} = f(\\Pi(\\tau_i^-))",
+      "rendered": "\\Delta M_{\\tau_i} = f(\\Pi(\\tau_i^-))",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 6,
+      "file": "eq_display_06.png",
+      "source": "C_T^{\\text{ext}} = C_{\\text{路径}} + C_{\\text{跳跃}} + C_{\\text{深度}} + C_{\\text{偏见}}",
+      "rendered": "C_T^{\\mathrm{ext}} = C_{\\mathrm{path}} + C_{\\mathrm{jump}} + C_{\\mathrm{depth}} + C_{\\mathrm{bias}}",
+      "notation": [
+        [
+          "路径",
+          "path"
+        ],
+        [
+          "跳跃",
+          "jump"
+        ],
+        [
+          "深度",
+          "depth"
+        ],
+        [
+          "偏见",
+          "bias"
+        ]
+      ],
+      "legend": "legend_display_06.png"
+    },
+    {
+      "index": 7,
+      "file": "eq_display_07.png",
+      "source": "C_T^{\\text{innov}} = C_{\\text{DMN}} + C_{\\text{ECN}} + C_{\\text{SN}} + C_{\\text{mem}} + C_{\\text{sel}}",
+      "rendered": "C_T^{\\mathrm{innov}} = C_{\\mathrm{DMN}} + C_{\\mathrm{ECN}} + C_{\\mathrm{SN}} + C_{\\mathrm{mem}} + C_{\\mathrm{sel}}",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 8,
+      "file": "eq_display_08.png",
+      "source": "C_{\\text{DMN}} = \\int \\mu_{\\text{本能}}(t) \\cdot d_{\\text{sem}}^+(t) \\, d\\Lambda_{\\text{explore}}(t)",
+      "rendered": "C_{\\mathrm{DMN}} = \\int \\mu_{\\mathrm{instinct}}(t) \\cdot d_{\\mathrm{sem}}^+(t) \\, d\\Lambda_{\\mathrm{explore}}(t)",
+      "notation": [
+        [
+          "本能",
+          "instinct"
+        ]
+      ],
+      "legend": "legend_display_08.png"
+    },
+    {
+      "index": 9,
+      "file": "eq_display_09.png",
+      "source": "C_{\\text{ECN}} = \\int \\mu_{\\text{技术}}(t) \\cdot A_{\\text{goal}}(t) \\, d\\Lambda_{\\text{exploit}}(t)",
+      "rendered": "C_{\\mathrm{ECN}} = \\int \\mu_{\\mathrm{technique}}(t) \\cdot A_{\\mathrm{goal}}(t) \\, d\\Lambda_{\\mathrm{exploit}}(t)",
+      "notation": [
+        [
+          "技术",
+          "technique"
+        ]
+      ],
+      "legend": "legend_display_09.png"
+    },
+    {
+      "index": 10,
+      "file": "eq_display_10.png",
+      "source": "C_{\\text{SN}} = \\sum_{\\text{switch}} \\Delta M_{\\text{switch}} \\cdot G_{\\text{SN}}",
+      "rendered": "C_{\\mathrm{SN}} = \\sum_{\\mathrm{switch}} \\Delta M_{\\mathrm{switch}} \\cdot G_{\\mathrm{SN}}",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 11,
+      "file": "eq_display_11.png",
+      "source": "C_{\\text{mem}} = E_{\\text{glob}} \\cdot C_T^{\\text{base}}, \\quad E_{\\text{glob}} = \\frac{1}{N(N-1)} \\sum_{i \\neq j} \\frac{1}{d_{ij}}",
+      "rendered": "C_{\\mathrm{mem}} = E_{\\mathrm{glob}} \\cdot C_T^{\\mathrm{base}}, \\quad E_{\\mathrm{glob}} = \\frac{1}{N(N-1)} \\sum_{i \\neq j} \\frac{1}{d_{ij}}",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 12,
+      "file": "eq_display_12.png",
+      "source": "C_{\\text{sel}} = \\int S_{\\text{int}}(t) \\, d\\Pi(t)",
+      "rendered": "C_{\\mathrm{sel}} = \\int S_{\\mathrm{int}}(t) \\, d\\Pi(t)",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 13,
+      "file": "eq_display_13.png",
+      "source": "\\chi_{\\text{innov}} = \\text{Corr}\\big(C_{\\text{DMN}}(t),\\; C_{\\text{ECN}}(t+\\tau),\\; C_{\\text{SN}}(t+\\tau/2)\\big)",
+      "rendered": "\\chi_{\\mathrm{innov}} = \\mathrm{Corr}(C_{\\mathrm{DMN}}(t),\\, C_{\\mathrm{ECN}}(t+\\tau),\\, C_{\\mathrm{SN}}(t+\\tau/2))",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 14,
+      "file": "eq_display_14.png",
+      "source": "\\text{DRI} = \\frac{\\Delta C_{\\text{DMN}}^{\\text{before Aha}}}{\\Delta C_{\\text{ECN}}^{\\text{after Aha}}}",
+      "rendered": "\\mathrm{DRI} = \\frac{\\Delta C_{\\mathrm{DMN}}^{\\mathrm{before Aha}}}{\\Delta C_{\\mathrm{ECN}}^{\\mathrm{after Aha}}}",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 15,
+      "file": "eq_display_15.png",
+      "source": "H_{\\text{switch}} = -\\sum p(s_i) \\log p(s_i)",
+      "rendered": "H_{\\mathrm{switch}} = -\\sum p(s_i) \\log p(s_i)",
+      "notation": [],
+      "legend": null
+    },
+    {
+      "index": 16,
+      "file": "eq_display_16.png",
+      "source": "S_{\\text{int}} = \\text{Corr}(\\Delta C_T, \\Delta A_{\\text{goal}}) \\big|_{\\text{无外部奖励}}",
+      "rendered": "S_{\\mathrm{int}} = \\mathrm{Corr}(\\Delta C_T, \\Delta A_{\\mathrm{goal}}) |_{\\mathrm{noReward}}",
+      "notation": [
+        [
+          "无外部奖励",
+          "noReward"
+        ]
+      ],
+      "legend": "legend_display_16.png"
+    },
+    {
+      "index": 17,
+      "file": "eq_display_17.png",
+      "source": "C_T^{\\text{total}} = C_{\\text{路径}} + C_{\\text{跳跃}} + C_{\\text{深度}} + C_{\\text{偏见}} + C_{\\text{DMN}} + C_{\\text{ECN}} + C_{\\text{SN}} + C_{\\text{mem}} + C_{\\text{sel}}",
+      "rendered": "C_T^{\\mathrm{total}} = C_{\\mathrm{path}} + C_{\\mathrm{jump}} + C_{\\mathrm{depth}} + C_{\\mathrm{bias}} + C_{\\mathrm{DMN}} + C_{\\mathrm{ECN}} + C_{\\mathrm{SN}} + C_{\\mathrm{mem}} + C_{\\mathrm{sel}}",
+      "notation": [
+        [
+          "路径",
+          "path"
+        ],
+        [
+          "跳跃",
+          "jump"
+        ],
+        [
+          "深度",
+          "depth"
+        ],
+        [
+          "偏见",
+          "bias"
+        ]
+      ],
+      "legend": "legend_display_17.png"
+    }
+  ],
+  "inline": [
+    {
+      "index": 1,
+      "file": "eq_inline_001.png",
+      "source": "(\\Omega, \\mathcal{F}, \\nu)",
+      "rendered": "(\\Omega, \\mathcal{F}, \\nu)",
+      "notation": []
+    },
+    {
+      "index": 2,
+      "file": "eq_inline_002.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 3,
+      "file": "eq_inline_003.png",
+      "source": "C_T^{\\text{innov}} = C_{\\text{DMN}} + C_{\\text{ECN}} + C_{\\text{SN}} + C_{\\text{mem}} + C_{\\text{sel}}",
+      "rendered": "C_T^{\\mathrm{innov}} = C_{\\mathrm{DMN}} + C_{\\mathrm{ECN}} + C_{\\mathrm{SN}} + C_{\\mathrm{mem}} + C_{\\mathrm{sel}}",
+      "notation": []
+    },
+    {
+      "index": 4,
+      "file": "eq_inline_004.png",
+      "source": "\\chi_{\\text{innov}}, \\text{DRI}, H_{\\text{switch}}, S_{\\text{int}}",
+      "rendered": "\\chi_{\\mathrm{innov}}, \\mathrm{DRI}, H_{\\mathrm{switch}}, S_{\\mathrm{int}}",
+      "notation": []
+    },
+    {
+      "index": 5,
+      "file": "eq_inline_005.png",
+      "source": "1 \\text{ Se} = \\int \\mu \\, d\\Lambda = 1",
+      "rendered": "1 \\mathrm{Se} = \\int \\mu \\, d\\Lambda = 1",
+      "notation": []
+    },
+    {
+      "index": 6,
+      "file": "eq_inline_006.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 7,
+      "file": "eq_inline_007.png",
+      "source": "\\mathcal{X} \\subset \\mathbb{R}^d",
+      "rendered": "\\mathcal{X} \\subset \\mathbb{R}^d",
+      "notation": []
+    },
+    {
+      "index": 8,
+      "file": "eq_inline_008.png",
+      "source": "\\mathcal{X}",
+      "rendered": "\\mathcal{X}",
+      "notation": []
+    },
+    {
+      "index": 9,
+      "file": "eq_inline_009.png",
+      "source": "\\gamma: [0,T] \\to \\mathcal{X}",
+      "rendered": "\\gamma: [0,T] \\to \\mathcal{X}",
+      "notation": []
+    },
+    {
+      "index": 10,
+      "file": "eq_inline_010.png",
+      "source": "\\nu",
+      "rendered": "\\nu",
+      "notation": []
+    },
+    {
+      "index": 11,
+      "file": "eq_inline_011.png",
+      "source": "\\mu_\\omega(t)",
+      "rendered": "\\mu_\\omega(t)",
+      "notation": []
+    },
+    {
+      "index": 12,
+      "file": "eq_inline_012.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 13,
+      "file": "eq_inline_013.png",
+      "source": "\\mu_\\omega",
+      "rendered": "\\mu_\\omega",
+      "notation": []
+    },
+    {
+      "index": 14,
+      "file": "eq_inline_014.png",
+      "source": "\\Lambda_\\omega",
+      "rendered": "\\Lambda_\\omega",
+      "notation": []
+    },
+    {
+      "index": 15,
+      "file": "eq_inline_015.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 16,
+      "file": "eq_inline_016.png",
+      "source": "1 \\text{ Se} = \\int \\mu \\, d\\Lambda = 1",
+      "rendered": "1 \\mathrm{Se} = \\int \\mu \\, d\\Lambda = 1",
+      "notation": []
+    },
+    {
+      "index": 17,
+      "file": "eq_inline_017.png",
+      "source": "\\Pi(T)",
+      "rendered": "\\Pi(T)",
+      "notation": []
+    },
+    {
+      "index": 18,
+      "file": "eq_inline_018.png",
+      "source": "\\mu_{\\text{本能}}",
+      "rendered": "\\mu_{\\mathrm{instinct}}",
+      "notation": [
+        [
+          "本能",
+          "instinct"
+        ]
+      ]
+    },
+    {
+      "index": 19,
+      "file": "eq_inline_019.png",
+      "source": "\\mu_{\\text{技术}}",
+      "rendered": "\\mu_{\\mathrm{technique}}",
+      "notation": [
+        [
+          "技术",
+          "technique"
+        ]
+      ]
+    },
+    {
+      "index": 20,
+      "file": "eq_inline_020.png",
+      "source": "\\Delta M_{\\tau_i}",
+      "rendered": "\\Delta M_{\\tau_i}",
+      "notation": []
+    },
+    {
+      "index": 21,
+      "file": "eq_inline_021.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 22,
+      "file": "eq_inline_022.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 23,
+      "file": "eq_inline_023.png",
+      "source": "\\delta_k = \\|v_{k+1} - v_k\\|_2",
+      "rendered": "\\delta_k = \\|v_{k+1} - v_k\\|_2",
+      "notation": []
+    },
+    {
+      "index": 24,
+      "file": "eq_inline_024.png",
+      "source": "\\mu_k = 1 - \\text{mean}\\{\\cos(v_i, v_j)\\}",
+      "rendered": "\\mu_k = 1 - \\mathrm{mean}\\{\\cos(v_i, v_j)\\}",
+      "notation": []
+    },
+    {
+      "index": 25,
+      "file": "eq_inline_025.png",
+      "source": "C_T = \\sum_k \\mu_k \\cdot \\delta_k",
+      "rendered": "C_T = \\sum_k \\mu_k \\cdot \\delta_k",
+      "notation": []
+    },
+    {
+      "index": 26,
+      "file": "eq_inline_026.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 27,
+      "file": "eq_inline_027.png",
+      "source": "\\delta_k",
+      "rendered": "\\delta_k",
+      "notation": []
+    },
+    {
+      "index": 28,
+      "file": "eq_inline_028.png",
+      "source": "\\mu_k",
+      "rendered": "\\mu_k",
+      "notation": []
+    },
+    {
+      "index": 29,
+      "file": "eq_inline_029.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 30,
+      "file": "eq_inline_030.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 31,
+      "file": "eq_inline_031.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 32,
+      "file": "eq_inline_032.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 33,
+      "file": "eq_inline_033.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 34,
+      "file": "eq_inline_034.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 35,
+      "file": "eq_inline_035.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 36,
+      "file": "eq_inline_036.png",
+      "source": "C_{\\text{路径}} = \\int \\mu^{ac} d\\Lambda^{ac}",
+      "rendered": "C_{\\mathrm{path}} = \\int \\mu^{ac} d\\Lambda^{ac}",
+      "notation": [
+        [
+          "路径",
+          "path"
+        ]
+      ]
+    },
+    {
+      "index": 37,
+      "file": "eq_inline_037.png",
+      "source": "C_{\\text{跳跃}} = \\sum \\mu(\\tau_i^-) \\cdot \\Delta M_{\\tau_i}",
+      "rendered": "C_{\\mathrm{jump}} = \\sum \\mu(\\tau_i^-) \\cdot \\Delta M_{\\tau_i}",
+      "notation": [
+        [
+          "跳跃",
+          "jump"
+        ]
+      ]
+    },
+    {
+      "index": 38,
+      "file": "eq_inline_038.png",
+      "source": "C_{\\text{深度}} = \\alpha \\cdot d_{\\text{tree}}(T)",
+      "rendered": "C_{\\mathrm{depth}} = \\alpha \\cdot d_{\\mathrm{tree}}(T)",
+      "notation": [
+        [
+          "深度",
+          "depth"
+        ]
+      ]
+    },
+    {
+      "index": 39,
+      "file": "eq_inline_039.png",
+      "source": "C_{\\text{偏见}} = \\beta \\cdot B_{\\text{tree}}(T)",
+      "rendered": "C_{\\mathrm{bias}} = \\beta \\cdot B_{\\mathrm{tree}}(T)",
+      "notation": [
+        [
+          "偏见",
+          "bias"
+        ]
+      ]
+    },
+    {
+      "index": 40,
+      "file": "eq_inline_040.png",
+      "source": "\\alpha = 0.1",
+      "rendered": "\\alpha = 0.1",
+      "notation": []
+    },
+    {
+      "index": 41,
+      "file": "eq_inline_041.png",
+      "source": "\\beta = 0.05",
+      "rendered": "\\beta = 0.05",
+      "notation": []
+    },
+    {
+      "index": 42,
+      "file": "eq_inline_042.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 43,
+      "file": "eq_inline_043.png",
+      "source": "C_{\\text{DMN}}",
+      "rendered": "C_{\\mathrm{DMN}}",
+      "notation": []
+    },
+    {
+      "index": 44,
+      "file": "eq_inline_044.png",
+      "source": "C_{\\text{ECN}}",
+      "rendered": "C_{\\mathrm{ECN}}",
+      "notation": []
+    },
+    {
+      "index": 45,
+      "file": "eq_inline_045.png",
+      "source": "C_{\\text{SN}}",
+      "rendered": "C_{\\mathrm{SN}}",
+      "notation": []
+    },
+    {
+      "index": 46,
+      "file": "eq_inline_046.png",
+      "source": "H_{\\text{var}}, S_{\\text{int}}",
+      "rendered": "H_{\\mathrm{var}}, S_{\\mathrm{int}}",
+      "notation": []
+    },
+    {
+      "index": 47,
+      "file": "eq_inline_047.png",
+      "source": "C_{\\text{mem}}, E_{\\text{glob}}",
+      "rendered": "C_{\\mathrm{mem}}, E_{\\mathrm{glob}}",
+      "notation": []
+    },
+    {
+      "index": 48,
+      "file": "eq_inline_048.png",
+      "source": "C_{\\text{DMN}}",
+      "rendered": "C_{\\mathrm{DMN}}",
+      "notation": []
+    },
+    {
+      "index": 49,
+      "file": "eq_inline_049.png",
+      "source": "d_{\\text{sem}}^+(t) = [d_{\\text{sem}}(v_i, v_j) - d_0]^+",
+      "rendered": "d_{\\mathrm{sem}}^+(t) = [d_{\\mathrm{sem}}(v_i, v_j) - d_0]^+",
+      "notation": []
+    },
+    {
+      "index": 50,
+      "file": "eq_inline_050.png",
+      "source": "C_{\\text{ECN}}",
+      "rendered": "C_{\\mathrm{ECN}}",
+      "notation": []
+    },
+    {
+      "index": 51,
+      "file": "eq_inline_051.png",
+      "source": "C_{\\text{SN}}",
+      "rendered": "C_{\\mathrm{SN}}",
+      "notation": []
+    },
+    {
+      "index": 52,
+      "file": "eq_inline_052.png",
+      "source": "C_{\\text{mem}}",
+      "rendered": "C_{\\mathrm{mem}}",
+      "notation": []
+    },
+    {
+      "index": 53,
+      "file": "eq_inline_053.png",
+      "source": "C_{\\text{sel}}",
+      "rendered": "C_{\\mathrm{sel}}",
+      "notation": []
+    },
+    {
+      "index": 54,
+      "file": "eq_inline_054.png",
+      "source": "S_{\\text{int}} = \\text{Corr}(\\Delta C_T, \\Delta A_{\\text{goal}})",
+      "rendered": "S_{\\mathrm{int}} = \\mathrm{Corr}(\\Delta C_T, \\Delta A_{\\mathrm{goal}})",
+      "notation": []
+    },
+    {
+      "index": 55,
+      "file": "eq_inline_055.png",
+      "source": "\\Lambda_{\\text{explore}}",
+      "rendered": "\\Lambda_{\\mathrm{explore}}",
+      "notation": []
+    },
+    {
+      "index": 56,
+      "file": "eq_inline_056.png",
+      "source": "C_{\\text{DMN}}",
+      "rendered": "C_{\\mathrm{DMN}}",
+      "notation": []
+    },
+    {
+      "index": 57,
+      "file": "eq_inline_057.png",
+      "source": "C_{\\text{ECN}}",
+      "rendered": "C_{\\mathrm{ECN}}",
+      "notation": []
+    },
+    {
+      "index": 58,
+      "file": "eq_inline_058.png",
+      "source": "\\Delta M_{\\tau_i} = f(\\Pi) \\cdot g(G_{\\text{SN}})",
+      "rendered": "\\Delta M_{\\tau_i} = f(\\Pi) \\cdot g(G_{\\mathrm{SN}})",
+      "notation": []
+    },
+    {
+      "index": 59,
+      "file": "eq_inline_059.png",
+      "source": "C_{\\text{DMN}}",
+      "rendered": "C_{\\mathrm{DMN}}",
+      "notation": []
+    },
+    {
+      "index": 60,
+      "file": "eq_inline_060.png",
+      "source": "\\Pi(T)",
+      "rendered": "\\Pi(T)",
+      "notation": []
+    },
+    {
+      "index": 61,
+      "file": "eq_inline_061.png",
+      "source": "\\tau_i",
+      "rendered": "\\tau_i",
+      "notation": []
+    },
+    {
+      "index": 62,
+      "file": "eq_inline_062.png",
+      "source": "\\Delta M_{\\tau_i}",
+      "rendered": "\\Delta M_{\\tau_i}",
+      "notation": []
+    },
+    {
+      "index": 63,
+      "file": "eq_inline_063.png",
+      "source": "C_{\\text{ECN}}",
+      "rendered": "C_{\\mathrm{ECN}}",
+      "notation": []
+    },
+    {
+      "index": 64,
+      "file": "eq_inline_064.png",
+      "source": "C_{\\text{DMN}}",
+      "rendered": "C_{\\mathrm{DMN}}",
+      "notation": []
+    },
+    {
+      "index": 65,
+      "file": "eq_inline_065.png",
+      "source": "C_{\\text{ECN}}",
+      "rendered": "C_{\\mathrm{ECN}}",
+      "notation": []
+    },
+    {
+      "index": 66,
+      "file": "eq_inline_066.png",
+      "source": "C_{\\text{SN}}",
+      "rendered": "C_{\\mathrm{SN}}",
+      "notation": []
+    },
+    {
+      "index": 67,
+      "file": "eq_inline_067.png",
+      "source": "S_{\\text{int}}",
+      "rendered": "S_{\\mathrm{int}}",
+      "notation": []
+    },
+    {
+      "index": 68,
+      "file": "eq_inline_068.png",
+      "source": "\\chi_{\\text{innov}}",
+      "rendered": "\\chi_{\\mathrm{innov}}",
+      "notation": []
+    },
+    {
+      "index": 69,
+      "file": "eq_inline_069.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 70,
+      "file": "eq_inline_070.png",
+      "source": "C_T",
+      "rendered": "C_T",
+      "notation": []
+    },
+    {
+      "index": 71,
+      "file": "eq_inline_071.png",
+      "source": "C_{\\text{深度}}",
+      "rendered": "C_{\\mathrm{depth}}",
+      "notation": [
+        [
+          "深度",
+          "depth"
+        ]
+      ]
+    },
+    {
+      "index": 72,
+      "file": "eq_inline_072.png",
+      "source": "C_{\\text{偏见}}",
+      "rendered": "C_{\\mathrm{bias}}",
+      "notation": [
+        [
+          "偏见",
+          "bias"
+        ]
+      ]
+    },
+    {
+      "index": 73,
+      "file": "eq_inline_073.png",
+      "source": "C_{\\text{偏见}}",
+      "rendered": "C_{\\mathrm{bias}}",
+      "notation": [
+        [
+          "偏见",
+          "bias"
+        ]
+      ]
+    }
+  ],
+  "notation": {
+    "本能": "instinct",
+    "技术": "technique",
+    "路径": "path",
+    "跳跃": "jump",
+    "深度": "depth",
+    "偏见": "bias",
+    "无外部奖励": "noReward"
+  }
+}
