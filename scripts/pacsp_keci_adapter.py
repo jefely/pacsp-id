@@ -16,6 +16,7 @@ L6 适配器：把旧 schema 的 Keci 记录接入创新动力学层（论文 §
 
 这对应论文 §5.2「Keci 版与 s-t 版给出相同的区分排序，量级偏差约 30–50%」。
 """
+import os
 
 from __future__ import annotations
 
@@ -120,7 +121,8 @@ def load_keci_records(root):
 
 
 if __name__ == "__main__":
-    root = r"D:\myproject\PACSP\records_keci"
+    root = os.environ.get("PACSP_KECI_ROOT") or str(
+    Path(__file__).resolve().parent.parent.parent / "PACSP" / "records_keci")
     recs = load_keci_records(root)
     print(f"Keci 记录: { {k: len(v) for k, v in recs.items()} }\n")
     for dom, items in recs.items():
