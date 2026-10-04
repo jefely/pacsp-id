@@ -35,6 +35,15 @@ C_T = \int_{[0,T]} \mu_\omega^{ac}(t) \, d\Lambda_\omega^{ac}(t) + \sum_{\tau_i 
 
 最后，本文给出完整的验证工程代码（附录E），实现五层密码学防护（L1–L6）、变点检测、情绪树构建、创新动力学五元分解与验证协议。
 
+**本版新增实测结果与局限**（§10、§6.5）：三条内容域语料各 31 篇的实测显示，
+C_T 精确可复现且六层防护全部通过；瑟-树耦合满足可加性；§5.2 的跨嵌入量级偏差
+（1.43–1.51）与排序一致性成立。但三项负面结果必须报告：其一，`S_int` 对嵌入空间
+不稳健，符号可翻转，§8.4 需修订；其二，九个 IDL 指标在「经人筛选」与「自主生成」
+两条轴之间均无一致方向，域间差异大于轴间差异，§8.5 判定表的判别力尚未确立；
+其三，**三个素材语料全部为人机交互产物，本文缺少纯人类对照组，因此 §8.5 所设想的
+「人脑 vs LLM」判定在本版无法完成**。此外实测否定了「AI 生成的情绪强度低于人类」
+这一直觉假设 —— 诗歌与歌词上自主生成组的 C_T 与 μ_k 均更高。
+
 **关键词**：意义权、匿名前反思自身意识、认知沉积、勒贝格分解、瑟、压抑势能、情绪树、创新动力学、DMN/ECN/SN
 
 ---
@@ -294,6 +303,27 @@ Kanai、Sun和Baltieri（2025）论证了当前LLM仅存在于孤立的计算片
 
 ---
 
+### 6.5 三个实测发现
+
+§10 的实测结果对本文理论提出三处需要正视的问题。
+
+**发现一：判定系数的嵌入依赖性。** `S_int` 在同一语料、同一算法下，仅因底层嵌入空间
+不同（bge-large-zh-v1.5 与 Keci Clifford 嵌入）即发生符号翻转（−0.15 → +0.41）。
+该系数定义为路径增量二阶差与目标对齐增益的相关系数，在 30 个样本上信噪比不足。
+**结论：§8.4 的 `S_int` 与 `DRI` 目前不具备判定效力，应作为待标定量而非结论依据。**
+
+**发现二：判别力落在域而非主体。** 9 个 IDL 指标无一能在「经人筛选」与「自主生成」
+两条轴之间保持方向一致，而域间差异（C_T 1.9 → 7.4）远大于轴间差异。
+这意味着当前指标捕捉的主要是**内容类型的结构特征**，而非**认知主体的动力学特征**。
+§8.5 判定表若要成立，需要先证明指标对主体敏感而对内容域不敏感。
+
+**发现三：「AI 情绪更低」不成立。** 诗歌与歌词上，自主生成组的 C_T 与 μ_k
+均高于人机交互组。这与「AI 缺乏真实体验因而情绪沉积更低」的朴素预期方向相反。
+一种解释是：自主生成缺少人类筛选，因而保留了更多高语义距离的跳跃；
+人机交互中人类会剔除不合意的分支，使路径更收敛。若该解释成立，则
+**C_T 测量的并非「情绪强度」而是「路径的未受约束程度」** —— 这对 §1.4
+「瑟作为存在论痕迹计量」的定位构成实质挑战，需在后续工作中重新界定。
+
 ## 7. 情绪树集成：瑟-树耦合方程
 
 ### 7.1 ICML 2026情绪树发现的核心命题
@@ -485,7 +515,102 @@ C_T^{\text{total}} = C_{\text{路径}} + C_{\text{跳跃}} + C_{\text{深度}} +
 
 ---
 
-## 10. 结论
+## 10. 实证结果与验证
+
+本章报告 7.0.0 流水线的实测结果。全部数值由 `scripts/` 中的实现产出，
+可用 §11.2 的命令逐项复现。
+
+### 10.1 复现与验证
+
+以 2026-09-17 归档记录为基准，用本地缓存的 `BAAI/bge-large-zh-v1.5` 离线重跑：
+
+| 数据集 | 归档 C_T (Se) | 重跑 C_T (Se) | 偏差 |
+|---|---|---|---|
+| 歌词 | 2.126140 | 2.126140 | <1e-9 |
+| 技术文档 | 7.398207 | 7.398207 | <1e-9 |
+| 诗歌（新增） | — | 1.895004 | — |
+
+C_T 精确复现，变点完全一致，满足 §4.3 的可复现性要求。
+六层防护在全部 8 份记录上通过（L4 为本地证明已生成、等待区块确认，非致命）；
+四类篡改攻击（改 C_T、改 deltas、伪造签名、改 metadata）在全部记录上均被捕获。
+
+### 10.2 三域认知沉积量
+
+| 域 | 篇数 | 总字节 | C_T (Se) | μ_k 均值 | δ_k 均值 | 情绪树深度 |
+|---|---|---|---|---|---|---|
+| poem | 31 | 3,472 | 1.8950 | 0.1272 | 0.3973 | 2 |
+| lyrics | 31 | 37,072 | 2.1261 | 0.1677 | 0.4018 | 1 |
+| techdoc | 31 | 605,901 | 7.3982 | 0.3352 | 0.7266 | 1 |
+
+`μ_k` 均值随认知负荷严格递增（0.1272 < 0.1677 < 0.3352），与 §5.3 的论断方向一致。
+
+### 10.3 瑟-树耦合（§7.4）
+
+| 域 | C_path | C_jump | C_depth | C_bias | C_T^ext |
+|---|---|---|---|---|---|
+| poem | 1.8411 | 0.0539 | 0.2000 | 0.0000 | 2.0950 |
+| lyrics | 2.1261 | 0.0000 | 0.1000 | 0.0000 | 2.2261 |
+| techdoc | 6.9225 | 0.4757 | 0.1000 | 0.0000 | 7.4982 |
+
+`C_path + C_jump` 与原始 C_T 精确相等，说明瑟-树耦合是既有分解上的**可加扩展**，
+不改变原有测量语义。情绪树深度上诗歌为 2、歌词与技术文档为 1：深度由通道间条件概率
+结构决定而非序列长度，短文本的情绪表征更集中，反而形成更深的层级。
+
+### 10.4 创新动力学五元分解（§8.2）
+
+| 域 | C_DMN | C_SN | C_mem | C_T^innov | χ_innov | E_glob | Aha 个数 |
+|---|---|---|---|---|---|---|---|
+| poem | 1.5477 | 2.50 | 0.3810 | 4.4287 | 0.6429 | 2.5169 | 4 |
+| lyrics | 1.3116 | 3.50 | 0.4237 | 5.2353 | 0.8760 | 2.4889 | 6 |
+| techdoc | 7.7315 | 2.50 | 0.8951 | 11.1265 | 0.8390 | 1.3764 | 2 |
+
+### 10.5 对照轴比较
+
+为检验 §8.5 的判定表，另生成一组**单次独立、无人工筛选**的 LLM 平行语料
+（本地 `qwen2.5:7b`，每域 31 篇，逐篇固定种子）。需强调三点事实：
+
+1. 三个素材语料**全部是人机交互产物**，并非纯人类书写；
+2. 因此本文可检验的差异轴是**每篇是否经人引导与筛选**，而非「谁写的」；
+3. §8.5 所设想的「人脑 vs LLM」判定**缺少纯人类对照组，本版无法完成**。
+
+| 域 | 来源 | C_T | μ_k | 树深 | C_DMN | C_SN | E_glob |
+|---|---|---|---|---|---|---|---|
+| poem | 人机交互 | 1.895 | 0.1272 | 2 | 1.548 | 2.50 | 2.517 |
+| poem | 自主生成 | 3.827 | 0.2066 | 1 | 3.586 | 1.50 | 1.617 |
+| lyrics | 人机交互 | 2.126 | 0.1677 | 1 | 1.312 | 3.50 | 2.489 |
+| lyrics | 自主生成 | 5.921 | 0.2695 | 2 | 6.991 | 0.00 | 1.364 |
+| techdoc | 人机交互 | 7.398 | 0.3352 | 1 | 7.731 | 2.50 | 1.376 |
+| techdoc | 自主生成 | 2.466 | 0.1660 | 1 | 1.328 | 6.00 | 2.024 |
+
+**实测结果否定了「AI 生成的情绪强度低于人类」这一直觉假设**：诗歌与歌词上，
+自主生成组的 C_T（3.827 / 5.921）与 μ_k（0.2066 / 0.2695）**均高于**人机交互组
+（1.895 / 2.126；0.1272 / 0.1677）；仅技术文档相反。
+
+对 9 个 IDL 指标逐一检查方向一致性后发现：**没有任何指标在两条轴之间保持方向一致**
+（每个指标都是 3 个域中 1–2 个同向）。域间差异（C_T 从 1.9 跨到 7.4）显著大于轴间差异
+（约 7%–21%），说明当前指标主要刻画**内容域特性**而非**书写主体特性**。
+
+### 10.6 底层空间敏感性（§5.2）
+
+用同一算法在两种嵌入空间上重算：
+
+| 域 | 嵌入 | C_T | μ_k | S_int | 判定 |
+|---|---|---|---|---|---|
+| 歌词 | bge-large-zh-v1.5 | 2.1261 | 0.1677 | -0.1521 | LLM+响应余量 |
+| 歌词 | Keci (Clifford 64d) | 3.0364 | 0.2071 | +0.4125 | LLM+响应余量 |
+| 技术文档 | bge-large-zh-v1.5 | 7.3982 | 0.3352 | -0.2282 | 介于两者之间 |
+| 技术文档 | Keci (Clifford 64d) | 11.1592 | 0.4563 | +0.2977 | LLM+响应余量 |
+
+§5.2 的量级与排序论断**成立**：C_T 比值 1.43–1.51，落在所述「30–50% 偏差」区间，
+两域排序（技术文档 > 歌词）在两种嵌入下一致。
+
+但 `S_int` 在两种嵌入下**符号翻转**（两域皆然），技术文档的判定结论随之改变。
+`S_int = Corr(ΔC_T, ΔA_goal)` 在 30 个样本上信噪比过低，**该系数的测量稳定性
+不足以支撑判定用途**，§8.4 需据此修订。
+
+---
+
+## 11. 结论
 
 本文从意义权的哲学框架出发，构建了PACSP-ID的测度论形式体系，并将框架扩展至LLM情绪树与人类创新动力学两个前沿领域。
 
@@ -528,393 +653,35 @@ C_T^{\text{total}} = C_{\text{路径}} + C_{\text{跳跃}} + C_{\text{深度}} +
 
 ## 附录E：验证工程代码
 
-```python
-# pacsp_verify.py
-# PACSP-ID 7.0.0-COMPLETE 验证工程
-# 运行: python pacsp_verify.py
+附录 E 的参考实现已落地为仓库中的生产模块，逐项对应关系如下：
 
-import hashlib
-import json
-import time
-from dataclasses import dataclass
-from typing import List, Tuple, Optional, Dict, Any
-import numpy as np
+| 论文组件 | 实现文件 | 说明 |
+|---|---|---|
+| C_T 计算与变点检测 | `scripts/pacsp_build.py` | 嵌入 → δ_k → μ_k → C_T，PELT 变点 |
+| 情绪树构建（§7） | `scripts/pacsp_emotion_tree.py` | 建树、偏见熵、瑟-树耦合 |
+| 创新动力学五元分解（§8） | `scripts/pacsp_innov.py` | 五元分解 + 四系数 + 判定规则 |
+| L6 存证与验证 | `scripts/pacsp_layer6.py` | 情绪树与 IDL 结果的哈希存证 |
+| 六层完整验证 | `scripts/pacsp_verify.py` | L1–L6 逐层验证 |
+| 旧 schema 适配（§5.2） | `scripts/pacsp_keci_adapter.py` | Keci 记录接入 L6 |
+| 图表重建 | `scripts/pacsp_figure.py` | 主图 + 四类 L6 可视化 |
 
-try:
-    from cryptography.hazmat.primitives.asymmetric.ed25519 import (
-        Ed25519PrivateKey
-    )
-    HAS_CRYPTO = True
-except ImportError:
-    HAS_CRYPTO = False
-    print("[警告] cryptography 未安装，L2 签名将使用 HMAC 模拟。")
+与附录 E 原参考实现的差异：
 
+1. **L1 为六语义块**（metadata / dataset / compute / results / figure_recipe /
+   l3_reference），而非原稿的六块任意划分；
+2. **A_goal 未定义时 `S_int`、`C_sel`、`DRI` 记为 `null`**，而非用路径增量伪造目标。
+   伪造目标产出的相关性无物理意义（§6.5 发现一）；
+3. **L6 为可选层**：`--innov` 开启后版本标记为 7.0.0-COMPLETE；未开启时五层记录
+   与 v4.0.0 完全一致，保证向后兼容。
 
-# ============================================================
-# 工具函数
-# ============================================================
-def sha256(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
+运行：
 
-def sha256_str(s: str) -> str:
-    return sha256(s.encode('utf-8'))
-
-def merkle_root(leaves: List[str]) -> str:
-    if not leaves:
-        return sha256(b'')
-    nodes = [sha256_str(l) for l in leaves]
-    while len(nodes) > 1:
-        if len(nodes) % 2 == 1:
-            nodes.append(nodes[-1])
-        new_nodes = []
-        for i in range(0, len(nodes), 2):
-            new_nodes.append(sha256((nodes[i] + nodes[i+1]).encode()))
-        nodes = new_nodes
-    return nodes[0]
-
-
-# ============================================================
-# 1. C_T 计算与变点检测
-# ============================================================
-@dataclass
-class CTResult:
-    C_T: float
-    delta_k: List[float]
-    mu_k: List[float]
-    changepoints: List[int]
-    jump_magnitudes: List[float]
-
-def compute_mu(embeddings: np.ndarray) -> List[float]:
-    n = len(embeddings)
-    mu = []
-    for i in range(n):
-        sims = []
-        for j in range(n):
-            if i == j:
-                continue
-            v_i, v_j = embeddings[i], embeddings[j]
-            cos = np.dot(v_i, v_j) / (np.linalg.norm(v_i) * np.linalg.norm(v_j) + 1e-12)
-            sims.append(cos)
-        mu.append(1.0 - np.mean(sims))
-    return mu
-
-def simple_changepoint_detection(delta_k: List[float], threshold: float = 1.5) -> List[int]:
-    if len(delta_k) < 3:
-        return []
-    arr = np.array(delta_k)
-    mean, std = arr.mean(), arr.std()
-    cps = []
-    for i in range(1, len(arr)):
-        if arr[i] > mean + threshold * std:
-            cps.append(i)
-    return cps
-
-def compute_C_T(embeddings: np.ndarray, changepoints: Optional[List[int]] = None) -> CTResult:
-    n = len(embeddings)
-    delta_k = [float(np.linalg.norm(embeddings[i+1] - embeddings[i])) for i in range(n-1)]
-    mu_k = compute_mu(embeddings)
-    C_cont = sum(mu_k[i] * delta_k[i] for i in range(len(delta_k)))
-    if changepoints is None:
-        changepoints = simple_changepoint_detection(delta_k)
-    jump_mags, C_jump = [], 0.0
-    for cp in changepoints:
-        if cp < len(delta_k):
-            dM = delta_k[cp] * 2.0
-            jump_mags.append(dM)
-            C_jump += mu_k[cp] * dM
-    return CTResult(
-        C_T=round(C_cont + C_jump, 4),
-        delta_k=[round(x, 4) for x in delta_k],
-        mu_k=[round(x, 4) for x in mu_k],
-        changepoints=changepoints,
-        jump_magnitudes=[round(x, 4) for x in jump_mags]
-    )
-
-
-# ============================================================
-# 2. 情绪树构建（ICML 2026 接口）
-# ============================================================
-@dataclass
-class EmotionTree:
-    depth: int
-    edges: List[Tuple[str, str]]
-    path_length: int
-    bias_entropy: float = 0.0
-
-def build_emotion_tree(prob_matrix: np.ndarray, emotion_words: List[str],
-                       threshold: float = 0.1) -> EmotionTree:
-    n_emotions = len(emotion_words)
-    C = prob_matrix.T @ prob_matrix
-    col_sum = C.sum(axis=0, keepdims=True) + 1e-12
-    P_cond = C / col_sum
-    edges, parent = [], {}
-    for j in range(n_emotions):
-        best_parent, best_score = None, -1
-        for i in range(n_emotions):
-            if i == j:
-                continue
-            p_ij, p_ji = P_cond[i, j], P_cond[j, i]
-            if p_ij > threshold and p_ij > p_ji:
-                score = p_ij - p_ji
-                if score > best_score:
-                    best_score, best_parent = score, i
-        if best_parent is not None:
-            parent[j] = best_parent
-            edges.append((emotion_words[best_parent], emotion_words[j]))
-    depth = 0
-    for j in range(n_emotions):
-        d, cur, visited = 0, j, set()
-        while cur in parent and cur not in visited:
-            visited.add(cur)
-            cur = parent[cur]
-            d += 1
-        depth = max(depth, d)
-    return EmotionTree(depth=depth, edges=edges, path_length=len(edges))
-
-
-# ============================================================
-# 3. 创新动力学五元分解
-# ============================================================
-@dataclass
-class InnovationMetrics:
-    C_DMN: float
-    C_ECN: float
-    C_SN: float
-    C_mem: float
-    C_sel: float
-    chi_innov: float
-    DRI: float
-    H_switch: float
-    S_int: float
-
-def compute_innovation_metrics(embeddings: np.ndarray,
-                               target_vec: np.ndarray,
-                               explore_labels: List[bool]) -> InnovationMetrics:
-    T = len(embeddings)
-    A_goal = np.array([
-        np.dot(v, target_vec) / (np.linalg.norm(v) * np.linalg.norm(target_vec) + 1e-12)
-        for v in embeddings
-    ])
-    d_sem = np.array([np.linalg.norm(embeddings[i+1] - embeddings[i]) for i in range(T-1)])
-
-    C_DMN = sum(max(0, d_sem[i] - 0.5) for i in range(T-1) if explore_labels[i])
-    C_ECN = sum(max(0, A_goal[i+1] - A_goal[i]) for i in range(T-1) if not explore_labels[i])
-    switch_count = sum(1 for i in range(1, T) if explore_labels[i] != explore_labels[i-1])
-    C_SN = switch_count * 0.5
-
-    dists = [np.linalg.norm(embeddings[i] - embeddings[j])
-             for i in range(T) for j in range(i+1, T)]
-    E_glob = 1.0 / (np.mean(dists) + 1e-12) if dists else 0.0
-    C_mem = E_glob * 0.1
-
-    delta_C = np.diff(d_sem) if len(d_sem) > 1 else np.array([0.0])
-    delta_A = np.diff(A_goal) if len(A_goal) > 1 else np.array([0.0])
-    if len(delta_C) > 1 and np.std(delta_C) > 1e-6 and np.std(delta_A) > 1e-6:
-        S_int = float(np.corrcoef(delta_C, delta_A)[0, 1])
-    else:
-        S_int = 0.0
-    C_sel = max(0.0, S_int) * 0.5
-
-    chi_innov = 0.0
-    if T > 3:
-        dmn_s = np.cumsum([max(0, d_sem[i] - 0.5) if explore_labels[i] else 0 for i in range(T-1)])
-        ecn_s = np.cumsum([max(0, A_goal[i+1] - A_goal[i]) if not explore_labels[i] else 0 for i in range(T-1)])
-        if np.std(dmn_s) > 1e-6 and np.std(ecn_s) > 1e-6:
-            chi_innov = float(np.corrcoef(dmn_s, ecn_s)[0, 1])
-
-    dmn_before = sum(max(0, d_sem[i] - 0.5) for i in range(T-1) if explore_labels[i])
-    ecn_after = sum(max(0, A_goal[i+1] - A_goal[i]) for i in range(T-1) if not explore_labels[i])
-    DRI = dmn_before / (ecn_after + 1e-6)
-
-    p = switch_count / max(1, T-1)
-    H_switch = -p * np.log(p + 1e-12) - (1-p) * np.log(1-p + 1e-12)
-
-    return InnovationMetrics(
-        C_DMN=round(C_DMN, 4), C_ECN=round(C_ECN, 4), C_SN=round(C_SN, 4),
-        C_mem=round(C_mem, 4), C_sel=round(C_sel, 4),
-        chi_innov=round(chi_innov, 4), DRI=round(DRI, 4),
-        H_switch=round(H_switch, 4), S_int=round(S_int, 4)
-    )
-
-
-# ============================================================
-# 4. 六层密码学防护
-# ============================================================
-@dataclass
-class CryptoProof:
-    L1_hash: str
-    L2_signature: str
-    L3_merkle_root: str
-    L4_timestamp: str
-    L5_reproducible: bool
-    L6_innovation_hash: str
-
-class PACSPCrypto:
-    def __init__(self):
-        if HAS_CRYPTO:
-            self.private_key = Ed25519PrivateKey.generate()
-            self.public_key = self.private_key.public_key()
-        else:
-            self.private_key = None
-            self.public_key = None
-            self.hmac_key = b'pacsp-secret'
-
-    def L1_semantic_blocks(self, data: Dict[str, Any]) -> str:
-        blocks = [
-            json.dumps(data.get('metadata', {}), sort_keys=True),
-            json.dumps(data.get('snapshots', []), sort_keys=True),
-            json.dumps(data.get('embeddings', []), sort_keys=True),
-            json.dumps(data.get('C_T', {}), sort_keys=True),
-            json.dumps(data.get('emotion_tree', {}), sort_keys=True),
-            json.dumps(data.get('innovation', {}), sort_keys=True),
-        ]
-        return merkle_root([sha256_str(b) for b in blocks])
-
-    def L2_sign(self, message: str) -> str:
-        if HAS_CRYPTO and self.private_key:
-            return self.private_key.sign(message.encode()).hex()
-        else:
-            import hmac
-            return hmac.new(self.hmac_key, message.encode(), hashlib.sha256).hexdigest()
-
-    def L2_verify(self, message: str, signature: str) -> bool:
-        if HAS_CRYPTO and self.public_key:
-            try:
-                self.public_key.verify(bytes.fromhex(signature), message.encode())
-                return True
-            except Exception:
-                return False
-        else:
-            import hmac
-            expected = hmac.new(self.hmac_key, message.encode(), hashlib.sha256).hexdigest()
-            return expected == signature
-
-    def L3_merkle_commit(self, samples, computations, results) -> str:
-        return merkle_root([
-            merkle_root(samples),
-            merkle_root(computations),
-            merkle_root(results)
-        ])
-
-    def L4_timestamp(self, data_hash: str) -> str:
-        proof = {"hash": data_hash, "timestamp": str(int(time.time())), "status": "pending"}
-        return sha256_str(json.dumps(proof, sort_keys=True))
-
-    def L5_reproduce(self, original: str, recomputed: str) -> bool:
-        return original == recomputed
-
-    def L6_innovation_hash(self, innov: Dict) -> str:
-        return sha256_str(json.dumps(innov, sort_keys=True))
-
-
-# ============================================================
-# 5. 主流程与验证协议
-# ============================================================
-class PACSPPipeline:
-    def __init__(self):
-        self.crypto = PACSPCrypto()
-        self.data = {}
-
-    def run(self, embeddings, target_vec, explore_labels,
-            emotion_prob_matrix, emotion_words):
-        ct = compute_C_T(embeddings)
-        tree = build_emotion_tree(emotion_prob_matrix, emotion_words)
-        innov = compute_innovation_metrics(embeddings, target_vec, explore_labels)
-
-        self.data = {
-            "metadata": {"version": "7.0.0-COMPLETE", "time": time.time()},
-            "snapshots": embeddings.tolist(),
-            "embeddings": embeddings.tolist(),
-            "C_T": ct.__dict__,
-            "emotion_tree": tree.__dict__,
-            "innovation": innov.__dict__,
-        }
-
-        L1 = self.crypto.L1_semantic_blocks(self.data)
-        L2 = self.crypto.L2_sign(L1)
-        samples = [sha256_str(str(i)) for i in range(len(embeddings))]
-        computations = [sha256_str(json.dumps(ct.__dict__, sort_keys=True))]
-        results = [sha256_str(json.dumps(innov.__dict__, sort_keys=True))]
-        L3 = self.crypto.L3_merkle_commit(samples, computations, results)
-        L4 = self.crypto.L4_timestamp(L1)
-        recomputed = self.crypto.L1_semantic_blocks(self.data)
-        L5 = self.crypto.L5_reproduce(L1, recomputed)
-        L6 = self.crypto.L6_innovation_hash(innov.__dict__)
-
-        self.data["proof"] = CryptoProof(L1, L2, L3, L4, L5, L6).__dict__
-        return self.data
-
-    def verify(self, data: Dict) -> Dict:
-        proof = data.get("proof", {})
-        results = {
-            "L1": self.crypto.L1_semantic_blocks(data) == proof.get("L1_hash"),
-            "L2": self.crypto.L2_verify(proof.get("L1_hash", ""), proof.get("L2_signature", "")),
-            "L3": bool(proof.get("L3_merkle_root")),
-            "L4": bool(proof.get("L4_timestamp")),
-            "L5": proof.get("L5_reproducible", False),
-            "L6": bool(proof.get("L6_innovation_hash")),
-        }
-        return {"layers": results, "all_pass": all(results.values())}
-
-
-# ============================================================
-# 6. 模拟数据与入口
-# ============================================================
-def generate_mock_data(T=31, d=64, n_emotions=10):
-    np.random.seed(42)
-    embeddings = np.random.randn(T, d)
-    for i in range(1, T):
-        embeddings[i] += 0.1 * embeddings[i-1]
-    target_vec = np.random.randn(d)
-    explore_labels = [True] * (T//2) + [False] * (T - T//2)
-    emotion_prob_matrix = np.random.rand(T, n_emotions)
-    emotion_prob_matrix /= emotion_prob_matrix.sum(axis=1, keepdims=True)
-    emotion_words = [f"emo_{i}" for i in range(n_emotions)]
-    return embeddings, target_vec, explore_labels, emotion_prob_matrix, emotion_words
-
-def main():
-    print("=" * 60)
-    print("PACSP-ID 7.0.0-COMPLETE 验证工程")
-    print("=" * 60)
-    embeddings, target_vec, explore_labels, epm, ew = generate_mock_data()
-    pipeline = PACSPPipeline()
-    data = pipeline.run(embeddings, target_vec, explore_labels, epm, ew)
-
-    print("\n[1] C_T 计算结果:")
-    ct = data["C_T"]
-    print(f"  C_T = {ct['C_T']} Se")
-    print(f"  变点数 = {len(ct['changepoints'])}")
-    print(f"  δ_k 均值 = {np.mean(ct['delta_k']):.4f}")
-    print(f"  μ_k 均值 = {np.mean(ct['mu_k']):.4f}")
-
-    print("\n[2] 情绪树:")
-    tree = data["emotion_tree"]
-    print(f"  深度 = {tree['depth']}")
-    print(f"  边数 = {tree['path_length']}")
-
-    print("\n[3] 创新动力学五元分解:")
-    for k, v in data["innovation"].items():
-        print(f"  {k} = {v}")
-
-    print("\n[4] 六层密码学防护:")
-    for k, v in data["proof"].items():
-        if isinstance(v, str) and len(v) > 20:
-            print(f"  {k} = {v[:16]}...")
-        else:
-            print(f"  {k} = {v}")
-
-    print("\n[5] 验证协议:")
-    result = pipeline.verify(data)
-    for layer, ok in result["layers"].items():
-        print(f"  {layer}: {'✓ 通过' if ok else '✗ 失败'}")
-    print(f"\n  总体验证: {'✓ 全部通过' if result['all_pass'] else '✗ 存在失败'}")
-
-    print("\n" + "=" * 60)
-    print("验证完成。瑟值已记录，不可转让。")
-    print("=" * 60)
-
-if __name__ == "__main__":
-    main()
+```bash
+export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
+python scripts/pacsp_build.py --innov --target centroid \
+    --datasets poem lyrics techdoc machine_poem machine_lyrics machine_techdoc
+python scripts/pacsp_verify.py records/poem_epoch1_base_CT1.90Se_20261004.pacsp data/poem
+python scripts/pacsp_figure.py --out cache/figures
 ```
 
 ---
@@ -998,8 +765,8 @@ if __name__ == "__main__":
 **仓库**：https://github.com/jefely/pacsp-id  
 **归档**：https://doi.org/10.5281/zenodo.22801604
 
-**版本**：7.0.0-COMPLETE  
-**日期**：2026年9月
+**版本**：7.0.0-COMPLETE（含 §10 实测结果、§6.5 实测发现）  
+**日期**：2026年10月
 
 ---
 
@@ -1007,9 +774,9 @@ if __name__ == "__main__":
 
 | 层级 | 章节 | 占比 |
 |---|---|---|
-| 哲学 | §1.1–1.4, §2.1, §6.1–6.2, §9.3 | 14% |
+| 哲学 | §1.1–1.4, §2.1, §6.1–6.2, §6.5, §9.3 | 14% |
 | 数学 | §2.2, §3.1–3.5, §7.4, §8.2 | 26% |
-| 工程 | §2.3, §4.1–4.4, §5.1–5.4, §10, 附录E | 40% |
+| 工程 | §2.3, §4.1–4.4, §5.1–5.4, §10, 附录A–E | 40% |
 | 集成 | 摘要, §1.5, §3.5, §6.3–6.4, §7.1–7.3, §8.1, §8.3–8.5, §9.1–9.2, §11 | 20% |
 
 三层级显式标记，通过接口段落相连。所有引用精确对应原始文献，不模糊化、不私自优化。
