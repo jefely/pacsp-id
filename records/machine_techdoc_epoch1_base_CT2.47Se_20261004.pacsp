@@ -1,0 +1,456 @@
+{
+  "protocol": "PACSP-ID",
+  "version": "7.0.0-COMPLETE",
+  "generated_at": "2026-10-04T16:45:52.776929",
+  "metadata": {
+    "domain": "machine_techdoc",
+    "epoch": "epoch1",
+    "variant": "base",
+    "CT_display": "2.47Se",
+    "protocol_version": "7.0.0-COMPLETE",
+    "parameters": {
+      "embedding_model": "BAAI/bge-large-zh-v1.5",
+      "window_size": 5,
+      "n_samples": 31
+    },
+    "figure_recipe": {
+      "figure_id": "main",
+      "figsize": [
+        14,
+        8
+      ],
+      "dpi": 150,
+      "layout": "2x1",
+      "panels": [
+        {
+          "row": 0,
+          "title": "Path Increments delta_k",
+          "y_data": "compute.deltas",
+          "y_label": "delta_k",
+          "color": "#1f77b4",
+          "marker": "o",
+          "markersize": 5,
+          "vlines": {
+            "source": "results.changepoints.delta_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        },
+        {
+          "row": 1,
+          "title": "Cognitive Intensity mu_k",
+          "y_data": "compute.mus",
+          "y_label": "mu_k",
+          "color": "#2ca02c",
+          "marker": "o",
+          "markersize": 5,
+          "xlabel": "Snapshot",
+          "vlines": {
+            "source": "results.changepoints.mu_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        }
+      ],
+      "font": {
+        "family": "DejaVu Sans",
+        "size": 12
+      }
+    }
+  },
+  "dataset": {
+    "n_samples": 31,
+    "sample_hashes": [
+      "3b00fa8fa5385ef5533ba60303f004dd75bbc62a14d21b7b209aed73ad97f303",
+      "96ac023b7648eb7139f4bf8d0df3f525c586f5ac23f15155a5e5da9d26924334",
+      "e247c2af2c5d495d91da28b5bc67233435dda74670308bba1c58735553622a2b",
+      "25a649b181b270b584e63ea96a7beb83200420508b53271dfe13bd64240df905",
+      "71e34a784a4950433c45c5fe6b186834e3eabe91ebd7f9e183a70493438c92c7",
+      "0a4510b2ec2375d5caed5bf1f704469fdc44090569b43f0534118cad760dfe89",
+      "6f495fd003d05f2768fa901d75b4374651579d1445d459002eeb04ab4cf11998",
+      "f100a0f63cf4b4e835023d3f1c03535daa1ac7ad0134c7c4501d6378b2958b20",
+      "10e99ac2451bcccfa70ad2718dd3452a4b8cfc9a1a53bf1655d7a9230767e21b",
+      "3d1709f8c0fcb1148f8cee90f5336e2222cb8dc818b865d94a2eeb50298ab5c5",
+      "d01e7d71b293c7fa54345eaa226e9af6ad1787516325f65977c2bde7452a0d6d",
+      "cd9f101570b4d0182f39964c28a67892e3fe7b24a8592eeb1932f3ea65575da7",
+      "dd14095f525fcedae03fa9135f79edbfa023b48c69eadf486aaee54cb2191089",
+      "9affa286723b4629027ad39b35b2ad2a2598e0154b3686375ae8cab8f614fa48",
+      "a7a04bc9eaaa9a6205651d915d1e018376d944034288508464c48c43c1f7904e",
+      "baae0a9b5efef4c713f2ec2ec5e6017e90b064da1e8de6a75e976d2508afd02c",
+      "d370fc5485fecc02cba36ceeb03dc5cc7cd0080fb16bc163cdac4dd5cddd081b",
+      "c9726aa4bfdd8d478b8402f2cb302f82969d2cf9add19e00979156078272b85c",
+      "84c26bae16b5b045989ad74694f5d357d60b3ebb3ade3c297936536e0fb72be6",
+      "bdf0c2286cf9c3216883700dc3ab626b44ad8417ac15561e5de75a89e472a5f2",
+      "c4831309c5b3e053ace4799ee5fa95eff4f7549b521667349f4c8b66f2203a38",
+      "f069f650206767bd3470382176b9be95daa8db9001ceb2377c0a741e6d07ce50",
+      "7fc07a8611eb8a1c8a274515b67af0ac2ccdc3e6708320e1a147b955e0e74a94",
+      "0af3938007d4c0c77f734834c9b8b7ba4956c096a4fedabe88cbd01137787850",
+      "469c48a5f0e8c6bb5637affc45642fcbcffb538322ceed88ee86ff2cfa2dec6c",
+      "90d3bc55f15e95ab41534681843016773f8d793458732545a9d9cff76f2eaa49",
+      "6b11f247180d3fecf3b1d51eeaa41e27ebcba65b0f2ce1abed1b82e728cfc7c1",
+      "6b8e0e0799bcd81c127f35ef51768455c449aa5b714d1c430cd8d95a3b2f5955",
+      "dab5643a363d7e9e51ec239d3dad1b6f12a74b2d01c05c12a5fa57ef22d6fdd1",
+      "e7d16908738aca99625f5897689d1e95d6acf437def506ba02753af5c9af3072",
+      "8ca22f7a6d3d73e03c919c420ec3540ec6635fd77ad347f591066cb52b2ae9cd"
+    ]
+  },
+  "compute": {
+    "deltas": [
+      0.37067607045173645,
+      0.4317290782928467,
+      0.3535216152667999,
+      0.6651474237442017,
+      0.42635422945022583,
+      0.49703139066696167,
+      0.49835318326950073,
+      0.6759603023529053,
+      0.36955225467681885,
+      0.398045152425766,
+      0.4831274449825287,
+      0.4780813753604889,
+      0.49842721223831177,
+      0.4856898784637451,
+      0.44997164607048035,
+      0.6665776968002319,
+      0.35453030467033386,
+      0.40656253695487976,
+      0.34832242131233215,
+      0.6160091757774353,
+      0.3653031587600708,
+      0.47861602902412415,
+      0.5135188698768616,
+      0.6833871006965637,
+      0.41642287373542786,
+      0.583556592464447,
+      0.5142509341239929,
+      0.7854111790657043,
+      0.6238948106765747,
+      0.38673463463783264
+    ],
+    "mus": [
+      0.16825973987579346,
+      0.15964174270629883,
+      0.16762274503707886,
+      0.16396814584732056,
+      0.15841615200042725,
+      0.1518511176109314,
+      0.1551429033279419,
+      0.1617545485496521,
+      0.1711348295211792,
+      0.17217504978179932,
+      0.1722847819328308,
+      0.15930908918380737,
+      0.15399044752120972,
+      0.13252294063568115,
+      0.12939834594726562,
+      0.14543062448501587,
+      0.15727955102920532,
+      0.15761303901672363,
+      0.16618406772613525,
+      0.16668027639389038,
+      0.16310834884643555,
+      0.16271710395812988,
+      0.16116231679916382,
+      0.18997782468795776,
+      0.18893808126449585,
+      0.1892908811569214,
+      0.19043409824371338,
+      0.1856335997581482,
+      0.1902429461479187,
+      0.17443817853927612,
+      0.17970240116119385
+    ]
+  },
+  "results": {
+    "C_T_Se": 2.4662202810173746,
+    "changepoints": {
+      "mu_k": [
+        8,
+        13,
+        19,
+        24
+      ],
+      "delta_k": []
+    }
+  },
+  "stats": {
+    "delta_mean": 0.49415888587633766,
+    "delta_std": 0.11643343746312088,
+    "mu_mean": 0.166009868344953,
+    "mu_std": 0.015329238084802164
+  },
+  "figure_recipe": {
+    "figure_id": "main",
+    "figsize": [
+      14,
+      8
+    ],
+    "dpi": 150,
+    "layout": "2x1",
+    "panels": [
+      {
+        "row": 0,
+        "title": "Path Increments delta_k",
+        "y_data": "compute.deltas",
+        "y_label": "delta_k",
+        "color": "#1f77b4",
+        "marker": "o",
+        "markersize": 5,
+        "vlines": {
+          "source": "results.changepoints.delta_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      },
+      {
+        "row": 1,
+        "title": "Cognitive Intensity mu_k",
+        "y_data": "compute.mus",
+        "y_label": "mu_k",
+        "color": "#2ca02c",
+        "marker": "o",
+        "markersize": 5,
+        "xlabel": "Snapshot",
+        "vlines": {
+          "source": "results.changepoints.mu_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      }
+    ],
+    "font": {
+      "family": "DejaVu Sans",
+      "size": 12
+    }
+  },
+  "integrity": {
+    "L1": {
+      "layer_id": "L1",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:50.713675",
+      "data": {
+        "content_hash": "sha256:fb118fc15c8dc4aa2bc25d2ef191ed081b832ca22aaa8842ae492884ac08e84a",
+        "hash_algorithm": "sha256",
+        "hash_scope": "layered",
+        "sub_hashes": {
+          "metadata": "sha256:eb2df0dbb22dd519201531470b1b5a2ac993c3d664c7cf71241040600078a10a",
+          "dataset": "sha256:d63299cb8dc3a02bbe53a21b11e47a1a680300b037b5de6f303c8da0bf00cd41",
+          "compute": "sha256:f7ebca5ef13414b38469074d0762eb5db77cc84712d0585f7278801ffeccb895",
+          "results": "sha256:45ba928011a2627c2a3f441524b7284c98ac82e679c0aa64923bd5d07bf7293b",
+          "figure_recipe": "sha256:9cae101c0482dcf7a7f720298ec448a9fcceb1308cf0ac9fd090284929358116",
+          "l3_reference": "sha256:3ab9fcc607042f66248a762e8af34809abaab88438f95e911901652e0616f4f4"
+        }
+      },
+      "error": null
+    },
+    "L2": {
+      "layer_id": "L2",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:50.713675",
+      "data": {
+        "signature": "base64:ArAmunViXUef2YMJCi5vDbLTxzw1k5t3HHtYaAE0Lc1OtNCJ/wsQirrGxEVxOkF2gKRvxs6qkmcTFMmL61/1DA==",
+        "signature_algorithm": "ed25519",
+        "public_key_id": "43fa799f51e51f4f",
+        "signed_content_hash": "sha256:fb118fc15c8dc4aa2bc25d2ef191ed081b832ca22aaa8842ae492884ac08e84a"
+      },
+      "error": null
+    },
+    "L3": {
+      "sample": "sha256:35085612d5b012ed4cd778cb25e18aa88d9d3b6a622c6866978e5e702b1ed8dd",
+      "compute": "sha256:95d4cd44ae6b0fc5671ec1b5ad52ecd16bdffd9b5c52fc5e1005fcbbfad33e99",
+      "result": "sha256:7ef17bb178ff2bd0ca74947365555d5f28502ff83a58ac77aa46484b2fb54833"
+    },
+    "L4": {
+      "layer_id": "L4",
+      "status": "pending",
+      "computed_at": "2026-10-04T16:45:52.771452",
+      "data": {
+        "content_hash": "sha256:fb118fc15c8dc4aa2bc25d2ef191ed081b832ca22aaa8842ae492884ac08e84a",
+        "timestamp_proof": "base64:AE9wZW5UaW1lc3RhbXBzAABQcm9vZgC/ieLohOiSlAEILZ4PKfEx678frGGQXlk6hjhYjq9QcmVQoe3+9ALbETDwEMoMhEq5Kok3hRixMFgJR8sI//AQFvlRNUnq5MWi0v/cbmkk/gjxIDm/09FXMGeQO0rOLKx2qQL0JaIeBRwOvS4RSHS2+EvKCPAg5aHssj70vz/nTS2PDgbNKxDgphEt9bXdmkOXNxfMa5wI8QRqwhGY8AguqllhGJWn8wCD3+MNLvkMjiMiaHR0cHM6Ly9idGMuY2FsZW5kYXIuY2F0YWxsYXh5LmNvbf/wCJqYaq8t0Jx7CPEgxj0wXEXDmGjdW/gT2MAMmU6BG4kqH3GkZ4+K2P+jDu4I8BAoqU7eA0RN9c3JW+D2H98JCPEgVNSgOqf85FqnrAYic9Zoi21ame5E5d1mGHQUy7oiA0oI8CAHEAVki8b6JpiQfTaTpeT0i31HSSerGOVdERJEfuKdSQjxBGrCEZjwCC1tLwIedjhtAIPf4w0u+QyOLCtodHRwczovL2JvYi5idGMuY2FsZW5kYXIub3BlbnRpbWVzdGFtcHMub3Jn//AIpoNQ2yi/VvkI8BBEoI0wJgFi5wWh4tBkZNoVCPAggAjnIKgkgPSt2zK8B8oHM1X/x53X3CUGo7wHT1JX0nsI8CAifcaoldyZZ5hvDe0aTkLp3g8tGNI6STUryx9Ibetm0AjxBGrCEZjwCCc/3eM6C0j6AIPf4w0u+QyOLi1odHRwczovL2FsaWNlLmJ0Yy5jYWxlbmRhci5vcGVudGltZXN0YW1wcy5vcmfwELpym8i4k3LVx2PzUH9PHRQI8CC3XkZ1WfRoHrCfDfqewwoH/OEgdQdy+pihaxAoRMNI/QjwIOz9ArM+04vs2H59g1ICVDoI1EAU7Se5qP24VyH8P7RCCPEEasIRmPAI6qJNzJoHGTcAg9/jDS75DI4pKGh0dHBzOi8vZmlubmV5LmNhbGVuZGFyLmV0ZXJuaXR5d2FsbC5jb20=",
+        "timestamp_anchor": "local_only_pending_remote",
+        "ots_file": "D:\\myproject\\PACSP-ID\\cache\\ots\\fb118fc15c8dc4aa.txt.ots",
+        "attempts": 1,
+        "note": "本地证明已生成，远程提交部分失败"
+      },
+      "error": null
+    },
+    "L5": {
+      "layer_id": "L5",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:50.713675",
+      "data": {
+        "python_version": "3.10.10",
+        "platform": "Windows",
+        "embedding_model": "BAAI/bge-large-zh-v1.5",
+        "window_size": 5,
+        "pipeline_steps": [
+          "load_samples",
+          "compute_embeddings",
+          "compute_deltas",
+          "compute_mus",
+          "compute_C_T",
+          "detect_changepoints"
+        ],
+        "reproducible": true
+      },
+      "error": null
+    },
+    "L6": {
+      "layer_id": "L6",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:52.776929",
+      "data": {
+        "innovation_hash": "sha256:2156f1cef5f8feb59b9422ff54dd97d060b308bbe75793c5181deaba210f9df8",
+        "hash_algorithm": "sha256",
+        "hash_scope": "innovation_dynamics",
+        "l1_content_hash": "sha256:fb118fc15c8dc4aa2bc25d2ef191ed081b832ca22aaa8842ae492884ac08e84a",
+        "sub_hashes": {
+          "innovation": "sha256:39ca5c0433ac9ebe7c1f61d1f32808662808ff5965458913d67b11fea147113a",
+          "emotion_tree": "sha256:42b1a25c98d631bb136dddc9ca20982cd1ada79a76f3043d461407aca4b0eb79",
+          "ct_extended": "sha256:b4d3f9de189913ee90f15e2d7b814ec514610c26d2625cd81a2d3d4676aa2846"
+        },
+        "verdict": "LLM+响应余量（外部连续性增强）"
+      },
+      "error": null
+    }
+  },
+  "emotion_tree": {
+    "depth": 1,
+    "path_length": 7,
+    "n_edges": 7,
+    "n_roots": 1,
+    "bias_entropy": 0.0,
+    "parents": {
+      "0": 2,
+      "1": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "7": 2
+    },
+    "roots": [
+      2
+    ],
+    "edges_flat": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ]
+    ]
+  },
+  "innovation": {
+    "C_DMN": 1.327714,
+    "C_ECN": 0.318784,
+    "C_SN": 6.0,
+    "C_mem": 0.415078,
+    "C_sel": 0.0,
+    "C_T_innov": 8.061575,
+    "chi_innov": 0.948674,
+    "DRI": 0.0,
+    "H_switch": 0.978449,
+    "S_int": -0.087167,
+    "E_glob": 2.023641,
+    "switch_count": 12,
+    "aha_indices": [
+      3,
+      7,
+      15,
+      19,
+      23,
+      27,
+      28
+    ],
+    "A_goal_defined": true,
+    "verdict": "LLM+响应余量（外部连续性增强）"
+  },
+  "C_T_ext": {
+    "C_path": 2.46622,
+    "C_jump": 0.0,
+    "C_depth": 0.1,
+    "C_bias": 0.0,
+    "C_T_base": 2.46622,
+    "C_T_ext": 2.56622,
+    "alpha": 0.1,
+    "beta": 0.05,
+    "tree": {
+      "depth": 1,
+      "path_length": 7,
+      "n_edges": 7,
+      "n_roots": 1,
+      "bias_entropy": 0.0,
+      "parents": {
+        "0": 2,
+        "1": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2
+      },
+      "roots": [
+        2
+      ],
+      "edges_flat": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ]
+      ]
+    },
+    "changepoints_used": [],
+    "jump_magnitudes": []
+  }
+}

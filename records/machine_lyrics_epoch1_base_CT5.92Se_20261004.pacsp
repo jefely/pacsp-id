@@ -1,0 +1,461 @@
+{
+  "protocol": "PACSP-ID",
+  "version": "7.0.0-COMPLETE",
+  "generated_at": "2026-10-04T16:45:44.748179",
+  "metadata": {
+    "domain": "machine_lyrics",
+    "epoch": "epoch1",
+    "variant": "base",
+    "CT_display": "5.92Se",
+    "protocol_version": "7.0.0-COMPLETE",
+    "parameters": {
+      "embedding_model": "BAAI/bge-large-zh-v1.5",
+      "window_size": 5,
+      "n_samples": 31
+    },
+    "figure_recipe": {
+      "figure_id": "main",
+      "figsize": [
+        14,
+        8
+      ],
+      "dpi": 150,
+      "layout": "2x1",
+      "panels": [
+        {
+          "row": 0,
+          "title": "Path Increments delta_k",
+          "y_data": "compute.deltas",
+          "y_label": "delta_k",
+          "color": "#1f77b4",
+          "marker": "o",
+          "markersize": 5,
+          "vlines": {
+            "source": "results.changepoints.delta_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        },
+        {
+          "row": 1,
+          "title": "Cognitive Intensity mu_k",
+          "y_data": "compute.mus",
+          "y_label": "mu_k",
+          "color": "#2ca02c",
+          "marker": "o",
+          "markersize": 5,
+          "xlabel": "Snapshot",
+          "vlines": {
+            "source": "results.changepoints.mu_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        }
+      ],
+      "font": {
+        "family": "DejaVu Sans",
+        "size": 12
+      }
+    }
+  },
+  "dataset": {
+    "n_samples": 31,
+    "sample_hashes": [
+      "b4a1efe59d91b7816c23165a1102728e04d9adc890430db301def043c0ae44b0",
+      "2606af3683a2909e2bd80c196025f5bd9d19937d3aadbb4fc906f63ff89b844a",
+      "80050543f4f6abe20d1b63232e4f3bc2f00f96fec263a9c0a55eda5961cfaf1b",
+      "8f29e7846ad46d37a5277e15a6ab761e80d32580443cf93ca4933f46fb0a1963",
+      "026332ef1e880dced826b876dac5191bc8167f23eed4ea7b20a705d821ee4ebc",
+      "1610231afefe3d4f65b281e9a6f3b5220d27ff7b32db60eb34e73ed60cacb36b",
+      "0ac63d32a6bc4edaefe573f196b8bf5c14e4f0be16bc6a886b60e7ec81358d48",
+      "167d050ff86271cb04a9703f0af931d4a1b5e1c62a1880a28d2627f03be292d0",
+      "b576ffe1541b257579d0d759126387db0c404ef961d0a9d849d5abe485bc5e17",
+      "720b56c16d9a3a21cf7df025f40d2b81a441e478b96b4acdb811dc12800240db",
+      "de907773f387e12068a4a4515d751811cf2681614365727bd79ee1b49d6ed92f",
+      "6d0bc9c6d416b288128c6cdd37526bdd841e9d4a571e03ae6d0b68ddb354ecb5",
+      "1171105dd1d2a448630e195b024b7b8264912000b498683e6102fd9ba7b8e0a6",
+      "0b78b140a393770ed3ed8885dc880a1e11b0dcb69c6bfbce2002c09c0d4cf555",
+      "3faabe4304aa53d890e899a3b7f162668b24818c1ca6a8d3a09e0ad19f4ade8b",
+      "60ed5a9a451db3162432fc600bdf3a4201c5ae07793d1880ce0cf453825725c3",
+      "3c73202ca6af295b140627db9240c0357dc65a50ccace60872647eb63c490532",
+      "dd6d0217c8bdc9f4c4a601f09ba17706409486fc9063d8561a1fdfedddd6feff",
+      "b811e072378e8c8ddae52373266e43e002fa5bc6ff2e3ff721a08f0e7a155057",
+      "f2194434fb469f30c91a975f8648c54815b7d0dd2198c5d2c637cb3339600e45",
+      "c2d3851e95e0f9307ff759cf7d3646c4afae865e6402c81dde5d36b37c53354b",
+      "c0d2438b853f83b9e6f580a02626418dd5efd01c7a5f6602db380eb4e03bfd89",
+      "6fc85f11fb8fd9eef56e9f0df8a8d0393ae586f0ebe8c6a562148144f6d9dafa",
+      "b28580e270ceb3cbcfd5ecd3b42b56c0e41226f5a616a29f09f2256332b9b384",
+      "8966a6018a5e79cb5e8c95556ad67e203cbc69b6775430aac2d9aee4d23b3857",
+      "9c2997d2e8a3fd9aad7464c1fa06a5c97f928749691e114c21aebc8513befc70",
+      "826da336681a556cb3b0e584e14f3dc8ac758af74e5f85e54cf016a6747fc7dc",
+      "2d8f0583a1e3d823a3b3714ab0d1b2dfb19d6c78710b951a969ffb2e7b47229f",
+      "a32b39f51992cfc7e510aad01b59f9f63a00a742353fd783e6cf97375b0c3364",
+      "1b3d3eb5d6fab0a4c6f44bda8b40cf159536f0244db84e9d6394c04c6c434db7",
+      "f4499d8e36499a2bc3124d11acb5e8e50df4f18685b99f656d3a7bb8cb0abee6"
+    ]
+  },
+  "compute": {
+    "deltas": [
+      0.8344769477844238,
+      0.8701373934745789,
+      0.7509994506835938,
+      0.7462418079376221,
+      0.6637906432151794,
+      0.6826978921890259,
+      0.8519079089164734,
+      0.7862328290939331,
+      0.5696595311164856,
+      0.6329700350761414,
+      0.6086904406547546,
+      0.6375678777694702,
+      0.6348003149032593,
+      0.6987252235412598,
+      0.7063919305801392,
+      0.7783663868904114,
+      0.72743821144104,
+      0.8104073405265808,
+      0.8102296590805054,
+      0.7720733284950256,
+      0.7759341597557068,
+      0.6798850893974304,
+      0.6253959536552429,
+      0.7715919017791748,
+      0.7439222931861877,
+      0.7596539258956909,
+      0.7062808871269226,
+      0.8499336838722229,
+      0.8032283186912537,
+      0.7010054588317871
+    ],
+    "mus": [
+      0.2640596032142639,
+      0.258287250995636,
+      0.2780824303627014,
+      0.26853513717651367,
+      0.26613450050354004,
+      0.26545536518096924,
+      0.2668699026107788,
+      0.2410825490951538,
+      0.24228155612945557,
+      0.23843371868133545,
+      0.25051218271255493,
+      0.2622556686401367,
+      0.25696760416030884,
+      0.24659830331802368,
+      0.2521131634712219,
+      0.26218682527542114,
+      0.2684217095375061,
+      0.2719889283180237,
+      0.27203065156936646,
+      0.2795392870903015,
+      0.288702130317688,
+      0.2778978943824768,
+      0.27646875381469727,
+      0.2964678406715393,
+      0.29016536474227905,
+      0.28200769424438477,
+      0.2784566879272461,
+      0.27975594997406006,
+      0.28544390201568604,
+      0.29285728931427,
+      0.29562896490097046
+    ]
+  },
+  "results": {
+    "C_T_Se": 5.920957023524995,
+    "changepoints": {
+      "mu_k": [
+        8,
+        16,
+        21
+      ],
+      "delta_k": [
+        9,
+        14
+      ]
+    }
+  },
+  "stats": {
+    "delta_mean": 0.7330212275187175,
+    "delta_std": 0.07770589327778249,
+    "mu_mean": 0.2695383487209197,
+    "mu_std": 0.01587181888550037
+  },
+  "figure_recipe": {
+    "figure_id": "main",
+    "figsize": [
+      14,
+      8
+    ],
+    "dpi": 150,
+    "layout": "2x1",
+    "panels": [
+      {
+        "row": 0,
+        "title": "Path Increments delta_k",
+        "y_data": "compute.deltas",
+        "y_label": "delta_k",
+        "color": "#1f77b4",
+        "marker": "o",
+        "markersize": 5,
+        "vlines": {
+          "source": "results.changepoints.delta_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      },
+      {
+        "row": 1,
+        "title": "Cognitive Intensity mu_k",
+        "y_data": "compute.mus",
+        "y_label": "mu_k",
+        "color": "#2ca02c",
+        "marker": "o",
+        "markersize": 5,
+        "xlabel": "Snapshot",
+        "vlines": {
+          "source": "results.changepoints.mu_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      }
+    ],
+    "font": {
+      "family": "DejaVu Sans",
+      "size": 12
+    }
+  },
+  "integrity": {
+    "L1": {
+      "layer_id": "L1",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:42.761056",
+      "data": {
+        "content_hash": "sha256:cad1f6fdf70d7d478f4dfbbc0d1b30901a811a5aab2bff5440d7bc8ce22a7f61",
+        "hash_algorithm": "sha256",
+        "hash_scope": "layered",
+        "sub_hashes": {
+          "metadata": "sha256:ddda043f05c955ad038a70ba1ef840d4c8c286ac4753967c0a1d90b2153dd740",
+          "dataset": "sha256:47917778ec25a54270bad100a511dc12f343b000947287aeec7b06b1ba9061cf",
+          "compute": "sha256:faf2e3003954fe3b3d2041049d8ef1e40a1915bd1e6fc52dcc9bef5462cb2732",
+          "results": "sha256:9dfae404ef0bfd1e7d5f41d321326b03022a9d2bc8619fc3206e438a93bef033",
+          "figure_recipe": "sha256:9cae101c0482dcf7a7f720298ec448a9fcceb1308cf0ac9fd090284929358116",
+          "l3_reference": "sha256:3f52f9b7a3d5238b474682795edcd28330b497e699c4bbea18aef4bc61101e20"
+        }
+      },
+      "error": null
+    },
+    "L2": {
+      "layer_id": "L2",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:42.761056",
+      "data": {
+        "signature": "base64:r/ZzBOUC2b2VvlLScsJGGR9rQDZKaAIAWNmzUyS8m1MzX6up+0Q6NeDnma+3xUl5qn9Qo9GgPeZhehns8X0eDA==",
+        "signature_algorithm": "ed25519",
+        "public_key_id": "43fa799f51e51f4f",
+        "signed_content_hash": "sha256:cad1f6fdf70d7d478f4dfbbc0d1b30901a811a5aab2bff5440d7bc8ce22a7f61"
+      },
+      "error": null
+    },
+    "L3": {
+      "sample": "sha256:7b55950fd55047b9bd412aae8c8f6a82d59925a8940a28f7ca2112884b956fc9",
+      "compute": "sha256:a2dbb948d0702ef149820bea4bb3af5d70e75ce4b8d071f3e8f60f5a4a66b8bc",
+      "result": "sha256:2615a580691db4d746dcb2308be80c6d088a3344e368a62c52ada81c805111f2"
+    },
+    "L4": {
+      "layer_id": "L4",
+      "status": "pending",
+      "computed_at": "2026-10-04T16:45:44.741202",
+      "data": {
+        "content_hash": "sha256:cad1f6fdf70d7d478f4dfbbc0d1b30901a811a5aab2bff5440d7bc8ce22a7f61",
+        "timestamp_proof": "base64:AE9wZW5UaW1lc3RhbXBzAABQcm9vZgC/ieLohOiSlAEIwfRaDoBHM56jRQjXOJPee50frjDI2lqtGs9dR3EN9DDwEIdn3U8JNfRv4VaBei427xYI//AQHbDiHAb158CG6miBegNBGgjxBGrCEZTwCLlM/FLDoQIZAIPf4w0u+QyOIyJodHRwczovL2J0Yy5jYWxlbmRhci5jYXRhbGxheHkuY29t//AQcqg/MBR7Q+nFDLjcGEQ5kgjxIIslL2WsgyNXassy+gb6DdS8auXD6gywI6koU3zF8H4ICPAg3Qk4+d0TYQ60FlLRAzHkbd4ZWKvVM0WwVC3l8gXrUwsI8CDofWOmEPZUrhu1PeNd+dUwc9qgz45/BpY9EpFMTzKGPAjxBGrCEZTwCMacq5dBUuSNAIPf4w0u+QyOKShodHRwczovL2Zpbm5leS5jYWxlbmRhci5ldGVybml0eXdhbGwuY29t//AIekPWdFZp3nsI8BAhzpzrWPMzvk1JrzahWQDHCPEg4DbvaEVmShbYshN9GfSazGuzPbucEnjVxlUIiu6Es54I8CB3k1ucVu/RpP/IxHkYnjlwGSpJ/v+5MmMC9AaN1N2SIgjxBGrCEZTwCC3jjRQfP1YSAIPf4w0u+QyOLi1odHRwczovL2FsaWNlLmJ0Yy5jYWxlbmRhci5vcGVudGltZXN0YW1wcy5vcmfwCPGPONIaYNa5CPAQrAralFkFr4W/r+PP1P23/gjxIMo1FP3XQtLhmxJbq4Hs+dYeXmIJnl7tKAdJB3mxchtDCPEEasIRlPAIgsLmnij0lPgAg9/jDS75DI4sK2h0dHBzOi8vYm9iLmJ0Yy5jYWxlbmRhci5vcGVudGltZXN0YW1wcy5vcmc=",
+        "timestamp_anchor": "local_only_pending_remote",
+        "ots_file": "D:\\myproject\\PACSP-ID\\cache\\ots\\cad1f6fdf70d7d47.txt.ots",
+        "attempts": 1,
+        "note": "本地证明已生成，远程提交部分失败"
+      },
+      "error": null
+    },
+    "L5": {
+      "layer_id": "L5",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:42.760056",
+      "data": {
+        "python_version": "3.10.10",
+        "platform": "Windows",
+        "embedding_model": "BAAI/bge-large-zh-v1.5",
+        "window_size": 5,
+        "pipeline_steps": [
+          "load_samples",
+          "compute_embeddings",
+          "compute_deltas",
+          "compute_mus",
+          "compute_C_T",
+          "detect_changepoints"
+        ],
+        "reproducible": true
+      },
+      "error": null
+    },
+    "L6": {
+      "layer_id": "L6",
+      "status": "ok",
+      "computed_at": "2026-10-04T16:45:44.748179",
+      "data": {
+        "innovation_hash": "sha256:89334b640bf73fdd714838b7c0f1a7de10861b614490e84433d78b2cfa996f8f",
+        "hash_algorithm": "sha256",
+        "hash_scope": "innovation_dynamics",
+        "l1_content_hash": "sha256:cad1f6fdf70d7d478f4dfbbc0d1b30901a811a5aab2bff5440d7bc8ce22a7f61",
+        "sub_hashes": {
+          "innovation": "sha256:d76844e350f35cb28e0d183b49cdddd04fb7440671220650d7037d3077268056",
+          "emotion_tree": "sha256:f228d91cec2021ba7cd6f71bf51d358e86528a5e75e181da088630b1fc4742cb",
+          "ct_extended": "sha256:dd37690653a2e56d54d1043604a8f5d771214a1ba2c31900995bf705d275db08"
+        },
+        "verdict": "当前LLM组合式重组"
+      },
+      "error": null
+    }
+  },
+  "emotion_tree": {
+    "depth": 2,
+    "path_length": 7,
+    "n_edges": 7,
+    "n_roots": 1,
+    "bias_entropy": 0.0,
+    "parents": {
+      "0": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 2,
+      "7": 2
+    },
+    "roots": [
+      1
+    ],
+    "edges_flat": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ]
+    ]
+  },
+  "innovation": {
+    "C_DMN": 6.990637,
+    "C_ECN": 0.0,
+    "C_SN": 0.0,
+    "C_mem": 0.710781,
+    "C_sel": 0.0,
+    "C_T_innov": 7.701418,
+    "chi_innov": 0.0,
+    "DRI": 0.0,
+    "H_switch": -0.0,
+    "S_int": -0.41383,
+    "E_glob": 1.364217,
+    "switch_count": 0,
+    "aha_indices": [
+      0,
+      1,
+      6,
+      27
+    ],
+    "A_goal_defined": true,
+    "verdict": "当前LLM组合式重组"
+  },
+  "C_T_ext": {
+    "C_path": 5.610635,
+    "C_jump": 0.310322,
+    "C_depth": 0.2,
+    "C_bias": 0.0,
+    "C_T_base": 5.920957,
+    "C_T_ext": 6.120957,
+    "alpha": 0.1,
+    "beta": 0.05,
+    "tree": {
+      "depth": 2,
+      "path_length": 7,
+      "n_edges": 7,
+      "n_roots": 1,
+      "bias_entropy": 0.0,
+      "parents": {
+        "0": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "6": 2,
+        "7": 2
+      },
+      "roots": [
+        1
+      ],
+      "edges_flat": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ]
+      ]
+    },
+    "changepoints_used": [
+      9,
+      14
+    ],
+    "jump_magnitudes": [
+      0.56966,
+      0.698725
+    ]
+  }
+}

@@ -150,6 +150,45 @@ ICML 2026 情绪树扩展与 IDL 创新动力学层的完整实测指标、以�
 **人/机对照组缺失**这一关键限制，见
 [`docs/CONSISTENCY-REPORT.md`](docs/CONSISTENCY-REPORT.md)。
 
+## 机器对照语料
+
+为检验论文 §8.5 的判定表，`data/machine_*/` 提供机器书写的平行语料：
+
+| 域 | 目录 | 总字数 | 生成方式 |
+|----|------|--------|---------|
+| 诗歌 | `data/machine_poem` | 1,056 | qwen2.5:7b, 31 篇独立生成 |
+| 歌词 | `data/machine_lyrics` | 1,077 | 同上 |
+| 技术文档 | `data/machine_techdoc` | 32,877 | 同上 |
+
+逐篇提示词、种子与哈希见 `data/machine_corpus_manifest.json`。
+
+**实测结论（详见 [`docs/HUMAN-VS-MACHINE-REPORT.md`](docs/HUMAN-VS-MACHINE-REPORT.md)）**：
+9 个 IDL 指标中**没有任何一个**在人机之间保持方向一致，域间差异大于人机差异。
+三组配对中仅机器歌词落入 §8.5 预期类别。
+
+## 图表
+
+`cache/figures/` 含 26 张图，覆盖 6 个域 × 4 类：
+
+| 后缀 | 内容 |
+|------|------|
+| `_main.png` | 路径增量 δ_k 与认知强度 μ_k |
+| `_L6_tree.png` | 情绪树拓扑（论文 §7） |
+| `_L6_innov.png` | 五元分解 + 四系数（论文 §8） |
+| `_L6_ctext.png` | 瑟-树耦合分解（论文 §7.4） |
+| `_L6_comparison.png` | 跨域全景 |
+| `_L6_human_vs_machine.png` | 人机对照 |
+
+重建：`python scripts/pacsp_figure.py --out cache/figures`
+
+## 报告
+
+| 文档 | 内容 |
+|------|------|
+| [`docs/PACSP-ID-7.0.0-COMPLETE.md`](docs/PACSP-ID-7.0.0-COMPLETE.md) | 完整论文 |
+| [`docs/CONSISTENCY-REPORT.md`](docs/CONSISTENCY-REPORT.md) | 三域一致性核查 |
+| [`docs/HUMAN-VS-MACHINE-REPORT.md`](docs/HUMAN-VS-MACHINE-REPORT.md) | 人机对照与嵌入敏感性 |
+| [`docs/SECTION-10-RESULTS.md`](docs/SECTION-10-RESULTS.md) | 论文 §10 结果章节 |
 ## 作者
 
 jefely

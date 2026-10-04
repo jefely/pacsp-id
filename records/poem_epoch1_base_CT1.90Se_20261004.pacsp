@@ -1,7 +1,7 @@
 {
   "protocol": "PACSP-ID",
   "version": "7.0.0-COMPLETE",
-  "generated_at": "2026-10-04T16:21:13.471589",
+  "generated_at": "2026-10-04T16:45:29.295434",
   "metadata": {
     "domain": "poem",
     "epoch": "epoch1",
@@ -233,7 +233,7 @@
     "L1": {
       "layer_id": "L1",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:11.322475",
+      "computed_at": "2026-10-04T16:45:27.273035",
       "data": {
         "content_hash": "sha256:5101183cb44adaa4a0cf337e7b924f8950fda74158c816a47d2808ca6c123b5a",
         "hash_algorithm": "sha256",
@@ -252,7 +252,7 @@
     "L2": {
       "layer_id": "L2",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:11.322475",
+      "computed_at": "2026-10-04T16:45:27.275029",
       "data": {
         "signature": "base64:Ip59OIQHkYP0jboWEn+LmHrVyPDsNrq2ix6qqk4pmfq4ldz4rM0CHt1b+J/nzK5A6G/BdI4Dbc8NDjR1hAPRBw==",
         "signature_algorithm": "ed25519",
@@ -268,22 +268,22 @@
     },
     "L4": {
       "layer_id": "L4",
-      "status": "ok",
-      "computed_at": "2026-10-04T16:21:13.466182",
+      "status": "pending",
+      "computed_at": "2026-10-04T16:45:29.289416",
       "data": {
         "content_hash": "sha256:5101183cb44adaa4a0cf337e7b924f8950fda74158c816a47d2808ca6c123b5a",
         "timestamp_proof": "base64:AE9wZW5UaW1lc3RhbXBzAABQcm9vZgC/ieLohOiSlAEI6myyW0BVT31w3aqelnSZL/Lbssifq25DrW/Mz6+bk1nwELvlaZrBYRO9uRrXcyNzvb4I//AIGK5qFIdSMxMI8BAybLCFZhjaSVrG1Ij2H3goCPAgbCn9p47ji6jifCiW5ivCfhH7Dw6eFWdn3mj0J6olhRoI8CBs00Xv99R0hF2ofxqHzCEED+faYsOpuO6VVpvRZl73IwjxBGrCDIXwCAg7JcdlRYzdAIPf4w0u+QyOLi1odHRwczovL2FsaWNlLmJ0Yy5jYWxlbmRhci5vcGVudGltZXN0YW1wcy5vcmf/8BA7Eq/0shTARXu77alW9nzfCPEgxJ1ORo41bRKnkl56ugaT2xYr4sHMfBbeJzMXgkI+8j0I8CAxVh1Xmn/faA1PLYPXC4WkjxrBThG1AUojW5HvAjOQlAjxBGrCDIXwCLaAvGK3Im0KAIPf4w0u+QyOIyJodHRwczovL2J0Yy5jYWxlbmRhci5jYXRhbGxheHkuY29t//AQvyFf8lAcixRtxIIy/mJWvwjxIJ+HtyR7mpPUDq9aO57jB5WUiexINfGMqVycr0cqAn8vCPAgQStevnnAa+SiEGQ6aVxFEzQA0Bq/Qjg/k9MlGteOGBEI8SDfyAvO7GPPTKwhQ8fa/m8YA9MWzLi8dHz4/XAJKEaIdQjxBGrCDITwCIaCzYGrUvU3AIPf4w0u+QyOKShodHRwczovL2Zpbm5leS5jYWxlbmRhci5ldGVybml0eXdhbGwuY29t8AjNmXoftMpqwgjwEOUGmC5pasByLK0hyIkau3cI8SABkZ1Wi8tVLNG5M1RFKSW7X2ZUcBNHwLQzplMMXeuxNgjxBGrCDITwCPlVm2upKVszAIPf4w0u+QyOLCtodHRwczovL2JvYi5idGMuY2FsZW5kYXIub3BlbnRpbWVzdGFtcHMub3Jn",
-        "timestamp_anchor": "pending_bitcoin_confirmation",
+        "timestamp_anchor": "local_only_pending_remote",
         "ots_file": "D:\\myproject\\PACSP-ID\\cache\\ots\\5101183cb44adaa4.txt.ots",
         "attempts": 1,
-        "note": "等待 Bitcoin 区块确认（通常 1-6 小时）"
+        "note": "本地证明已生成，远程提交部分失败"
       },
       "error": null
     },
     "L5": {
       "layer_id": "L5",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:11.322475",
+      "computed_at": "2026-10-04T16:45:27.273035",
       "data": {
         "python_version": "3.10.10",
         "platform": "Windows",
@@ -304,18 +304,18 @@
     "L6": {
       "layer_id": "L6",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:13.471589",
+      "computed_at": "2026-10-04T16:45:29.295434",
       "data": {
-        "innovation_hash": "sha256:473460bb6a5cc8234786766fb6dc2fa1361bbc0980bc60c582f00ff1a042cc78",
+        "innovation_hash": "sha256:584c0872d026b82c72452b156dc836438be2b715efe51e92682cf1ddb087dbfe",
         "hash_algorithm": "sha256",
         "hash_scope": "innovation_dynamics",
         "l1_content_hash": "sha256:5101183cb44adaa4a0cf337e7b924f8950fda74158c816a47d2808ca6c123b5a",
         "sub_hashes": {
-          "innovation": "sha256:557abbdfeee5471b43754107d7cd4478fe9714524ba8dfec22e493894bcd1cfe",
-          "emotion_tree": "sha256:7950a4b5a4e2af99cf9d6356b0a244adb3b89013e0c751363d6e8aab731d79e3",
-          "ct_extended": "sha256:ff963645a538dd363e684c4b9071c076eed0051cee5319a5e5d39f2c64be2928"
+          "innovation": "sha256:fa104a52b518ef5e1e10571af3a4bf64d8fa96a71a3d38baa6f1cacc3fc06de8",
+          "emotion_tree": "sha256:eed5f3ac49276b73490329ac9aac252c6c693cdee766fab7842199b39e6d99a0",
+          "ct_extended": "sha256:d48aea3c8a755c0705611137f6a80fdfdca1ec128cc78777527c5ab50bbf1d1d"
         },
-        "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+        "verdict": "介于两者之间"
       },
       "error": null
     }
@@ -325,19 +325,61 @@
     "path_length": 7,
     "n_edges": 7,
     "n_roots": 1,
-    "bias_entropy": 0.0
+    "bias_entropy": 0.0,
+    "parents": {
+      "0": 1,
+      "1": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "7": 2
+    },
+    "roots": [
+      2
+    ],
+    "edges_flat": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ]
+    ]
   },
   "innovation": {
     "C_DMN": 1.547655,
-    "C_ECN": 0.0,
+    "C_ECN": 0.011332,
     "C_SN": 2.5,
     "C_mem": 0.381045,
     "C_sel": 0.0,
-    "C_T_innov": 4.428699,
-    "chi_innov": 0.304849,
-    "DRI": null,
+    "C_T_innov": 4.440031,
+    "chi_innov": 0.642892,
+    "DRI": 30.316477,
     "H_switch": 0.663197,
-    "S_int": null,
+    "S_int": -0.458537,
     "E_glob": 2.516877,
     "switch_count": 5,
     "aha_indices": [
@@ -346,8 +388,8 @@
       14,
       15
     ],
-    "A_goal_defined": false,
-    "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+    "A_goal_defined": true,
+    "verdict": "介于两者之间"
   },
   "C_T_ext": {
     "C_path": 1.841087,
@@ -363,7 +405,49 @@
       "path_length": 7,
       "n_edges": 7,
       "n_roots": 1,
-      "bias_entropy": 0.0
+      "bias_entropy": 0.0,
+      "parents": {
+        "0": 1,
+        "1": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2
+      },
+      "roots": [
+        2
+      ],
+      "edges_flat": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ]
+      ]
     },
     "changepoints_used": [
       8,

@@ -1,7 +1,7 @@
 {
   "protocol": "PACSP-ID",
   "version": "7.0.0-COMPLETE",
-  "generated_at": "2026-10-04T16:21:10.224349",
+  "generated_at": "2026-10-04T16:45:36.315372",
   "metadata": {
     "domain": "techdoc",
     "epoch": "epoch1",
@@ -234,7 +234,7 @@
     "L1": {
       "layer_id": "L1",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:07.988340",
+      "computed_at": "2026-10-04T16:45:34.168717",
       "data": {
         "content_hash": "sha256:79704f19541fc9d462dab20b494acbc64caccdf6610e3751ebf5f7d5b3d5a294",
         "hash_algorithm": "sha256",
@@ -253,7 +253,7 @@
     "L2": {
       "layer_id": "L2",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:07.989416",
+      "computed_at": "2026-10-04T16:45:34.168717",
       "data": {
         "signature": "base64:tUIIrQT65zz1co7uhMIX4a+TOI45Kq8wJYj17W+/rU0LHRSYtEzlqH3NW9Dk3tz8/E33nskvAUjkt/l5HnX+DA==",
         "signature_algorithm": "ed25519",
@@ -270,7 +270,7 @@
     "L4": {
       "layer_id": "L4",
       "status": "pending",
-      "computed_at": "2026-10-04T16:21:10.220185",
+      "computed_at": "2026-10-04T16:45:36.309803",
       "data": {
         "content_hash": "sha256:79704f19541fc9d462dab20b494acbc64caccdf6610e3751ebf5f7d5b3d5a294",
         "timestamp_proof": "base64:AE9wZW5UaW1lc3RhbXBzAABQcm9vZgC/ieLohOiSlAEI7DZblg4xzw7UResxUbAJHLjO4+8tks8DIWaaJwp5uE/wEE8SOvn8IuRMV99/rAw4RRMI//AQOiohntn9lOaakBDEEQN1CQjxIG7fbZIfn+cE+rnUHzIY2MqbT9obBXfVEyctjsuHMG6YCPEEasIKxPAIi/fBV21YxbMAg9/jDS75DI4jImh0dHBzOi8vYnRjLmNhbGVuZGFyLmNhdGFsbGF4eS5jb23/8Ah1M4Bahf41wgjxIDPw8n1A5+5ifqdo/C+3XGTzvYBHDftd1VyUNHLpPihECPEgViFBkLbj476aKBla8gh1yTs1Fzys33e1fsBwNnCLk3gI8BDmkfeHJkqwRd/8NNqrecViCPEgfNckCVw6jxBYe+a7ngOrTbB32S4Gu682WOP3JdM9XKsI8QRqwgrF8AgcjabIedUH8wCD3+MNLvkMji4taHR0cHM6Ly9hbGljZS5idGMuY2FsZW5kYXIub3BlbnRpbWVzdGFtcHMub3Jn//AQefVby7bgU5Lcb8d0RP4HqwjxIG9LYbIWkHzRS27UUZK2Pi9YfiObBFE8i/NAMw0hz3/xCPEgGZt4usfkCkEkp6be1zpkDnlyhvYD/yqnJapPIf6vg9QI8QRqwgrF8AiOh1mY8HJ4dQCD3+MNLvkMjikoaHR0cHM6Ly9maW5uZXkuY2FsZW5kYXIuZXRlcm5pdHl3YWxsLmNvbfAI85uTjzsATp4I8CABy8ksBrOpqLp6o53z+gJ6QVlnbtJrpJmSTpDqFG8QGgjxIPCkeIp+zBp3X4mg2vx0yI+5xNUz8KJAxsyEh2xgKgM8CPAQZfjQQK9liaRspI7hC8ixJwjxIPZCn5YAulqLna4xI5WqMTvIflTS+kK0yTK+KyXmrlQtCPEEasIKxPAIqLWSEeiJj04Ag9/jDS75DI4sK2h0dHBzOi8vYm9iLmJ0Yy5jYWxlbmRhci5vcGVudGltZXN0YW1wcy5vcmc=",
@@ -284,7 +284,7 @@
     "L5": {
       "layer_id": "L5",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:07.988340",
+      "computed_at": "2026-10-04T16:45:34.168717",
       "data": {
         "python_version": "3.10.10",
         "platform": "Windows",
@@ -305,18 +305,18 @@
     "L6": {
       "layer_id": "L6",
       "status": "ok",
-      "computed_at": "2026-10-04T16:21:10.224349",
+      "computed_at": "2026-10-04T16:45:36.315372",
       "data": {
-        "innovation_hash": "sha256:2333ef11dedb899cb4de8f25adfc3e561f7ad8652d8db69b2821de609bcc7380",
+        "innovation_hash": "sha256:3e12471684aeb265eb785892250058d069cee78b1ac7e4734c5c1398b0000eda",
         "hash_algorithm": "sha256",
         "hash_scope": "innovation_dynamics",
         "l1_content_hash": "sha256:79704f19541fc9d462dab20b494acbc64caccdf6610e3751ebf5f7d5b3d5a294",
         "sub_hashes": {
-          "innovation": "sha256:512582dfb1af629a66cca6d71c74740edf34619654946e2b00b14eba9c9ac44a",
-          "emotion_tree": "sha256:1d9a0a88d7cccc249682e9660d2942492da18ca695252e7cc5be7851a2fbb4f0",
-          "ct_extended": "sha256:ed8bb9bb8547e9e68d7b0b073f851aeabd62818874a01116b5d96ca082ff4c36"
+          "innovation": "sha256:adadf3c6e7c4548dfb292e3a7ed72d62f3255e23abe162bfa1d8958fc2154436",
+          "emotion_tree": "sha256:a7b32b4082aca7ea01b084745077881e5ac875f462150c063b3bf83dc09d0e31",
+          "ct_extended": "sha256:7cff8a66cee34c5c93a82cdcfd55f6ffc801be464227eba1834a467b2a51680d"
         },
-        "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+        "verdict": "介于两者之间"
       },
       "error": null
     }
@@ -326,27 +326,69 @@
     "path_length": 7,
     "n_edges": 7,
     "n_roots": 1,
-    "bias_entropy": 0.0
+    "bias_entropy": 0.0,
+    "parents": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 5,
+      "4": 5,
+      "6": 5,
+      "7": 5
+    },
+    "roots": [
+      5
+    ],
+    "edges_flat": [
+      [
+        5,
+        0
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ]
+    ]
   },
   "innovation": {
     "C_DMN": 7.73148,
-    "C_ECN": 0.0,
+    "C_ECN": 0.001548,
     "C_SN": 2.5,
     "C_mem": 0.895069,
     "C_sel": 0.0,
-    "C_T_innov": 11.126549,
-    "chi_innov": 0.274572,
-    "DRI": null,
+    "C_T_innov": 11.128097,
+    "chi_innov": 0.838958,
+    "DRI": 432.754125,
     "H_switch": 0.663197,
-    "S_int": null,
+    "S_int": -0.228172,
     "E_glob": 1.376365,
     "switch_count": 5,
     "aha_indices": [
       3,
       4
     ],
-    "A_goal_defined": false,
-    "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+    "A_goal_defined": true,
+    "verdict": "介于两者之间"
   },
   "C_T_ext": {
     "C_path": 6.922489,
@@ -362,7 +404,49 @@
       "path_length": 7,
       "n_edges": 7,
       "n_roots": 1,
-      "bias_entropy": 0.0
+      "bias_entropy": 0.0,
+      "parents": {
+        "0": 5,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "6": 5,
+        "7": 5
+      },
+      "roots": [
+        5
+      ],
+      "edges_flat": [
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ]
+      ]
     },
     "changepoints_used": [
       8,
