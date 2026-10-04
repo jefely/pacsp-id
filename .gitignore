@@ -31,3 +31,7 @@ records_centroid/
 # records_centroid/ 是构建产物，默认忽略（见上）。
 # 例外：下列效度证据文件被 -f 强制入库，因为它们是 docs/MEASUREMENT-VALIDITY.md
 # 所引用的原始数字来源，重跑需数分钟且顺序敏感。\n# !records_centroid/order_sensitivity.json 等由 -f 显式加入。
+
+# 提取会话用的临时 Chrome 配置（含调试端口产物，可重建）
+_cdp_profile/
+_hf_home/
