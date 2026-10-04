@@ -179,3 +179,49 @@ GitHub Release 的附件上传端点返回的是 **uploads.github.com**，
 上传静默失败（urlopen error [Errno 2]）——**而删除旧附件的请求已经成功**，
 于是 Release 一度处于**无附件状态**。必须使用 upload_url 的绝对值。
 chrome-debug/update_release_assets.py 已修正并注释。
+
+---
+
+## 8. 可复现性验证（2026-10-04 实测）
+
+在**仓库之外的全新克隆**中执行完整重建，以验证预印本的可复现性主张。
+
+### 验证方法
+
+`powershell
+git -c http.sslBackend=openssl -c http.proxy=http://127.0.0.1:7897 `
+    clone --depth 1 https://github.com/jefely/pacsp-id.git D:\tmp\clone
+cd D:\tmp\clone
+python scripts\pacsp_formula.py     # 重建 90 张公式图
+python scripts\pacsp_docx.py        # 重建 DOCX
+`
+
+### 结果
+
+| 检查项 | 结果 |
+|---|---|
+| 六层校验（8 份记录） | **8/8 VERIFIED** |
+| 公式图逐字节比对 | **90/90 完全相同** |
+| 重建 DOCX 正文文本 | **与已发布版本完全一致**（19,642 字符） |
+| 重建 DOCX 嵌入媒体 | **50/50 条目字节全同** |
+| 输出写向克隆而非原树 | **是**（隔离性已验证） |
+
+DOCX 的**文件级** SHA256 与已发布版本不同，原因是 DOCX 为 ZIP 容器、
+其条目携带生成时间戳。**内容级比对为完全一致**，故视为可复现。
+
+### 本次验证发现并修复的一个真实缺陷
+
+首次在别处克隆后重建时，输出被写到了 D:\myproject\PACSP-ID\，
+**而不是克隆目录**——因为 pacsp_docx.py、pacsp_formula.py、pacsp_parse.py
+中硬编码了绝对路径。这使「可复现」主张在他人机器上不成立。
+
+已全部改为相对脚本位置解析：
+
+`python
+ROOT = Path(__file__).resolve().parent.parent   # 无论克隆到何处
+`
+
+pacsp_keci_adapter.py 另改用环境变量 PACSP_KECI_ROOT 作为可覆盖前缀。
+
+〔整理者按〕这个缺陷**只有真正在别处克隆并重建才能发现**——
+在主仓库内运行一切正常。这正是"可复现"必须实测而非声称的理由。
