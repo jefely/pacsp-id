@@ -20,3 +20,7 @@ cache/tamper_test/
 
 # 投稿构建中间产物（公式图与 DOCX 可由脚本重建）
 build/
+
+# 编译产物（任何层级）
+**/__pycache__/
+**/*.py[cod]
