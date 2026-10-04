@@ -1,0 +1,453 @@
+{
+  "protocol": "PACSP-ID",
+  "version": "7.0.0-COMPLETE",
+  "generated_at": "2026-10-04T23:25:17.247956",
+  "metadata": {
+    "domain": "human_poem",
+    "epoch": "epoch1",
+    "variant": "base",
+    "CT_display": "11.54Se",
+    "protocol_version": "7.0.0-COMPLETE",
+    "parameters": {
+      "embedding_model": "BAAI/bge-large-zh-v1.5",
+      "window_size": 5,
+      "n_samples": 31
+    },
+    "figure_recipe": {
+      "figure_id": "main",
+      "figsize": [
+        14,
+        8
+      ],
+      "dpi": 150,
+      "layout": "2x1",
+      "panels": [
+        {
+          "row": 0,
+          "title": "Path Increments delta_k",
+          "y_data": "compute.deltas",
+          "y_label": "delta_k",
+          "color": "#1f77b4",
+          "marker": "o",
+          "markersize": 5,
+          "vlines": {
+            "source": "results.changepoints.delta_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        },
+        {
+          "row": 1,
+          "title": "Cognitive Intensity mu_k",
+          "y_data": "compute.mus",
+          "y_label": "mu_k",
+          "color": "#2ca02c",
+          "marker": "o",
+          "markersize": 5,
+          "xlabel": "Snapshot",
+          "vlines": {
+            "source": "results.changepoints.mu_k",
+            "color": "red",
+            "linestyle": "--",
+            "linewidth": 2
+          }
+        }
+      ],
+      "font": {
+        "family": "DejaVu Sans",
+        "size": 12
+      }
+    }
+  },
+  "dataset": {
+    "n_samples": 31,
+    "sample_hashes": [
+      "c435cd7c65a4e185e4fcd8fb6747a9e061b2d07b788fd7bd37e30af2091149a4",
+      "f6ca8a08a8cc7fcff64211fceee300a3eb533072ab8839e62e3c83b7c73dc9b2",
+      "841ba59c259e394b4b624549a5401837f300d88af284acb86f3424b385279e2c",
+      "2c9087b386e06c47c19257d1ae88ef8b05edbab4dda8e08fa1a27a5ddfc89fa5",
+      "7f09b694319d171f030b2d42bace921dcb80c72a5a2bb2d62b19a2179daa1949",
+      "2bc35571b467505716050ec8445c7643c60617a9a525b617b31d669189768b79",
+      "d4fceb7ce6e891d9581f7ab2f0360060a51e480283cfd1f85bc33dd94e0304b3",
+      "706919665e0e3a3aa0b9764f4f5498700c3add77fc3ea1656f0cba850f10dd6b",
+      "c6c91bb7918667955af4d4c9bc774329e6f22fbfd6758799d8274cf3102e340e",
+      "c9b5f2af8471eb7124912569a5bc7fae058feacb75fe0810aa16174ee568a1ce",
+      "420f8e163c3a2de027e5cd049ec864cd989e5488581d4d4fceee45e901e8ae09",
+      "e68acf2630a9c7a8c644040be3d172d45f88aef3a84767b174784257e5ea80ca",
+      "a893ec51d3c698d9cfc0c603369d5d625912822c4300acf5906e57e8423471f0",
+      "20cc6976fe385e9c20d62a3a6937e57fcc69fde520ef171493d0fa47498fbe58",
+      "a6c9e6bcafc6e6a673eb3d4fb1af89cffaf6b45adb05b7a4956e878c3628f460",
+      "42120bc923a9c6bf00da7c208e6a342ea8aae821b050854c650afba03dbd2224",
+      "f6e223442d42fe58eb070e27546aafb15ca56f4892d878e22927337ebe71df2e",
+      "499bedea53937f7851ab1bdce141c29b7ab3b83f1234e1f2a5a8a65fdc694273",
+      "da2772c9a8854c49d68fd4af00565b755f1b46e2f1118b5b585e62921d32e168",
+      "86787d4c0983a5a1425b9901c39da737517bdf2a90c2facd05324e017f2d8f66",
+      "d9f1a033b0f07d12ca9e1998b3c3d68c84503a3bc406f4898b3b39842992d0bd",
+      "1dc456a81c69f29f37af92d899e6ed4c180351e8249b25f66a7138898ad4b16b",
+      "9dbc257305730966162e7913b9e3be7257595ab5dab0ec08cd7c68aadd07f398",
+      "baec3e2c6b0c6c50436a5fb5050debd29f40f60134ee4d2a2ed1affac039e00f",
+      "0e22cea1521fc45314cd2886bb36b8a721a92622e588205955e22b70fa2211f4",
+      "c8270d10685969bccb61938b228d2c7ce4e557972854e8e95ff80c4cb1d426df",
+      "ba456d02789e56504a909de0ea9d25b568d136ed50f203d13435e376f0aaddda",
+      "b396cbe6dce018a330a072efb1264258a68c9d341a0cd5d143d0fa2287a4fed8",
+      "d0b0da7a3c65489b4473e7fd3337a418af3a8a0b19b01b406b05d99f440a3011",
+      "5a3ceb95fa74d2f92327557b63edb5d543fb0a0e9cfed94215c7e6023a2801b1",
+      "9228561e6bdf3896d7132bb9f99bb32e50d3e9d2d4767b9b2af94af59a592deb"
+    ]
+  },
+  "compute": {
+    "deltas": [
+      0.8332552909851074,
+      0.97621089220047,
+      1.0403645038604736,
+      0.9566929936408997,
+      0.7651535272598267,
+      0.8652979731559753,
+      0.8028222322463989,
+      0.9111825227737427,
+      0.9453171491622925,
+      0.9586257934570312,
+      0.9951953887939453,
+      0.8844171166419983,
+      0.9076981544494629,
+      1.0280195474624634,
+      0.9417955279350281,
+      0.9402260184288025,
+      1.0096768140792847,
+      0.9784828424453735,
+      0.880433201789856,
+      0.8520761728286743,
+      0.9124282598495483,
+      0.8756629228591919,
+      0.8869575262069702,
+      0.7900020480155945,
+      0.8946868777275085,
+      0.9789944291114807,
+      0.8509610891342163,
+      0.9117655158042908,
+      0.9420448541641235,
+      0.9667986035346985
+    ],
+    "mus": [
+      0.4184432625770569,
+      0.41483527421951294,
+      0.4083143472671509,
+      0.41419631242752075,
+      0.4261702299118042,
+      0.42685288190841675,
+      0.43282777070999146,
+      0.4428286552429199,
+      0.43346112966537476,
+      0.4377399682998657,
+      0.44030165672302246,
+      0.4391475319862366,
+      0.443223237991333,
+      0.45046406984329224,
+      0.45000898838043213,
+      0.44150620698928833,
+      0.4358944296836853,
+      0.43288320302963257,
+      0.41184359788894653,
+      0.3967021703720093,
+      0.40333467721939087,
+      0.39638638496398926,
+      0.38541197776794434,
+      0.37715810537338257,
+      0.38229966163635254,
+      0.39854615926742554,
+      0.3983495235443115,
+      0.4048529267311096,
+      0.41068726778030396,
+      0.4230111241340637,
+      0.4307851791381836
+    ]
+  },
+  "results": {
+    "C_T_Se": 11.536800324496301,
+    "changepoints": {
+      "mu_k": [
+        7,
+        13,
+        19,
+        27
+      ],
+      "delta_k": []
+    }
+  },
+  "stats": {
+    "delta_mean": 0.9161081930001577,
+    "delta_std": 0.06779533346783002,
+    "mu_mean": 0.4196279971830307,
+    "mu_std": 0.020286496962313938
+  },
+  "figure_recipe": {
+    "figure_id": "main",
+    "figsize": [
+      14,
+      8
+    ],
+    "dpi": 150,
+    "layout": "2x1",
+    "panels": [
+      {
+        "row": 0,
+        "title": "Path Increments delta_k",
+        "y_data": "compute.deltas",
+        "y_label": "delta_k",
+        "color": "#1f77b4",
+        "marker": "o",
+        "markersize": 5,
+        "vlines": {
+          "source": "results.changepoints.delta_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      },
+      {
+        "row": 1,
+        "title": "Cognitive Intensity mu_k",
+        "y_data": "compute.mus",
+        "y_label": "mu_k",
+        "color": "#2ca02c",
+        "marker": "o",
+        "markersize": 5,
+        "xlabel": "Snapshot",
+        "vlines": {
+          "source": "results.changepoints.mu_k",
+          "color": "red",
+          "linestyle": "--",
+          "linewidth": 2
+        }
+      }
+    ],
+    "font": {
+      "family": "DejaVu Sans",
+      "size": 12
+    }
+  },
+  "integrity": {
+    "L1": {
+      "layer_id": "L1",
+      "status": "ok",
+      "computed_at": "2026-10-04T23:25:14.522595",
+      "data": {
+        "content_hash": "sha256:71b1c5f6553d4371d12f4dae1dc94856843d79b986d2c3e1ace72c22695e8aa5",
+        "hash_algorithm": "sha256",
+        "hash_scope": "layered",
+        "sub_hashes": {
+          "metadata": "sha256:fd2adee9eb32c799d08014072a62e6201c92f70d16e310cc1b01073749b239d6",
+          "dataset": "sha256:2f85c50b57d377c62cdf9769c1642f5e8a8813509379330e21ff2178b83c3d14",
+          "compute": "sha256:145d8b5ca1bafff25ba216bc6bdc1d45df75ce772b6ed049bfae493a76ee5350",
+          "results": "sha256:3f9371d334908780290964272676330b60d37591136e43c2c963325d3d04f474",
+          "figure_recipe": "sha256:9cae101c0482dcf7a7f720298ec448a9fcceb1308cf0ac9fd090284929358116",
+          "l3_reference": "sha256:f5273a983c9a0dd1334ae427bb3620a271646dd07557508be5880bf9501e3046"
+        }
+      },
+      "error": null
+    },
+    "L2": {
+      "layer_id": "L2",
+      "status": "ok",
+      "computed_at": "2026-10-04T23:25:14.530429",
+      "data": {
+        "signature": "base64:QPlCE74u3yYlyP+yZURWIc7wenDQhk4GqR5pz2OJReUHwHx0U6P3KhBSIBhzjeaWp2qf3zOiV51HA7WDHtAwCA==",
+        "signature_algorithm": "ed25519",
+        "public_key_id": "43fa799f51e51f4f",
+        "signed_content_hash": "sha256:71b1c5f6553d4371d12f4dae1dc94856843d79b986d2c3e1ace72c22695e8aa5"
+      },
+      "error": null
+    },
+    "L3": {
+      "sample": "sha256:109aeff6f3f951c9ba45a25da5357a6ab6b7407ec7f9faa72e67e6305b329623",
+      "compute": "sha256:5b728c19b0fac7722a31115f8227708ab31257f7295c5c52d92f61511220764b",
+      "result": "sha256:9f9400bc9b5a504550c522bb3fd31553cdccd1a2987cf05b54b0fd6f4bb7029f"
+    },
+    "L4": {
+      "layer_id": "L4",
+      "status": "ok",
+      "computed_at": "2026-10-04T23:25:17.242926",
+      "data": {
+        "content_hash": "sha256:71b1c5f6553d4371d12f4dae1dc94856843d79b986d2c3e1ace72c22695e8aa5",
+        "timestamp_proof": "base64:AE9wZW5UaW1lc3RhbXBzAABQcm9vZgC/ieLohOiSlAEIJuVoELMO/RAgNTd/Li9RKhnIu6QVqVuf/R4SNLwLWnHwEDKKBcOJ2wSGWIRGSNers/YI//AIJDlw/UXSl9UI8CCdfgt+vXN+8ydYs4qK+qAmTM8Toy389FjmJhZAt0Rt6wjwEE+kyZJMPT7xyVCOHD8FGgUI8CCnDeGEZ3Oubz1yevaE3S0YC/9pFq7X2id+IP8NMmCJOQjwIAyBFUgMz63ZwSYENOhyvJ8d9VorPOwZK1rUDgGixl9ECPEEasJv6fAIDAZjILsKDKsAg9/jDS75DI4uLWh0dHBzOi8vYWxpY2UuYnRjLmNhbGVuZGFyLm9wZW50aW1lc3RhbXBzLm9yZ//wEFqbWONcYeicu0xD+ajpEvUI8SDhiPehB2WQOO7x+Hkqvr+TlVDnhSpYJAVpmeJmDyO95wjxIAO9r9VQ14kRqncyIq5VvLAb/Ec3ycLqxx7YNrQie9GlCPAg3ut5UCr08tubeCWBvf3LyqQ/qi/dVLl5Q4QcM2CjWMsI8QRqwm/o8AjR/fj+AaT9eACD3+MNLvkMjiMiaHR0cHM6Ly9idGMuY2FsZW5kYXIuY2F0YWxsYXh5LmNvbf/wCHDwWJE+mcbyCPAQbiY2M4/QUAxioDgogkBj0wjxIPUNyR529iC0eyrlcw6wVqdFQDxfZ6CWlgV5SjlhVjejCPAgbz9nft/sRftZkZ1arwpNllfIx/zvxc/WvPjlZJ8kyJEI8SDWBzl19opgEEw9a6ze05NxghV/hlf4tzwq7DXedS6kegjxBGrCb+jwCPQ/CAyOuH+uAIPf4w0u+QyOLCtodHRwczovL2JvYi5idGMuY2FsZW5kYXIub3BlbnRpbWVzdGFtcHMub3Jn8BDrERpOTkNg8XJVP9Yy2SfwCPEglQYfi82XE+R1oGNjEl6RxjtwM8RKhjJf/+bMP5LEovQI8SDrG7E2Jz6550r7yXQqIPoY+YR6f+4ypw+rQC5knzMiQgjxBGrCb+nwCKLk5XKES6fRAIPf4w0u+QyOKShodHRwczovL2Zpbm5leS5jYWxlbmRhci5ldGVybml0eXdhbGwuY29t",
+        "timestamp_anchor": "pending_bitcoin_confirmation",
+        "ots_file": "D:\\myproject\\PACSP-ID\\cache\\ots\\71b1c5f6553d4371.txt.ots",
+        "attempts": 1,
+        "note": "等待 Bitcoin 区块确认（通常 1-6 小时）"
+      },
+      "error": null
+    },
+    "L5": {
+      "layer_id": "L5",
+      "status": "ok",
+      "computed_at": "2026-10-04T23:25:14.522595",
+      "data": {
+        "python_version": "3.10.10",
+        "platform": "Windows",
+        "embedding_model": "BAAI/bge-large-zh-v1.5",
+        "window_size": 5,
+        "pipeline_steps": [
+          "load_samples",
+          "compute_embeddings",
+          "compute_deltas",
+          "compute_mus",
+          "compute_C_T",
+          "detect_changepoints"
+        ],
+        "reproducible": true
+      },
+      "error": null
+    },
+    "L6": {
+      "layer_id": "L6",
+      "status": "ok",
+      "computed_at": "2026-10-04T23:25:17.247956",
+      "data": {
+        "innovation_hash": "sha256:4d95696dca12bb9a1bf8d1188b0a72723c35aeefaab9cac0d2259201e1e1283b",
+        "hash_algorithm": "sha256",
+        "hash_scope": "innovation_dynamics",
+        "l1_content_hash": "sha256:71b1c5f6553d4371d12f4dae1dc94856843d79b986d2c3e1ace72c22695e8aa5",
+        "sub_hashes": {
+          "innovation": "sha256:375a7eb3bc05d5d2b8ebeb3081f3c36a8e772402a876573d236810462eabdada",
+          "emotion_tree": "sha256:a160abe6e1839010e2fc577ee55c179fc6e5d4a08af7d64c1bcfc81a251b2a7c",
+          "ct_extended": "sha256:5b3faf1dd94ab9a1f1cb077cbcf95ae8d107e251f4b115e70e3a9d093df1e366"
+        },
+        "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+      },
+      "error": null
+    }
+  },
+  "emotion_tree": {
+    "depth": 1,
+    "path_length": 7,
+    "n_edges": 7,
+    "n_roots": 1,
+    "bias_entropy": 0.0,
+    "parents": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3,
+      "7": 3
+    },
+    "roots": [
+      3
+    ],
+    "edges_flat": [
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        7
+      ]
+    ]
+  },
+  "innovation": {
+    "C_DMN": 12.483246,
+    "C_ECN": 0.0,
+    "C_SN": 0.0,
+    "C_mem": 1.135391,
+    "C_sel": 0.0,
+    "C_T_innov": 13.618637,
+    "chi_innov": 0.0,
+    "DRI": null,
+    "H_switch": -0.0,
+    "S_int": null,
+    "E_glob": 1.091574,
+    "switch_count": 0,
+    "aha_indices": [
+      2,
+      10,
+      13,
+      16
+    ],
+    "A_goal_defined": false,
+    "verdict": "未定义（缺少目标对齐轨迹 A_goal）"
+  },
+  "C_T_ext": {
+    "C_path": 11.5368,
+    "C_jump": 0.0,
+    "C_depth": 0.1,
+    "C_bias": 0.0,
+    "C_T_base": 11.5368,
+    "C_T_ext": 11.6368,
+    "alpha": 0.1,
+    "beta": 0.05,
+    "tree": {
+      "depth": 1,
+      "path_length": 7,
+      "n_edges": 7,
+      "n_roots": 1,
+      "bias_entropy": 0.0,
+      "parents": {
+        "0": 3,
+        "1": 3,
+        "2": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "7": 3
+      },
+      "roots": [
+        3
+      ],
+      "edges_flat": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ]
+    },
+    "changepoints_used": [],
+    "jump_magnitudes": []
+  }
+}
