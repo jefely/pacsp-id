@@ -161,9 +161,9 @@ if (-not $SkipZenodo) {
     } elseif (-not $env:ZENODO_TOKEN) {
         Warn "no ZENODO_TOKEN set; skipping DOI attachment"
         Info "the DOI record currently holds only the repository zip, not the paper"
-        Info "create a token with deposit:write at"
-        Info "  https://zenodo.org/account/settings/applications/"
-        Info "then re-run stage 8 alone:"
+        Info "create a token with scopes deposit:write AND deposit:actions at"
+        Info "  https://zenodo.org/account/settings/applications/tokens/new/"
+        Info "both scopes are needed: deposit:write cannot publish the draft. Re-run:"
         Info "  `$env:ZENODO_TOKEN='<token>'; python scripts\pacsp_zenodo.py"
         Info "or do it by hand: python scripts\pacsp_zenodo.py --manual-only"
     } else {

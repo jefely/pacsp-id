@@ -6,7 +6,7 @@ only. The observed record for v7.0.0 contains a single file,
 therefore do not travel with the DOI.
 
 Usage:
-    $env:ZENODO_TOKEN = "<personal access token with deposit:write>"
+    $env:ZENODO_TOKEN = "<personal access token>"
     python scripts/pacsp_zenodo.py                 # attach assets to the latest record
     python scripts/pacsp_zenodo.py --record 23138538
     python scripts/pacsp_zenodo.py --dry-run       # probe endpoints, upload nothing
