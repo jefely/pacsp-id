@@ -151,7 +151,8 @@ if (-not $NoRelease) {
 # ---------------------------------------------------------------- zenodo
 # Zenodo's GitHub integration archives the repository snapshot only, never the
 # release attachments, so the PDF and DOCX have to be attached to the DOI record
-# separately. That needs a Zenodo token with deposit:write.
+# separately. That needs a Zenodo token carrying both deposit:write (upload) and
+# deposit:actions (publish); write alone leaves the upload unpublished.
 if (-not $SkipZenodo) {
     Write-Host ""
     Write-Host "-- stage 8: attach the paper to the Zenodo DOI --" -ForegroundColor Cyan
