@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pacsp-id"
+version = "7.0.0"
+description = "PACSP-ID: Pan-Agent Cognitive Sediment Protocol -- Identity"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "jefely", email = "yuanhuanfeng@gmail.com" }]
+dependencies = [
+    "numpy>=1.24",
+    "torch>=2.0",
+    "sentence-transformers>=3.0",
+    "matplotlib>=3.7",
+    "cryptography>=42.0",
+]
+
+[project.optional-dependencies]
+timestamp = ["opentimestamps-client>=0.7"]
+dev = ["pytest>=7.4", "scipy>=1.10", "scikit-learn>=1.3"]
+
+[project.urls]
+Homepage = "https://github.com/jefely/pacsp-id"
+Paper = "https://doi.org/10.5281/zenodo.22801604"
+
+[tool.setuptools]
+# `PACSP-ID` contains a hyphen, so it cannot be a package name. The 瞬在 package
+# is therefore exposed top-level as `transient`.
+packages = ["transient"]
+package-dir = { "" = "experiments" }
+py-modules = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"

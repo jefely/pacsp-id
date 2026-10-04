@@ -102,6 +102,37 @@ C_T = ∫ μ(t) dΛ(t)
 
 `C_DMN / C_SN / C_mem / H_switch` 与目标无关，任何模式下均有效。
 
+## 实验分支（含已终止的探索）
+
+`experiments/` 下是实验树，其中 `transient/` 是**已终止**的"瞬在/干涉"分支：
+
+> 作者判定：瞬在的探索是失败的，语言模型架构完全不支持瞬在，跑不通工程验证。
+
+失败证据、**数学根源证明**（干涉强度 `Σ|I_ij|²` 中相位被模长平方消去，故相位无效）、
+三个架构障碍与复现命令见
+[`docs/NEGATIVE-RESULT-TRANSIENT.md`](docs/NEGATIVE-RESULT-TRANSIENT.md)。
+回归防护见 `tests/test_transient.py`。
+
+运行实验（模块方式，从仓库根目录）：
+
+```bash
+python -m experiments.transient_interference.exp1_phase_coupling
+python -m experiments.transient_interference.exp6_high_precision
+```
+
+## 可构建项目结构
+
+本仓库是可安装的 Python 项目：
+
+```bash
+pip install -e ".[dev]"    # 安装（含 pytest 等开发依赖）
+pytest                     # 运行测试
+python -m build            # 构建发行包
+```
+
+`pyproject.toml` 中把 `experiments/` 下的 `transient` 暴露为**顶层包**——
+因为 `PACSP-ID` 含连字符，不能作为 Python 包名。
+
 ## 脚本一览
 
 | 脚本 | 职责 |
