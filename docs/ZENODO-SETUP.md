@@ -1,127 +1,126 @@
-# 建立 DOI：Zenodo 集成指引
+# 建立 DOI：Zenodo 集成状态与指引
 
-预印本已经发布在 GitHub（[v7.0.0](https://github.com/jefely/pacsp-id/releases/tag/v7.0.0)），
-但**尚无独立 DOI**。本文说明如何取得可引用的 DOI。
-
-**需要你本人操作**——Zenodo 的授权只能在网页上完成，无法自动化。
+**状态更新（2026-10-04）**：Zenodo 集成**已开启并已生效**——发布 `v7.0.0` 时
+Zenodo 自动归档并铸造了 DOI。本文档记录核实结果、一个必须知道的行为限制，
+以及后续版本的操作方式。
 
 ---
 
-## 一、为什么需要 DOI
+## 一、已核实的 DOI（2026-10-04 实测）
 
-| 无 DOI | 有 DOI |
+经 `doi.org` 与 Zenodo API 双向核实：
+
+| 项 | 值 |
 |---|---|
-| 引用需写 GitHub 链接，可能变动 | 永久标识，不会失效 |
-| 无法被 DataCite / OpenAlex 索引 | 进入学术索引体系 |
-| 版本管理靠 git tag | 每个版本自动获得独立 DOI |
+| **概念 DOI**（始终指向最新版） | **`10.5281/zenodo.22801604`** |
+| **版本 DOI**（v7.0.0 专用） | **`10.5281/zenodo.23138538`** |
+| 记录页 | https://zenodo.org/records/23138538 |
+| 概念记录 ID | 22801604 |
+| 版本记录 ID | 23138538 |
+| 创建时间 | 2026-10-04T14:49:37 UTC（GitHub Release 发布后 4 秒） |
+| 标题 | `jefely/pacsp-id: PACSP-ID 7.0.0 — 公开预印本` |
+| 版本 | `v7.0.0` |
+| 资源类型 | `Software` |
+| 许可 | MIT |
+| 作者 | jefely（DOI 记录中 ORCID 为空） |
 
-Zenodo 与 GitHub 联动后，**每次发布 Release 都会自动归档并铸造 DOI**，无需手工上传。
+**核实方式**：`https://zenodo.org/api/records/23138538` 返回
+`conceptdoi: 10.5281/zenodo.22801604`、`doi: 10.5281/zenodo.23138538`。
+README 首行的徽章 `zenodo.org/badge/1373521342.svg` 中 `1373521342` 是
+**Zenodo 的 GitHub 仓库 ID**，与 DOI 记录号无关，两者不应混淆。
 
 ---
 
-## 二、操作步骤（约 3 分钟）
+## 二、必须知道的行为限制：Release 附件**不会**被归档
 
-### 1. 用 GitHub 账号登录 Zenodo
+**Zenodo 的 GitHub 集成只归档仓库快照，不抓取 Release 附件。**
 
-打开 https://zenodo.org ，点 **Sign up** → **Sign up with GitHub**，授权。
+v7.0.0 记录中的文件清单（API 实测）：
 
-> 若你已有 Zenodo 账号，用同一邮箱登录即可，然后在 Settings → Linked accounts 关联 GitHub。
+```
+jefely/pacsp-id-v7.0.0.zip    7,772,053 bytes    ← 仅此一项
+```
 
-### 2. 开启仓库同步
+**PDF 与 DOCX 不在 DOI 记录内。** 这是集成层的既有行为，两个官方 issue 记录了该问题：
+[zenodo#1235](https://github.com/zenodo/zenodo/issues/1235)、
+[zenodo#1728](https://github.com/zenodo/zenodo/issues/1728)。
 
-打开 **https://zenodo.org/account/settings/github/**
+〔整理者按〕**这对"预印本"是个真问题**：DOI 归档的是一份**软件**快照
+（`resource_type: Software`），而非论文本身。目前论文的 PDF/DOCX 只在
+GitHub Release 上，**不随 DOI 永久保存**。若 GitHub 不可用，DOI 指向的内容里没有论文。
 
-页面会列出你的 GitHub 仓库。找到 **`jefely/pacsp-id`**，把右侧开关拨到 **ON**。
+### 三种补救方式
 
-> 若列表为空，点右上角 **Sync now** 刷新。
+| 方式 | 做法 | 代价 |
+|---|---|---|
+| **A. 手工把 PDF/DOCX 传到 Zenodo 记录**（推荐） | 在该记录的 **Edit → Files → Upload** 补传两个文件，保存后 DOI 不变 | 每个版本手工一次 |
+| **B. 在 Zenodo 上另建 Publication 记录** | 以 *Publication → Preprint* 类型新建，手工上传论文，获得独立论文 DOI | 与软件 DOI 分离，需两个 DOI |
+| **C. 接受现状** | 论文仅存于 GitHub Release | 论文不随 DOI 长期保存 |
 
-### 3. 发布新版本以触发归档
+**A 是可自动化程度最高的**：Zenodo 提供 REST API，只要你有
+[个人访问令牌](https://zenodo.org/account/settings/applications/)（勾选 `deposit:write`），
+我可以写成脚本，每次发布后自动把 PDF/DOCX 补进对应记录。
 
-**已发布的 v7.0.0 不会被追溯归档**——Zenodo 只处理开启之后的 Release。
-所以需要发一个新版本：
+---
+
+## 三、后续版本的操作流程
+
+Zenodo 集成已生效，因此**发新 Release 即自动铸造新 DOI**，无需任何手工步骤：
 
 ```powershell
 cd D:\myproject\PACSP-ID
 
-# 打个新标签并推送
-git tag -a v7.0.1 -m "PACSP-ID 7.0.1 -- public preprint"
-git push origin v7.0.1
+# 1. 重建交付物
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\pacsp_release.ps1 -NoRelease
+
+# 2. 打新标签并推送
+git tag -a v7.1.0 -m "PACSP-ID 7.1.0"
+git push origin v7.1.0
+
+# 3. 在 GitHub 建 Release 并上传 dist/ 下的 PDF 与 DOCX
+#    https://github.com/jefely/pacsp-id/releases/new?tag=v7.1.0
+
+# 4. 几分钟后到「二、A」把两个文件补进 Zenodo 记录
 ```
 
-然后在 GitHub 上建对应 Release：
-
-https://github.com/jefely/pacsp-id/releases/new?tag=v7.0.1
-
-标题与说明可复制 `docs/RELEASE-7.0.0.md`，**附件上传 `dist/` 下的 DOCX 与 PDF**。
-
-### 4. 查看 DOI
-
-发布后几分钟内，回到 https://zenodo.org/account/settings/github/ ，
-`jefely/pacsp-id` 那一行会显示 **DOI 徽章**，形如 `10.5281/zenodo.XXXXXXXX`。
-
-同时 Zenodo 会为该版本创建一个条目页，永久保存 DOCX 与 PDF 的副本。
+**注意顺序**：先上传好 Release 附件、**再**触发归档并无帮助——
+因为附件本来就不会被抓取。附件必须在 Zenodo 记录上单独补传。
 
 ---
 
-## 三、仓库中已有的 DOI 说明
+## 四、下一版建议同时修正的三项
 
-`docs/PACSP-ID-7.0.0-COMPLETE.md` 与 `README` 中已出现一条 DOI：
+| 项 | 现状 | 建议 |
+|---|---|---|
+| 资源类型 | `Software` | 在 Zenodo 设置中把仓库类型改为 **Publication / Preprint** |
+| 关键词 | 空 | Zenodo 从仓库读取；`CITATION.cff` 已加 12 个关键词，下版应能带入 |
+| 作者 ORCID | 空 | 在 Zenodo 账号设置中绑定 ORCID `0009-0005-9487-8555` |
+
+---
+
+## 五、引用格式（已核实，可直接使用）
 
 ```
+jefely. (2026). 从意义权到认知沉积：PACSP-ID 框架的理论建构、
+创新动力学标识与验证工程 (7.0.0). Zenodo.
 https://doi.org/10.5281/zenodo.22801604
 ```
 
-**这条 DOI 在本次整理中未能核实**——本环境网络受限，且它超出整理者知识范围。
-请你在步骤 4 拿到真实 DOI 后：
-
-1. 核对 `10.5281/zenodo.22801604` 是否确实指向本项目；
-2. 若不符，把仓库中所有出现该 DOI 的位置替换为真实 DOI：
-
-```powershell
-cd D:\myproject\PACSP-ID
-# 找出所有出现位置
-git grep -n "22801604"
-```
-
-〔整理者按〕**在 DOI 未经核实前，不应把它写进正式引用**。
-一个错误的 DOI 会使引用失效，且比没有 DOI 更糟——读者会以为链接坏了。
+**引用建议**：引用**概念 DOI** `10.5281/zenodo.22801604`（永远指向最新版）；
+若要精确指向某一版，用该版的**版本 DOI**。
 
 ---
 
-## 四、Zenodo 与 GitHub Release 的分工
-
-| 内容 | 由谁保存 |
-|---|---|
-| 源代码（各版本快照） | GitHub + Zenodo 各存一份 |
-| 论文 DOCX / PDF | GitHub Release 附件 + Zenodo 归档 |
-| 公式图 / 图表（可重建） | 仅 GitHub（可由脚本重建，无需归档） |
-| 原始对话素材 | 仅 GitHub `pacsp-collection` 仓库 |
-| **DOI** | **Zenodo 铸造** |
-
----
-
-## 五、DOI 状态登记
+## 六、状态登记
 
 | 项 | 状态 |
 |---|---|
-| GitHub Release v7.0.0 | ✅ 已发布 |
+| GitHub Release v7.0.0 | ✅ 已发布（含 PDF/DOCX 附件） |
 | tag v7.0.0 | ✅ 已推送 |
-| Zenodo 集成 | ⬜ **待你开启** |
-| 新版本触发归档 | ⬜ 待做（开启集成后） |
-| 真实 DOI | ⬜ 待获取 |
-| 仓库内 DOI 核对与替换 | ⬜ 待做 |
-
----
-
-## 六、可选：手动上传（不想开集成时）
-
-若不愿让 Zenodo 访问 GitHub，可手工上传：
-
-1. https://zenodo.org/uploads/new
-2. **Upload type** 选 *Publication* → *Preprint*
-3. 上传 `dist/PACSP-ID-7.0.0-preprint.pdf` 与 `.docx`
-4. 填写标题、作者（jefely，ORCID `0009-0005-9487-8555`）、版本 `7.0.0`
-5. **Related identifiers** 填 GitHub 链接
-6. **Publish** → 获得 DOI
-
-此法的代价：后续每个版本都要手工重做。
+| Zenodo 自动归档 | ✅ **已生效** |
+| 概念 DOI | ✅ `10.5281/zenodo.22801604`（已核实） |
+| 版本 DOI | ✅ `10.5281/zenodo.23138538`（已核实） |
+| `CITATION.cff` | ✅ 已加入仓库（校验通过） |
+| **PDF/DOCX 进入 DOI 记录** | ⬜ **未完成**——需「二、A」步骤 |
+| 资源类型改为 Preprint | ⬜ 待做 |
+| DOI 记录中的 ORCID | ⬜ 待绑定 |
