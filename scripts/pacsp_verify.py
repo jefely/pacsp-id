@@ -1,5 +1,6 @@
 """
-PACSP-ID 五层完整验证
+PACSP-ID 六层完整验证（L1-L5 为既有五层，L6 为创新动力学标识存证）
+
 用法: python pacsp_verify.py <pacsp_path> [data_dir]
 """
 
@@ -10,6 +11,15 @@ import hashlib
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+
+try:
+    from pacsp_layer6 import verify_l6
+    HAS_L6 = True
+except Exception:  # L6 模块缺失时降级为五层验证
+    HAS_L6 = False
+
+    def verify_l6(record):
+        return None, "L6 模块不可用（按五层验证）"
 
 
 def _unwrap(fragment):
@@ -266,8 +276,10 @@ def full_verify(pacsp_path, data_dir=None):
     with open(pacsp_path, encoding="utf-8") as f:
         record = json.load(f)
 
+    version = record.get("version", "unknown")
     print(f"\n{'='*60}")
     print(f"验证: {Path(pacsp_path).name}")
+    print(f"版本: {version}")
     print(f"{'='*60}")
 
     results = {}
@@ -293,11 +305,19 @@ def full_verify(pacsp_path, data_dir=None):
     results["L5"] = ok
     print(f"  {'OK  ' if ok else 'FAIL'} L5: {msg}")
 
+    # L6（论文 §4.2）：创新动力学标识存证，非致命层
+    ok, msg = verify_l6(record)
+    results["L6"] = ok
+    icon = "OK  " if ok is True else ("N/A " if ok is None else "FAIL")
+    print(f"  {icon} L6: {msg}")
+
     critical = ["L1", "L2", "L3", "L5"]
     all_ok = all(results.get(l) is True for l in critical)
+    # L6 若存在则必须通过，缺失不算失败
+    l6_ok = results.get("L6") in (True, None)
 
     print(f"\n{'='*60}")
-    print(f"结果: {'VERIFIED' if all_ok else 'FAILED'}")
+    print(f"结果: {'VERIFIED' if (all_ok and l6_ok) else 'FAILED'}")
     print(f"{'='*60}")
 
     return results

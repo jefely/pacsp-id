@@ -28,11 +28,15 @@ from pacsp_merkle import (
 )
 from pacsp_sign import layer_2_sign
 from pacsp_timestamp import layer_4_timestamp
+from pacsp_layer6 import layer_6_innovation
 
 
 ROOT = Path(__file__).parent.parent
 DATA_DIR = ROOT / "data"
 RECORDS_DIR = ROOT / "records"
+
+# 是否产出 L6 创新动力学层（论文 §4.2）。默认关闭，保证既有五层记录不受影响。
+ENABLE_INNOVATION = False
 
 
 def load_samples(sample_dir):
@@ -109,6 +113,26 @@ def detect_changepoints(signal, penalty, min_size=5):
     return sorted(set(cps))
 
 
+def solve_target_vector(embeddings, mode="none"):
+    """按模式给出目标向量 target_vec，供 §8.2 的 A_goal(t)=cos(v_t, target) 使用。
+
+    模式
+    ----
+    none     不定义目标 -> S_int / C_sel / DRI 记为未定义（默认）
+    centroid 目标 = 该域嵌入的质心
+
+    centroid 的语义：目标取该序列自身的语义重心，度量的是"每一步相对本域
+    典型语义的对齐程度"。它**不引入任何外部偏好方向**，因此是唯一不偏袒
+    某个结论的标定方式；但它衡量的是"本域一致性"，**不是**"朝某个意图推进"。
+    要判定人脑式 vs LLM 式创新，仍需一个机器书写的对照组（见核查报告 §5.1）。
+    """
+    if mode == "none" or embeddings is None:
+        return None
+    if mode == "centroid":
+        return np.mean(np.asarray(embeddings, dtype=float), axis=0)
+    raise ValueError(f"未知的 target 模式: {mode}")
+
+
 def layer_5_reproducibility(context):
     return {
         "layer_id": "L5",
@@ -176,10 +200,10 @@ def build_figure_recipe():
     }
 
 
-def merge_fragments(fragments, context):
-    return {
+def merge_fragments(fragments, context, artifacts=None):
+    record = {
         "protocol": "PACSP-ID",
-        "version": "4.0.0-COMPACT",
+        "version": context.get("metadata", {}).get("protocol_version", "4.0.0-COMPACT"),
         "generated_at": datetime.now().isoformat(),
         "metadata": context["metadata"],
         "dataset": {
@@ -214,8 +238,19 @@ def merge_fragments(fragments, context):
         }
     }
 
+    # L6（论文 §4.2）：创新动力学标识存证。仅在启用时附加，
+    # 使 v4.0.0 五层记录保持完全不变。
+    if "L6" in fragments:
+        record["integrity"]["L6"] = fragments["L6"]
+    if artifacts:
+        record["emotion_tree"] = artifacts.get("emotion_tree")
+        record["innovation"] = artifacts.get("innovation")
+        record["C_T_ext"] = artifacts.get("C_T_ext")
 
-def build_pacsp(context, output_path):
+    return record
+
+
+def build_pacsp(context, output_path, enable_innovation=False):
     fragments = {}
 
     # ============================================================
@@ -288,10 +323,42 @@ def build_pacsp(context, output_path):
         print(f"  FAIL L4: {e}")
 
     # ============================================================
+    # Stage 2b: L6 创新动力学标识存证（论文 §4.2 / 附录A）
+    # 仅在 enable_innovation 为真时执行；v4.0.0 五层记录保持完全不变。
+    # ============================================================
+    produced_artifacts = None
+    if enable_innovation:
+        print("[Stage 2b] L6 innovation dynamics (emotion tree + 5-way decomposition)")
+        try:
+            l6_input = {
+                "compute": context.get("compute", {}),
+                "results": context.get("results", {}),
+                "integrity": {"L1": fragments.get("L1", {})},
+            }
+            l6_kwargs = {}
+            if context.get("embeddings") is not None:
+                l6_kwargs["embeddings"] = context["embeddings"]
+            if context.get("group_labels") is not None:
+                l6_kwargs["group_labels"] = context["group_labels"]
+            if context.get("target_vec") is not None:
+                l6_kwargs["target_vec"] = context["target_vec"]
+
+            l6_frag, produced_artifacts = layer_6_innovation(l6_input, **l6_kwargs)
+            fragments["L6"] = l6_frag
+            print(f"  OK L6 ({l6_frag['data']['verdict']})")
+        except Exception as e:
+            fragments["L6"] = {
+                "layer_id": "L6", "status": "failed",
+                "data": {}, "error": str(e)
+            }
+            produced_artifacts = None
+            print(f"  FAIL L6: {e}")
+
+    # ============================================================
     # Stage 3: Merge
     # ============================================================
     print("[Stage 3] Merge into single .pacsp")
-    record = merge_fragments(fragments, context)
+    record = merge_fragments(fragments, context, produced_artifacts)
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -309,7 +376,9 @@ def build_pacsp(context, output_path):
     return record, fragments
 
 
-def process_dataset(domain, epoch="epoch1", variant="base", window=5):
+def process_dataset(domain, epoch="epoch1", variant="base", window=5,
+                    enable_innovation=ENABLE_INNOVATION, output_dir=None,
+                    target_mode="none"):
     sample_dir = DATA_DIR / domain
     if not sample_dir.exists():
         print(f"Skip: {sample_dir} not found")
@@ -353,6 +422,8 @@ def process_dataset(domain, epoch="epoch1", variant="base", window=5):
             "epoch": epoch,
             "variant": variant,
             "CT_display": f"{C_T:.2f}Se",
+            "protocol_version": ("7.0.0-COMPLETE" if enable_innovation
+                                 else "4.0.0-COMPACT"),
             "parameters": {
                 "embedding_model": model_name,
                 "window_size": window,
@@ -384,25 +455,49 @@ def process_dataset(domain, epoch="epoch1", variant="base", window=5):
             "mu_k": cp_mu_1based,
             "delta_k": cp_delta_1based,
         },
+        # L6 所需输入（仅在 enable_innovation 时被消费）
+        "embeddings": embeddings,
+        "target_vec": solve_target_vector(embeddings, target_mode),
+        "target_mode": target_mode,
     }
 
     date = datetime.now().strftime("%Y%m%d")
     filename = f"{domain}_{epoch}_{variant}_CT{C_T:.2f}Se_{date}.pacsp"
-    output_path = RECORDS_DIR / filename
+    output_path = (Path(output_dir) / filename) if output_dir else (RECORDS_DIR / filename)
 
-    return build_pacsp(context, output_path)
+    return build_pacsp(context, output_path, enable_innovation=enable_innovation)
 
 
 if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="PACSP-ID build pipeline")
+    parser.add_argument("--innov", action="store_true",
+                        help="产出 L6 创新动力学层（论文 §4.2），版本标记为 7.0.0-COMPLETE")
+    parser.add_argument("--datasets", nargs="*", default=["lyrics", "techdoc"],
+                        help="要处理的数据集目录名")
+    parser.add_argument("--out", default=None,
+                        help="输出目录（默认 records/）")
+    parser.add_argument("--window", type=int, default=5, help="滑动窗口半径")
+    parser.add_argument("--target", choices=["none", "centroid"], default="none",
+                        help="A_goal 目标标定：none=不定义（S_int/DRI 记未定义），"
+                             "centroid=以本域嵌入质心为目标")
+    args = parser.parse_args()
+
     print("=" * 60)
     print("PACSP-ID build pipeline")
+    print(f"  innovation layer (L6): {'ON' if args.innov else 'OFF'}")
+    print(f"  target mode          : {args.target}")
+    print(f"  datasets: {args.datasets}")
+    print(f"  output  : {args.out or 'records/'}")
     print("=" * 60)
 
-    datasets = ["lyrics", "techdoc"]
-
-    for domain in datasets:
+    for domain in args.datasets:
         try:
-            result = process_dataset(domain)
+            result = process_dataset(domain, window=args.window,
+                                     enable_innovation=args.innov,
+                                     output_dir=args.out,
+                                     target_mode=args.target)
             if result:
                 print(f"\nDONE: {domain}")
         except Exception as e:
