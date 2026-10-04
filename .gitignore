@@ -24,3 +24,6 @@ build/
 # 编译产物（任何层级）
 **/__pycache__/
 **/*.py[cod]
+
+# 以 centroid 标定重算的臂（可由 pacsp_build.py 重建）
+records_centroid/
