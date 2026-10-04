@@ -231,14 +231,28 @@ ORCID: [0009-0005-9487-8555](https://orcid.org/0009-0005-9487-8555)
 
 ## 引用
 
-    @misc{pacsp2026,
-      title={PACSP-ID: Pan-Agent Cognitive Sediment Protocol for Identity},
-      author={jefely},
-      year={2026},
-      doi={10.5281/zenodo.22801604},
-      orcid={0009-0005-9487-8555},
-      note={v7.0.0-COMPLETE}
-    }
+概念 DOI（始终指向最新版）：`10.5281/zenodo.22801604`
+v7.0.0 版本 DOI：`10.5281/zenodo.23138538`
+
+```bibtex
+@misc{pacspid2026,
+  title        = {从意义权到认知沉积：PACSP-ID 框架的理论建构、创新动力学标识与验证工程},
+  author       = {jefely},
+  year         = {2026},
+  version      = {7.0.0},
+  doi          = {10.5281/zenodo.22801604},
+  howpublished = {Zenodo (concept DOI, latest version)},
+  orcid        = {0009-0005-9487-8555},
+  url          = {https://github.com/jefely/pacsp-id}
+}
+```
+
+排版后的预印本（34 页，PDF 与 DOCX）在各版本的 release 页面：
+https://github.com/jefely/pacsp-id/releases
+
+> **归档范围说明**：Zenodo 的 GitHub 集成**只归档仓库快照，不抓取 Release 附件**。
+> 因此 DOI 记录中的文件为源码 zip，**PDF 与 DOCX 仅存于 release 页面**。
+> 详见 [`docs/ZENODO-SETUP.md`](docs/ZENODO-SETUP.md)。
 
 ## 许可证
 
