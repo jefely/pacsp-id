@@ -41,3 +41,7 @@ _pylibs/
 
 # 探针概率矩阵缓存（GPU 约 4 秒/语料可重建）
 records_centroid/probe_cache/
+# L4 upgrade 前的记录备份（tools/upgrade_l4_records.py 生成）
+*.pre-20261005
+cache/ots/*.bak
+cache/ots/cache/
