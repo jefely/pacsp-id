@@ -1,0 +1,38 @@
+{
+  "lyrics": {
+    "source": "snapshots_lyric",
+    "n_source": 31,
+    "n_existing": 31,
+    "identical": 31,
+    "copied": 0,
+    "total_now": 31,
+    "provenance": [
+      "uacp_results.npz",
+      "uacp_result.png"
+    ]
+  },
+  "techdoc": {
+    "source": "snapshots_tech",
+    "n_source": 31,
+    "n_existing": 31,
+    "identical": 31,
+    "copied": 0,
+    "total_now": 31,
+    "provenance": [
+      "uacp_results.npz",
+      "uacp_result.png"
+    ]
+  },
+  "poem": {
+    "source": "snapshots_poem",
+    "n_source": 31,
+    "n_existing": 0,
+    "identical": 0,
+    "copied": 31,
+    "total_now": 31,
+    "provenance": [
+      "uacp_results.npz",
+      "uacp_result.png"
+    ]
+  }
+}
