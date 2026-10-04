@@ -74,9 +74,10 @@
 
 ---
 
-## 2. 图：26 张已存在的图尚未被论文引用
+## 2. 图：26 张图已补入附录F
 
-论文原文**图片引用数为 0**，而 `cache/figures/` 下有 26 张由流水线生成的 PNG：
+论文原文**图片引用数为 0**，而 `cache/figures/` 下有 26 张由流水线生成的 PNG。
+预印本新增**附录F「图表」**收载全部 26 张（不改动原有章节编号），逐图配中文图题。
 
 | 分组 | 张数 | 内容 |
 |---|---|---|
@@ -88,32 +89,61 @@
 | `machine_techdoc` | 4 | 自主生成技术文档：同上 |
 | 跨域 | 2 | `_L6_comparison`、`_L6_human_vs_machine` |
 
-**计划**：新增「图表」附录（不改动原章节编号），按域分组插入并配中英图题；
-在 §10 各小节加入交叉引用（如「见图 A.1–A.4」）。
+**图 F.1–F.24** 按六个域各四类排列；**图 F.25–F.26** 为跨域对比。
 
-〔状态〕**待办**——本轮只完成公式管线，插图尚未实施。
-
----
-
-## 3. 未做的事（明确登记）
-
-1. **未修改原始存档** `PACSP-ID-7.0.0-COMPLETE.md`，一字未动。
-2. **未改动论文正文文字**——投稿版仅做上述公式记法替换与（计划的）插图。
-3. **未解决证据缺口**：纯人类对照组缺失、Keci 模型无出处、素材 07 数值自相矛盾、
-   α_i 两版数值冲突、瞬在 AI 路径验证失败。投稿版应保留这些为显式的「局限」章节，
-   不得因排版需要而淡化。
-4. **未确定目标平台**：作者为个人研究者，暂不投期刊；按公开预印本（GitHub Release
-   ＋ Zenodo DOI）推进。
+〔状态〕**已完成**。
 
 ---
 
-## 4. 复现
+## 3. 排版转换中修正的三处缺陷
+
+全部由**渲染页面并目视检查**发现，而非结构校验发现：
+
+| # | 缺陷 | 根因 | 若不检查的后果 |
+|---|---|---|---|
+| 1 | `**定义 1.2.1**` 与 `` `S_int` `` 原样显示 | `pacsp_inline.TOKEN_RE` 在斜体分支前**漏了 `\|`**，导致粗体与斜体正则被**拼接**而非互为备选，全都匹配不上 | 直接带病发布 |
+| 2 | DOXC 生成崩溃：`no NULL bytes or control characters` | 公式哨兵用了 `\x00`，lxml 拒绝 | 构建失败 |
+| 3 | 图题/标题含 Markdown 标记 | 未过 `strip_markup` | 图题显示 `**` |
+
+结构校验（`check_office.py`）只报 **verdict: pass**，三处缺陷它都发现不了——
+**结构正确不等于排版正确**。
+
+---
+
+## 4. 构建管道与约束
 
 ```bash
 cd PACSP-ID
-python scripts/pacsp_formula.py        # 生成 90 张公式图 + 6 张图例 + 清单
-python scripts/pacsp_publish.py        # 装配投稿版 Markdown → DOCX → PDF
+python scripts/pacsp_formula.py     # 90 张公式图 + 6 张图例 + 清单
+python scripts/pacsp_parse.py       # 解析校验（只读）
+python scripts/pacsp_docx.py        # 生成 DOCX（捆绑 Python 3.12）
+node <libreoffice-kit cli> convert --input build/...docx --output dist/...pdf
 ```
 
-环境：matplotlib + numpy（系统 Python 3.10 已具备）；
-文档装配另需 `python-docx`（DSH 捆绑 Python 3.12 已具备）。
+**已知约束**：DOCX→PDF 需 LibreOffice，它要**创建子进程**，而沙箱以
+`spawn EPERM` 拒绝。因此这一步需要**一次性放宽权限**；其余全部步骤均在沙箱内可完成。
+
+| 步骤 | 是否可在沙箱内完成 |
+|---|---|
+| 公式渲染 | ✅ |
+| Markdown 解析 | ✅ |
+| DOCX 生成 | ✅ |
+| 结构校验 | ✅ |
+| **DOCX→PDF** | ❌ 需放宽（LibreOffice 子进程） |
+| 页面渲染复核 | ❌ 同上 |
+
+产物：`dist/PACSP-ID-7.0.0-preprint.docx`（2.28 MB）、
+`dist/PACSP-ID-7.0.0-preprint.pdf`（1.45 MB，34 页）。
+
+---
+
+## 5. 未做的事（明确登记）
+
+1. **未修改原始存档** `PACSP-ID-7.0.0-COMPLETE.md`，逐字节未动。
+2. **未改动论文正文文字**——仅公式记法替换、行内标记转格式、插图。
+3. **未在正文加入图交叉引用**——图集中在附录F，正文未插入「见图 F.x」指向。
+4. **未解决证据缺口**：纯人类对照组缺失、Keci 模型无出处、素材 07 数值自相矛盾、
+   α_i 两版数值冲突、瞬在 AI 路径验证失败。预印本保留这些为显式「局限」，未因排版淡化。
+5. **未确定目标平台**：作者为个人研究者，暂不投期刊；按公开预印本（GitHub Release
+   ＋ Zenodo DOI）推进。
+6. **尚未建立版本化发布**：tag / GitHub Release / Zenodo DOI 准备尚未完成。
