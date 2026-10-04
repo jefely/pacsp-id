@@ -38,3 +38,6 @@ _hf_home/
 
 # 工作区内的 pip --target 安装（accelerate/bitsandbytes，可重建）
 _pylibs/
+
+# 探针概率矩阵缓存（GPU 约 4 秒/语料可重建）
+records_centroid/probe_cache/
