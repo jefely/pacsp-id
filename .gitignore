@@ -17,3 +17,6 @@ cache/tamper_test/
 # 密钥（绝不提交）
 *.pem
 *.key
+
+# 投稿构建中间产物（公式图与 DOCX 可由脚本重建）
+build/
