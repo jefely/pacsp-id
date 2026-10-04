@@ -16,6 +16,7 @@ param(
     [string]$Version        = "7.0.0",
     [switch]$SkipPdf,
     [switch]$NoRelease,
+    [switch]$SkipZenodo,
     [switch]$SkipChecks
 )
 
@@ -136,14 +137,37 @@ if (-not $NoRelease) {
         Warn "no GIT_TOKEN set; skipping release creation"
         Info "set `$env:GIT_USER and `$env:GIT_TOKEN, then re-run without -NoRelease"
     } else {
-        $mk = Join-Path (Split-Path -Parent $RepoRoot) "chrome-debug\make_release.py"
+        $mk = Join-Path $PSScriptRoot "pacsp_github_release.py"
         if (Test-Path $mk) {
             $env:PACSP_TOKEN = $env:GIT_TOKEN
             & $MbPy -X utf8 $mk
             Remove-Item Env:\PACSP_TOKEN -ErrorAction SilentlyContinue
         } else {
-            Warn "make_release.py not found; skipping"
+            Warn "pacsp_github_release.py not found; skipping release"
         }
+    }
+}
+
+# ---------------------------------------------------------------- zenodo
+# Zenodo's GitHub integration archives the repository snapshot only, never the
+# release attachments, so the PDF and DOCX have to be attached to the DOI record
+# separately. That needs a Zenodo token with deposit:write.
+if (-not $SkipZenodo) {
+    Write-Host ""
+    Write-Host "-- stage 8: attach the paper to the Zenodo DOI --" -ForegroundColor Cyan
+    $zn = Join-Path $PSScriptRoot "pacsp_zenodo.py"
+    if (-not (Test-Path $zn)) {
+        Warn "pacsp_zenodo.py not found; skipping"
+    } elseif (-not $env:ZENODO_TOKEN) {
+        Warn "no ZENODO_TOKEN set; skipping DOI attachment"
+        Info "the DOI record currently holds only the repository zip, not the paper"
+        Info "create a token with deposit:write at"
+        Info "  https://zenodo.org/account/settings/applications/"
+        Info "then re-run stage 8 alone:"
+        Info "  `$env:ZENODO_TOKEN='<token>'; python scripts\pacsp_zenodo.py"
+        Info "or do it by hand: python scripts\pacsp_zenodo.py --manual-only"
+    } else {
+        & $MbPy -X utf8 $zn
     }
 }
 
@@ -152,6 +176,8 @@ Write-Host "======================================================" -ForegroundC
 Write-Host " done" -ForegroundColor Green
 Write-Host "======================================================" -ForegroundColor Green
 Write-Host ""
-Info "next, for a DOI: enable the Zenodo integration for this repository at"
-Info "  https://zenodo.org/account/settings/github/"
-Info "then publish a GitHub release; Zenodo mints the DOI automatically."
+Info "DOI: the Zenodo integration is active, so each new GitHub release mints a"
+Info "new version DOI automatically. It archives the repository snapshot only --"
+Info "stage 8 attaches the PDF and DOCX to the record."
+Info "  concept DOI (latest): 10.5281/zenodo.22801604"
+Info "  v7.0.0 DOI          : 10.5281/zenodo.23138538"

@@ -133,6 +133,51 @@ python -m build            # 构建发行包
 `pyproject.toml` 中把 `experiments/` 下的 `transient` 暴露为**顶层包**——
 因为 `PACSP-ID` 含连字符，不能作为 Python 包名。
 
+## 构建与发布预印本
+
+一条命令重建并发布排版后的论文（34 页 PDF + DOCX）：
+
+```bash
+python scripts/pacsp_formula.py     # 90 张公式图（matplotlib，无需 LaTeX）
+python scripts/pacsp_parse.py       # Markdown → 块模型（只读校验）
+python scripts/pacsp_docx.py        # 块模型 → DOCX，含附录F 的 26 张图
+```
+
+或一条命令走完全部阶段：
+
+```powershell
+# 完整流程（含 PDF、GitHub Release、Zenodo）
+$env:GIT_TOKEN    = "<github token, repo scope>"
+$env:ZENODO_TOKEN = "<zenodo token, deposit:write>"
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\pacsp_release.ps1
+
+# 常用变体
+... -SkipPdf        # 只到 DOCX（无 LibreOffice 时）
+... -NoRelease      # 不建 Release、不挂 DOI
+... -SkipZenodo     # 跳过 DOI 附件
+... -SkipChecks     # 跳过结构校验
+```
+
+**已知约束**：DOCX→PDF 需要 LibreOffice，它会**创建子进程**。
+在受限沙箱中该操作会以 `spawn EPERM` 被拒，因此这一步需在普通终端运行，
+或对该条命令单独放宽权限。其余全部阶段均可在沙箱内完成。
+
+| 脚本 | 用途 |
+|---|---|
+| `pacsp_formula.py` | 渲染 90 个公式 + 6 张中文图例 + 可审计清单 |
+| `pacsp_parse.py` | 解析论文 Markdown 为块模型 |
+| `pacsp_inline.py` | 行内 **粗体** / *斜体* / `代码` / 公式标记 |
+| `pacsp_refs.py` | 正文图交叉引用（纯追加，不改原文） |
+| `pacsp_docx.py` | 装配 DOCX，含附录F |
+| `pacsp_release.ps1` | 八阶段一键构建与发布 |
+| `pacsp_github_release.py` | 建 tag 与 GitHub Release，上传附件 |
+| `pacsp_check_release.py` | 校验已发布附件（DOCX 按内容、PDF 按字节） |
+| `pacsp_zenodo.py` | 把 PDF/DOCX 补进 DOI 记录 |
+| `pacsp_zenodo_info.py` | 显示 DOI 记录与文件清单 |
+
+转换规则与全部变换登记见 [`docs/PUBLICATION-NOTES.md`](docs/PUBLICATION-NOTES.md)；
+DOI 状态与 Zenodo 行为说明见 [`docs/ZENODO-SETUP.md`](docs/ZENODO-SETUP.md)。
+
 ## 脚本一览
 
 | 脚本 | 职责 |
